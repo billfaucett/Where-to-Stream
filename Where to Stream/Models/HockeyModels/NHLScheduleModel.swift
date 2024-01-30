@@ -16,7 +16,7 @@ import Foundation
 struct Schedule: Codable {
     let nextStartDate, previousStartDate: String
     let gameWeek: [GameWeek]
-    let oddsPartners: [OddsPartner]
+    let oddsPartners: [OddsPartner]?
     let preSeasonStartDate, regularSeasonStartDate, regularSeasonEndDate, playoffEndDate: String
     let numberOfGames: Int
 }
