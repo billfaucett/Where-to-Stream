@@ -12,6 +12,12 @@ struct NHLMainView: View {
     let currentDate = Date()
     @State private var showStandings = false
     @State private var showSchedule = false
+    
+    func getYesterday() -> Date {
+        let calendar = Calendar.current
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())!
+        return yesterday
+    }
 
     var body: some View {
         VStack {
@@ -40,9 +46,26 @@ struct NHLMainView: View {
         .sheet(isPresented: $showSchedule) {
             NHLScheduleView(schedule: nhlViewControler.schedule?.gameWeek ?? [] )
         }
+        VStack {
+            Button("Get Yesterday's NHL Results") {
+                self.nhlViewControler.getNHLSchedule(date: getYesterday())
+            }
+        }
+        .onReceive(nhlViewControler.$schedule) { welcome in
+            if let schedule = welcome?.gameWeek, !schedule.isEmpty {
+                showSchedule = true
+            }
+        }
+        .sheet(isPresented: $showSchedule) {
+            NHLScheduleView(schedule: nhlViewControler.schedule?.gameWeek ?? [] )
+        }
+        VStack {
+            NavigationLink (destination: NHLScheduleByDateView()) {
+                Text("Get Schedue for Specific Date")
+            }
+        }
     }
 }
-
 
 #Preview {
     NHLMainView()

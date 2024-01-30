@@ -29,6 +29,7 @@
 		8A80D8D92B6837D2007281A8 /* NHLStandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */; };
 		8A80D8DB2B6930F1007281A8 /* NHLScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8DA2B6930F1007281A8 /* NHLScheduleModel.swift */; };
 		8A80D8DD2B6933CF007281A8 /* NHLScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */; };
+		8A80D8DF2B6960F6007281A8 /* NHLScheduleByDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */; };
 		8A9984222B6036F3001628C5 /* Where_to_StreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9984212B6036F3001628C5 /* Where_to_StreamApp.swift */; };
 		8A9984242B6036F3001628C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9984232B6036F3001628C5 /* ContentView.swift */; };
 		8A9984262B6036F4001628C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9984252B6036F4001628C5 /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 		8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLStandingsView.swift; sourceTree = "<group>"; };
 		8A80D8DA2B6930F1007281A8 /* NHLScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLScheduleModel.swift; sourceTree = "<group>"; };
 		8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLScheduleView.swift; sourceTree = "<group>"; };
+		8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLScheduleByDateView.swift; sourceTree = "<group>"; };
 		8A99841E2B6036F3001628C5 /* Where to Stream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Where to Stream.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9984212B6036F3001628C5 /* Where_to_StreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Where_to_StreamApp.swift; sourceTree = "<group>"; };
 		8A9984232B6036F3001628C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				8A80D8D42B681F7C007281A8 /* NHLMainView.swift */,
 				8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */,
 				8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */,
+				8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				8A9984512B603A2B001628C5 /* APIManager.swift in Sources */,
 				8A80D8A82B640046007281A8 /* StreamingSourceModelResult.swift in Sources */,
 				8A80D8A62B62E577007281A8 /* ShowDetailView.swift in Sources */,
+				8A80D8DF2B6960F6007281A8 /* NHLScheduleByDateView.swift in Sources */,
 				8A80D8DD2B6933CF007281A8 /* NHLScheduleView.swift in Sources */,
 				8A80D8C92B65C77F007281A8 /* ShowSADetailView.swift in Sources */,
 				8A80D8C52B647502007281A8 /* ModelHelpers.swift in Sources */,

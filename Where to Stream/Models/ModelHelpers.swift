@@ -61,5 +61,4 @@ struct ModelHelpers{
             }.resume()
         }
     }
-
 }

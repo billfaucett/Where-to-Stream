@@ -7,35 +7,61 @@
 
 import SwiftUI
 
-struct NHLScheduleView: View {
-    let schedule : [GameWeek]
+struct GameView: View {
+    let game: Game
     
+    func convertToEasternTime(startTimeUTC: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        guard let utcDate = dateFormatter.date(from: startTimeUTC) else {
+            return nil
+        }
+        
+        dateFormatter.timeZone = TimeZone(identifier: "America/New_York")
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter.string(from: utcDate)
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Text(schedule.first?.dayAbbrev ?? "default value")
+        let faceoffTime = String(convertToEasternTime(startTimeUTC: game.startTimeUTC) ?? "Invalid Time")
+        
+        VStack(alignment: .leading) {
+            Text("Start Time: \(faceoffTime) ET")
+            Text(game.venue.venueDefault)
+            Spacer()
+            Text("Away: \(game.awayTeam.abbrev) \(String(game.awayTeam.score ?? 0))")
+            Text("Home: \(game.homeTeam.abbrev) \(String(game.homeTeam.score ?? 0))")
+        }
+        .padding()
+    }
+}
+
+struct GameWeekView: View {
+    let gameWeek: GameWeek
+
+    var body: some View {
+        Section(header: Text(gameWeek.dayAbbrev)) {
+            ForEach(gameWeek.games, id: \.id) { game in
+                GameView(game: game)
+            }
+        }
+    }
+}
+
+struct NHLScheduleView: View {
+    let schedule: [GameWeek]
+
+    var body: some View {
         NavigationView {
             List {
                 ForEach(schedule, id: \.dayAbbrev) { gameWeek in
-                    Section(header: Text(gameWeek.dayAbbrev)) {
-                        ForEach(gameWeek.games, id: \.id) { game in
-                            // Display information for each game in a row
-                            var awayScore = String(game.awayTeam.score ?? "0")
-                            var homeScore = String(game.homeTeam.score ?? "0")
-                            
-                            VStack(alignment: .leading) {
-                                Text("Start Time: \(game.startTimeUTC)")
-                                Text("Away: \(game.awayTeam.abbrev)")
-                                Text("Away Score: \(awayScore)")
-                                Text("Home: \(game.homeTeam.abbrev)")
-                                Text("Home Score \(homeScore)")
-                                Text("Site: \( game.venue.venueDefault)")
-                            }
-                            .padding()
-                        }
-                    }
+                    GameWeekView(gameWeek: gameWeek)
                 }
             }
             .navigationTitle("NHL Schedule")
         }
     }
 }
+
