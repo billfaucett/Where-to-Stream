@@ -78,8 +78,14 @@ struct GameView: View {
                     .font(.caption)
                 Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalie?.lastName.placeNameDefault ?? "error")") 
                     .font(.caption)
+                if let threeMinRecap = game.threeMinRecap,
+                   let urlString = URL(string: "https://www.nhl.com\(threeMinRecap)"){
+                    Link("Higlights", destination: urlString)
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        .font(.caption)
+                }
             } else{
-                Section(header: Text("TV")
+                Section(header: Text("Where to Watch")
                     .font(.caption)){
                     List(game.tvBroadcasts, id: \.id) { broadcast in
                         Text("\(broadcast.market.rawValue): \(broadcast.network) - \(broadcast.countryCode.rawValue)") 
