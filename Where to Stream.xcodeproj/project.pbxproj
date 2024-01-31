@@ -230,15 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				8A9984232B6036F3001628C5 /* ContentView.swift */,
-				8A80D87B2B6054B2007281A8 /* SearchView.swift */,
-				8A80D8AD2B6445CC007281A8 /* StreamingServiceListView.swift */,
-				8A80D8A52B62E577007281A8 /* ShowDetailView.swift */,
-				8A80D8B02B645BD5007281A8 /* SearchSAView.swift */,
-				8A80D8C82B65C77F007281A8 /* ShowSADetailView.swift */,
-				8A80D8D42B681F7C007281A8 /* NHLMainView.swift */,
-				8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */,
-				8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */,
-				8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */,
+				8AC0A4BC2B699DB00020E326 /* StreamingViews */,
+				8AC0A4BB2B699D620020E326 /* NHLViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +246,29 @@
 				8A80D8C42B647502007281A8 /* ModelHelpers.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8AC0A4BB2B699D620020E326 /* NHLViews */ = {
+			isa = PBXGroup;
+			children = (
+				8A80D8D42B681F7C007281A8 /* NHLMainView.swift */,
+				8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */,
+				8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */,
+				8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */,
+			);
+			path = NHLViews;
+			sourceTree = "<group>";
+		};
+		8AC0A4BC2B699DB00020E326 /* StreamingViews */ = {
+			isa = PBXGroup;
+			children = (
+				8A80D87B2B6054B2007281A8 /* SearchView.swift */,
+				8A80D8AD2B6445CC007281A8 /* StreamingServiceListView.swift */,
+				8A80D8A52B62E577007281A8 /* ShowDetailView.swift */,
+				8A80D8B02B645BD5007281A8 /* SearchSAView.swift */,
+				8A80D8C82B65C77F007281A8 /* ShowSADetailView.swift */,
+			);
+			path = StreamingViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

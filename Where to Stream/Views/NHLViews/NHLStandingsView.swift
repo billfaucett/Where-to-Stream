@@ -40,7 +40,13 @@ struct NHLStandingsView: View {
                                     Spacer()
                                     Text("Pts")
                                         .frame(width: 50, alignment: .leading)
+                                    Text("GF")
+                                        .frame(width: 50, alignment: .leading)
+                                    Spacer()
+                                    Text("GA")
+                                        .frame(width: 50, alignment: .leading)
                                 }
+                                .padding(10)
                                 ForEach(divisionStandings, id: \.teamAbbrev.teamAbbrevDefault) { standing in
                                     StandingsRow(standing: standing)
                                 }
@@ -72,6 +78,12 @@ struct StandingsRow: View {
                 .frame(width: 50, alignment: .leading)
             Spacer()
             Text("\(standing.points)")
+                .frame(width: 50, alignment: .leading)
+            Spacer()
+            Text("\(standing.goalFor)")
+                .frame(width: 50, alignment: .leading)
+            Spacer()
+            Text("\(standing.goalAgainst)")
                 .frame(width: 50, alignment: .leading)
         }
         .padding(10)

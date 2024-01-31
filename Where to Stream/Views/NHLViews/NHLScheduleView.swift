@@ -40,17 +40,30 @@ struct GameView: View {
     var body: some View {
         let faceoffTime = String(convertToCurrentTimezone(startTimeUTC: game.startTimeUTC) ?? "Invalid Time")
         let outcome = getLastPeriodValue(lastPeriod: game.gameOutcome?.lastPeriodType ?? "")
-        
+        let period = String(game.periodDescriptor.number ?? 0)
+
         VStack(alignment: .leading) {
-            Text("Opening Faceoff: \(faceoffTime)")
-            Text(game.venue.venueDefault)
-            Spacer()
-            Text("Away: \(game.awayTeam.placeName.placeNameDefault) \(String(game.awayTeam.score ?? 0))")
-            Text("Home: \(game.homeTeam.placeName.placeNameDefault) \(String(game.homeTeam.score ?? 0))")
-            Text(outcome)
+            Text("Opening Faceoff: \(faceoffTime)") .font(.caption .bold())
+            Text(game.venue.venueDefault) .font(.caption2)
+            VStack {
+                HStack {
+                    Text(game.awayTeam.placeName.placeNameDefault) .bold()
+                    Text(String(game.awayTeam.score ?? 0)) .bold()
+                }
+            }
+            VStack {
+                HStack {
+                    Text(game.homeTeam.placeName.placeNameDefault) .bold()
+                    Text(String(game.homeTeam.score ?? 0)) .bold()
+                }
+            }
+            if (period != "0"){
+                Text("Period: \(period)") .font(.caption .bold())
+            }
+            Text(outcome) .font(.caption .bold())
             if (outcome.contains("Final")){
-                Text("GWG: \(game.winningGoalScorer?.firstInitial.placeNameDefault ?? "error"). \(game.winningGoalScorer?.lastName.placeNameDefault ?? "error")")
-                Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error"). \(game.winningGoalie?.lastName.placeNameDefault ?? "error")")
+                Text("GWG: \(game.winningGoalScorer?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalScorer?.lastName.placeNameDefault ?? "error")") .font(.caption)
+                Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalie?.lastName.placeNameDefault ?? "error")") .font(.caption)
             } else{
                 Section(header: Text("TV").font(.caption)){
                     List(game.tvBroadcasts, id: \.id) { broadcast in
