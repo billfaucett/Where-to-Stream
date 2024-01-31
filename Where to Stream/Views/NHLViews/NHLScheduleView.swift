@@ -81,10 +81,11 @@ struct GameView: View {
                     .font(.caption)
                 Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalie?.lastName.placeNameDefault ?? "error")") 
                     .font(.caption)
-                if let threeMinRecap = game.threeMinRecap,
-                   let urlString = URL(string: "https://www.nhl.com\(threeMinRecap)"){
-                    NavigationLink("Highlights", destination: Link("Higlights", destination: urlString))
-                    //Link("Higlights", destination: urlString)
+                let urlString = URL(string: "https://www.nhl.com\(game.threeMinRecap ?? "no url")")
+                Button(action: {
+                    UIApplication.shared.open(urlString!)
+                }) {
+                    Text("Highlights")
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                         .font(.caption)
                 }
