@@ -36,6 +36,12 @@ struct GameView: View {
             return lastPeriod
         }
     }
+    
+    func broadcastsList(_ broadcasts: [TvBroadcast]) -> String {
+        return broadcasts
+            .map { "\($0.market.rawValue): \($0.network) - \($0.countryCode.rawValue)" }
+            .joined(separator: ", ")
+    }
 
     var body: some View {
         let faceoffTime = String(convertToCurrentTimezone(startTimeUTC: game.startTimeUTC) ?? "Invalid Time")
@@ -90,13 +96,8 @@ struct GameView: View {
                         .font(.caption)
                 }
             } else{
-                Section(header: Text("Where to Watch")
-                    .font(.caption)){
-                    List(game.tvBroadcasts, id: \.id) { broadcast in
-                        Text("\(broadcast.market.rawValue): \(broadcast.network) - \(broadcast.countryCode.rawValue)") 
-                            .font(.caption2)
-                    }
-                }.scaledToFit()
+                Text("Broadcasts: \(broadcastsList(game.tvBroadcasts))")
+                    .font(.caption2)
             }
         }
         .padding()
