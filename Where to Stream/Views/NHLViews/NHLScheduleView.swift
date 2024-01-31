@@ -74,13 +74,17 @@ struct GameView: View {
                 .font(
                     .caption .bold())
             if (outcome.contains("Final")){
-                Text("GWG: \(game.winningGoalScorer?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalScorer?.lastName.placeNameDefault ?? "error")") 
+                NavigationLink("Box Score", destination: NHLBoxScoreView(gameId: game.id))
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    .font(.caption)
+                Text("GWG: \(game.winningGoalScorer?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalScorer?.lastName.placeNameDefault ?? "error")")
                     .font(.caption)
                 Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalie?.lastName.placeNameDefault ?? "error")") 
                     .font(.caption)
                 if let threeMinRecap = game.threeMinRecap,
                    let urlString = URL(string: "https://www.nhl.com\(threeMinRecap)"){
-                    Link("Higlights", destination: urlString)
+                    NavigationLink("Highlights", destination: Link("Higlights", destination: urlString))
+                    //Link("Higlights", destination: urlString)
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                         .font(.caption)
                 }

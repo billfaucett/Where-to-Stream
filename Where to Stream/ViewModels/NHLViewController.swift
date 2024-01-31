@@ -12,6 +12,7 @@ class NHLViewController : ObservableObject {
     let nhlApiMgr = NHLApiManager.nhlApiMgr
     @Published var standings: Standings?
     @Published var schedule: Schedule?
+    @Published var boxScore: GameDetails?
     
     func getNHLStandings(date: Date){
         let formattedDate = formatDate(date)
@@ -39,6 +40,28 @@ class NHLViewController : ObservableObject {
         let formattedDate = formatDate(date)
         
         nhlApiMgr.getSchedule(date: formattedDate) { result in
+            switch result {
+            case .success(let jsonObject):
+                            if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []){
+                                print(jsonObject.values)
+                                    do{
+                                        ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
+                                        let decoder = JSONDecoder()
+                                        self.schedule = try decoder.decode(Schedule.self, from: jsonData)
+                                    } catch {
+                                        print ("Decoding JSON error! Error decoding JSON: \(error)")
+                                    }
+                            }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    func getBoxScore(gameId: Int) {
+        let id = String(gameId)
+        
+        nhlApiMgr.getBoxScore(gameId: id) { result in
             switch result {
             case .success(let jsonObject):
                             if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []){

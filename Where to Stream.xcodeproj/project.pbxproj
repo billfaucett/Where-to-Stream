@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A63CBCC2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */; };
+		8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */; };
 		8A80D87C2B6054B2007281A8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D87B2B6054B2007281A8 /* SearchView.swift */; };
 		8A80D89E2B6296DE007281A8 /* WatchModeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D89D2B6296DE007281A8 /* WatchModeAPIManager.swift */; };
 		8A80D8A02B629D17007281A8 /* WatchModelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D89F2B629D17007281A8 /* WatchModelResult.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLBoxScoreModel.swift; sourceTree = "<group>"; };
+		8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLBoxScoreView.swift; sourceTree = "<group>"; };
 		8A80D87B2B6054B2007281A8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		8A80D89D2B6296DE007281A8 /* WatchModeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModeAPIManager.swift; sourceTree = "<group>"; };
 		8A80D89F2B629D17007281A8 /* WatchModelResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModelResult.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				8A80D8D02B68197F007281A8 /* NHLStandingsModel.swift */,
 				8A80D8D22B681E69007281A8 /* NHLApiManager.swift */,
 				8A80D8DA2B6930F1007281A8 /* NHLScheduleModel.swift */,
+				8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */,
 			);
 			path = HockeyModels;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */,
 				8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */,
 				8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */,
+				8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */,
 			);
 			path = NHLViews;
 			sourceTree = "<group>";
@@ -406,9 +412,11 @@
 			files = (
 				8A80D8D52B681F7C007281A8 /* NHLMainView.swift in Sources */,
 				8A80D8B32B645C56007281A8 /* SASearchViewController.swift in Sources */,
+				8A63CBCC2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift in Sources */,
 				8A80D8CB2B66DF17007281A8 /* OMdbModelResult.swift in Sources */,
 				8A9984512B603A2B001628C5 /* APIManager.swift in Sources */,
 				8A80D8A82B640046007281A8 /* StreamingSourceModelResult.swift in Sources */,
+				8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */,
 				8A80D8A62B62E577007281A8 /* ShowDetailView.swift in Sources */,
 				8A80D8DF2B6960F6007281A8 /* NHLScheduleByDateView.swift in Sources */,
 				8A80D8DD2B6933CF007281A8 /* NHLScheduleView.swift in Sources */,
