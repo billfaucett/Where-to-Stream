@@ -69,7 +69,7 @@ class NHLViewController : ObservableObject {
                                     do{
                                         ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                                         let decoder = JSONDecoder()
-                                        self.schedule = try decoder.decode(Schedule.self, from: jsonData)
+                                        self.boxScore = try decoder.decode(GameDetails.self, from: jsonData)
                                     } catch {
                                         print ("Decoding JSON error! Error decoding JSON: \(error)")
                                     }

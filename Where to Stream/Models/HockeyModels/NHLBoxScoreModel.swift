@@ -17,7 +17,7 @@ struct GameDetails: Codable {
     let id, season, gameType: Int
     let gameDate: String
     let venue: Venue
-    let startTimeUTC: Date
+    let startTimeUTC: String
     let easternUTCOffset, venueUTCOffset: String
     let tvBroadcasts: [TvBroadcast]
     let gameState, gameScheduleState: String
@@ -36,7 +36,8 @@ struct AwayTeam: Codable {
     let id: Int
     let name: Venue
     let abbrev: String
-    let score, sog, faceoffWinningPctg: Int
+    let score, sog: Int
+    //let faceoffWinningPctg: Int
     let powerPlayConversion: String
     let pim, hits, blocks: Int
     let logo: String
@@ -143,12 +144,12 @@ struct Defense: Codable {
     let pim, hits, blockedShots, powerPlayGoals: Int
     let powerPlayPoints, shorthandedGoals, shPoints, shots: Int
     let faceoffs: String
-    let faceoffWinningPctg: Int
+    //let faceoffWinningPctg: Int
     let toi, powerPlayToi, shorthandedToi: String
 
     enum CodingKeys: String, CodingKey {
         case playerID = "playerId"
-        case sweaterNumber, name, position, goals, assists, points, plusMinus, pim, hits, blockedShots, powerPlayGoals, powerPlayPoints, shorthandedGoals, shPoints, shots, faceoffs, faceoffWinningPctg, toi, powerPlayToi, shorthandedToi
+        case sweaterNumber, name, position, goals, assists, points, plusMinus, pim, hits, blockedShots, powerPlayGoals, powerPlayPoints, shorthandedGoals, shPoints, shots, faceoffs, /*faceoffWinningPctg,*/ toi, powerPlayToi, shorthandedToi
     }
 }
 
@@ -168,12 +169,12 @@ struct Forward: Codable {
     let pim, hits, blockedShots, powerPlayGoals: Int
     let powerPlayPoints, shorthandedGoals, shPoints, shots: Int
     let faceoffs: String
-    let faceoffWinningPctg: Double
+    //let faceoffWinningPctg: Double
     let toi, powerPlayToi, shorthandedToi: String
 
     enum CodingKeys: String, CodingKey {
         case playerID = "playerId"
-        case sweaterNumber, name, position, goals, assists, points, plusMinus, pim, hits, blockedShots, powerPlayGoals, powerPlayPoints, shorthandedGoals, shPoints, shots, faceoffs, faceoffWinningPctg, toi, powerPlayToi, shorthandedToi
+        case sweaterNumber, name, position, goals, assists, points, plusMinus, pim, hits, blockedShots, powerPlayGoals, powerPlayPoints, shorthandedGoals, shPoints, shots, faceoffs, /*faceoffWinningPctg,*/ toi, powerPlayToi, shorthandedToi
     }
 }
 
@@ -228,7 +229,8 @@ struct HomeTeam: Codable {
     let id: Int
     let name: HomeTeamName
     let abbrev: String
-    let score, sog, faceoffWinningPctg: Int
+    let score, sog: Int
+    //let faceoffWinningPctg: Int
     let powerPlayConversion: String
     let pim, hits, blocks: Int
     let logo: String
@@ -236,7 +238,8 @@ struct HomeTeam: Codable {
 
 // MARK: - HomeTeamName
 struct HomeTeamName: Codable {
-    let nameDefault, fr: String
+    let nameDefault: String
+    let fr: String?
 
     enum CodingKeys: String, CodingKey {
         case nameDefault = "default"

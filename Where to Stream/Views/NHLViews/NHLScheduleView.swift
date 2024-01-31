@@ -87,14 +87,14 @@ struct GameView: View {
                     .font(.caption)
                 Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalie?.lastName.placeNameDefault ?? "error")") 
                     .font(.caption)
-                let urlString = URL(string: "https://www.nhl.com\(game.threeMinRecap ?? "no url")")
-                Button(action: {
+                //let urlString = URL(string: "https://www.nhl.com\(game.threeMinRecap ?? "no url")")
+                /*Button(action: {
                     UIApplication.shared.open(urlString!)
                 }) {
                     Text("Highlights")
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                         .font(.caption)
-                }
+                }*/
             } else{
                 Text("Broadcasts: \(broadcastsList(game.tvBroadcasts))")
                     .font(.caption2)

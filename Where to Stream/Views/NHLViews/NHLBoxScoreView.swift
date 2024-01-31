@@ -9,14 +9,23 @@ import SwiftUI
 
 struct NHLBoxScoreView: View {
     @ObservedObject var nhlViewControler = NHLViewController()
+    @State private var boxScore: GameDetails?
     let gameId: Int
     
     var body: some View {
         VStack {
-            Text("Game Id: \(String(gameId))")
-                .onAppear {
-                    self.nhlViewControler.getBoxScore(gameId: gameId)
-                }
+            HStack{
+                Text(boxScore?.awayTeam.abbrev ?? "error")
+                Text(String(boxScore?.awayTeam.score ?? 0))
+            }
+            HStack{
+                Text(boxScore?.homeTeam.abbrev ?? "error")
+                Text(String(boxScore?.homeTeam.score ?? 0))
+            }
+        }
+        .onAppear {
+            self.nhlViewControler.getBoxScore(gameId: gameId)
+            self.boxScore = nhlViewControler.boxScore
         }
     }
 }
