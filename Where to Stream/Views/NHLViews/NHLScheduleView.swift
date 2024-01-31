@@ -86,21 +86,13 @@ struct GameView: View {
                 .font(
                     .caption .bold())
             if (outcome.contains("Final")){
-                NavigationLink("Box Score", destination: NHLBoxScoreView(gameId: game.id))
+                NavigationLink("Box Score", destination: NHLBoxScoreView(gameId: game.id, urlString: game.threeMinRecap ?? "https://www.nhl.com"))
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     .font(.caption)
                 Text("GWG: \(game.winningGoalScorer?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalScorer?.lastName.placeNameDefault ?? "error")")
                     .font(.caption)
                 Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalie?.lastName.placeNameDefault ?? "error")") 
                     .font(.caption)
-                //let urlString = URL(string: "https://www.nhl.com\(game.threeMinRecap ?? "no url")")
-                /*Button(action: {
-                    UIApplication.shared.open(urlString!)
-                }) {
-                    Text("Highlights")
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                        .font(.caption)
-                }*/
             } else{
                 Text("Broadcasts: \(broadcastsList(game.tvBroadcasts))")
                     .font(.caption2)
