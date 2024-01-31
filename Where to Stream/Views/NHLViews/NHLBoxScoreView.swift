@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct NHLBoxScoreView: View {
-    @ObservedObject var nhlViewControler = NHLViewController()
-    @State private var boxScore: GameDetails?
     let gameId: Int
+    @ObservedObject var nhlViewControler = NHLViewController()
+    @State var boxScoreData: GameDetails?
     
     var body: some View {
         VStack {
             HStack{
-                Text(boxScore?.awayTeam.abbrev ?? "error")
-                Text(String(boxScore?.awayTeam.score ?? 0))
+                Text(boxScoreData?.awayTeam.abbrev ?? "Please Work")
+                Text(String(boxScoreData?.awayTeam.score ?? 0))
             }
             HStack{
-                Text(boxScore?.homeTeam.abbrev ?? "error")
-                Text(String(boxScore?.homeTeam.score ?? 0))
+                Text(boxScoreData?.homeTeam.abbrev ?? "Please Work")
+                Text(String(boxScoreData?.homeTeam.score ?? 0))
             }
         }
         .onAppear {
             self.nhlViewControler.getBoxScore(gameId: gameId)
-            self.boxScore = nhlViewControler.boxScore
+        }
+        .onReceive(nhlViewControler.$boxScore){ newBoxScore in
+            self.boxScoreData = newBoxScore
         }
     }
 }

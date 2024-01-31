@@ -42,6 +42,12 @@ struct GameView: View {
             .map { "\($0.market.rawValue): \($0.network) - \($0.countryCode.rawValue)" }
             .joined(separator: ", ")
     }
+    
+    /*func getBoxScore(gameId: Int) -> GameDetails {
+        var controller = NHLViewController()
+        controller.getBoxScore(gameId: gameId)
+        return controller.boxScore ?? nil
+    }*/
 
     var body: some View {
         let faceoffTime = String(convertToCurrentTimezone(startTimeUTC: game.startTimeUTC) ?? "Invalid Time")
