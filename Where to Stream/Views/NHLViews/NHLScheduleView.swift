@@ -55,7 +55,8 @@ struct GameView: View {
                 .font(.caption2)
             VStack {
                 HStack {
-                    Text(game.awayTeam.placeName.placeNameDefault) 
+                    
+                    Text(game.awayTeam.placeName.placeNameDefault)
                         .bold()
                         .frame(width: 120, alignment: .leading)
                     Text(String(game.awayTeam.score ?? 0))

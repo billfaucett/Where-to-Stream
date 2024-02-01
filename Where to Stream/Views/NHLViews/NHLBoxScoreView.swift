@@ -12,6 +12,8 @@ struct NHLBoxScoreView: View {
     let urlString: String
     @ObservedObject var nhlViewControler = NHLViewController()
     @State var boxScoreData: GameDetails?
+    @State private var awayLogo: Image?
+    @State private var homeLogo: Image?
     
     func refereeList(_ referees: [Venue]) -> String {
         return referees
@@ -19,21 +21,67 @@ struct NHLBoxScoreView: View {
             .joined(separator: ", ")
     }
     
+    func loadImage(url: String, team: String, completion: @escaping (Image?) -> Void) {
+        guard let url = URL(string: url.replacingOccurrences(of: "\\/", with: "/")) else {
+            completion(nil)
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let uiImage = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    let image = Image(uiImage: uiImage)
+                    if team == "away" {
+                        completion(image)
+                    } else {
+                        completion(image)
+                    }
+                }
+            } else {
+                completion(nil)
+            }
+        }.resume()
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
-            HStack{
-                Text(boxScoreData?.awayTeam.abbrev ?? "Please Work")
+            HStack {
+                if let awayLogo = awayLogo {
+                    awayLogo
+                        .resizable()
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200, height: 200)
+                }
+                Text(boxScoreData?.awayTeam.name.venueDefault ?? "Please Work")
                 Text(String(boxScoreData?.awayTeam.score ?? 0))
                 Text("SOG: \(String(boxScoreData?.awayTeam.sog ?? 0))")
             }
             HStack{
-                Text(boxScoreData?.homeTeam.abbrev ?? "Please Work")
+                if let homeLogo = homeLogo {
+                    homeLogo
+                        .resizable()
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200, height: 200)
+                }
+                Text(boxScoreData?.homeTeam.name.nameDefault ?? "Please Work")
                 Text(String(boxScoreData?.homeTeam.score ?? 0))
                 Text("SOG: \(String(boxScoreData?.homeTeam.sog ?? 0))")
             }
-            
             VStack {
                 Text("Score by Period")
+                Text("")
+                    .frame(width: 50, alignment: .leading)
+                if let periods = boxScoreData?.boxscore.linescore.byPeriod {
+                    ForEach(periods.indices, id: \.self) { index in
+                        let period = periods[index]
+                        Text(String(period.periodDescriptor.number ?? 0))
+                            .frame(width: 20, alignment: .leading)
+                    }
+                    Text("Tot")
+                        .frame(width: 20, alignment: .leading)
+                }
                 HStack {
                     Text(boxScoreData?.awayTeam.abbrev ?? "")
                         .frame(width: 50, alignment: .leading)
@@ -92,8 +140,11 @@ struct NHLBoxScoreView: View {
                         Text(String(boxScoreData?.homeTeam.sog ?? 0))
                     }
                 }
+                VStack {
+
+                }
                 
-                VStack{
+                VStack {
                     Text("Referees: \(refereeList(boxScoreData?.boxscore.gameInfo.referees ?? []))")
                         .font(.caption2)
                     Text("Linesmen: \(refereeList(boxScoreData?.boxscore.gameInfo.linesmen ?? []))")
@@ -111,13 +162,21 @@ struct NHLBoxScoreView: View {
             .onAppear {
                 self.nhlViewControler.getBoxScore(gameId: gameId)
             }
-            .onReceive(nhlViewControler.$boxScore){ newBoxScore in
+            .onReceive(nhlViewControler.$boxScore) {newBoxScore in
                 self.boxScoreData = newBoxScore
+                if (nhlViewControler.boxScore != nil) {
+                    loadImage(url: nhlViewControler.boxScore?.awayTeam.logo ?? "", team: "away") { image in
+                        self.awayLogo = image
+                    }
+                    loadImage(url: nhlViewControler.boxScore?.homeTeam.logo ?? "", team: "home") { image in
+                        self.homeLogo = image
+                    }
+                }
             }
         }
     }
 }
 
-/*#Preview {
-    NHLBoxScoreView()
-}*/
+#Preview {
+    NHLBoxScoreView(gameId: 1, urlString:  "https://www.nhl.com", nhlViewControler: NHLViewController())
+}

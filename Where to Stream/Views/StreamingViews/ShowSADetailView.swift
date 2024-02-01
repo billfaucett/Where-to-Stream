@@ -40,7 +40,7 @@ struct ShowSADetailView: View {
         
     
     func loadImage(){
-        guard let url = URL(string: saViewController.omdbResults?.Poster ?? "No Poster") else {
+        guard let url = URL(string: saViewController.omdbResults?.Poster.replacingOccurrences(of: "\\/", with: "/") ?? "No Poster") else {
             return
         }
         
