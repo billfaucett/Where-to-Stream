@@ -64,6 +64,51 @@
                   endingLineNumber = "79"
                   offsetFromSymbolStart = "492">
                </Location>
+               <Location
+                  uuid = "38B20FE8-7896-4EB4-8343-F7C3E601C045 - 823d316fcbe56342"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Where_to_Stream.SearchSAView.loadImage() -&gt; ()"
+                  moduleName = "Where to Stream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/williamfaucett/Documents/Where%20to%20Stream/Where%20to%20Stream/Views/StreamingViews/SearchSAView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "38B20FE8-7896-4EB4-8343-F7C3E601C045 - 823d316fcbe56342"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Where_to_Stream.SearchSAView.loadImage() -&gt; ()"
+                  moduleName = "Where to Stream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/williamfaucett/Documents/Where%20to%20Stream/Where%20to%20Stream/Views/StreamingViews/SearchSAView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  uuid = "38B20FE8-7896-4EB4-8343-F7C3E601C045 - 823d316fcbe56342"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Where_to_Stream.SearchSAView.loadImage() -&gt; ()"
+                  moduleName = "Where to Stream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/williamfaucett/Documents/Where%20to%20Stream/Where%20to%20Stream/Views/StreamingViews/SearchSAView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "548">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

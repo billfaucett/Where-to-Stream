@@ -47,6 +47,7 @@ struct NHLBoxScoreView: View {
         VStack(alignment: .leading){
             Section() {
                 HStack {
+                    Spacer()
                     if let awayLogo = awayLogo {
                         awayLogo
                             .resizable()
@@ -62,6 +63,7 @@ struct NHLBoxScoreView: View {
                         .frame(width: 25)
                         .font(.title2)
                     //Text("SOG: \(String(boxScoreData?.awayTeam.sog ?? 0))")
+                    Spacer()
                     
                     if let homeLogo = homeLogo {
                         homeLogo
@@ -78,13 +80,20 @@ struct NHLBoxScoreView: View {
                         .frame(width: 25)
                         .font(.title2)
                     //Text("SOG: \(String(boxScoreData?.homeTeam.sog ?? 0))")
+                    Spacer()
                 }
             }
+            
+            Divider()
+            
             VStack {
                 Text("Score by Period")
                     .frame(width: 200, alignment: .center)
-                    .font(.headline)
+                    .font(.subheadline)
                     .bold()
+                
+                Divider()
+                
                 HStack {
                     Text("")
                         .frame(width: 50, alignment: .leading)
@@ -135,7 +144,7 @@ struct NHLBoxScoreView: View {
                             .font(.subheadline)
                     }
                 }
-                
+                Spacer()
                 HStack {
                     Text(boxScoreData?.homeTeam.abbrev ?? "")
                         .frame(width: 50, alignment: .leading)
@@ -171,62 +180,88 @@ struct NHLBoxScoreView: View {
                     }
                 }
                 
-                Section (header: Text("PP:").font(.subheadline)){
-                    VStack {
-                        HStack {
-                            Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
-                                .font(.subheadline)
-                            Text(boxScoreData?.awayTeam.powerPlayConversion ?? "0/0")
-                                .font(.subheadline)
+                Divider()
+                
+                VStack {
+                    HStack {
+                        Section() {
+                            Spacer()
+                            VStack {
+                                Text("PP")
+                                    .font(.subheadline)
+                                HStack {
+                                    Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
+                                        .font(.subheadline)
+                                    Text(boxScoreData?.awayTeam.powerPlayConversion ?? "0/0")
+                                        .font(.subheadline)
+                                }
+                                HStack {
+                                    Text(boxScoreData?.homeTeam.abbrev ?? "HME")
+                                        .font(.subheadline)
+                                    Text(boxScoreData?.homeTeam.powerPlayConversion ?? "0/0")
+                                        .font(.subheadline)
+                                }
+                            }
                         }
-                        HStack {
-                            Text(boxScoreData?.homeTeam.abbrev ?? "HME")
-                                .font(.subheadline)
-                            Text(boxScoreData?.homeTeam.powerPlayConversion ?? "0/0")
-                                .font(.subheadline)
+                        Spacer()
+                        Divider()
+                        Section() {
+                            VStack {
+                                Text("Hits")
+                                    .font(.subheadline)
+                                HStack {
+                                    Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
+                                        .font(.subheadline)
+                                    Text(String(boxScoreData?.awayTeam.hits ?? 0))
+                                        .font(.subheadline)
+                                }
+                                HStack {
+                                    Text(boxScoreData?.homeTeam.abbrev ?? "HME")
+                                        .font(.subheadline)
+                                    Text(String(boxScoreData?.homeTeam.hits ?? 0))
+                                        .font(.subheadline)
+                                }
+                            }
                         }
+                        Spacer()
+                        Divider()
+                        Section() {
+                            VStack {
+                                Text("Blocks")
+                                    .font(.subheadline)
+                                HStack {
+                                    Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
+                                        .font(.subheadline)
+                                    Text(String(boxScoreData?.awayTeam.blocks ?? 0))
+                                        .font(.subheadline)
+                                }
+                                HStack {
+                                    Text(boxScoreData?.homeTeam.abbrev ?? "HME")
+                                        .font(.subheadline)
+                                    Text(String(boxScoreData?.homeTeam.blocks ?? 0))
+                                        .font(.subheadline)
+                                }
+                            }
+                        }
+                        Spacer()
                     }
                 }
-                Section (header: Text("Hits:").font(.subheadline)){
-                    VStack {
-                        HStack {
-                            Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
-                                .font(.subheadline)
-                            Text(String(boxScoreData?.awayTeam.hits ?? 0))
-                                .font(.subheadline)
-                        }
-                        HStack {
-                            Text(boxScoreData?.homeTeam.abbrev ?? "HME")
-                                .font(.subheadline)
-                            Text(String(boxScoreData?.homeTeam.hits ?? 0))
-                                .font(.subheadline)
-                        }
-                    }
-                }
-                Section (header: Text("Blocks:").font(.subheadline)){
-                    VStack {
-                        HStack {
-                            Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
-                                .font(.subheadline)
-                            Text(String(boxScoreData?.awayTeam.blocks ?? 0))
-                                .font(.subheadline)
-                        }
-                        HStack {
-                            Text(boxScoreData?.homeTeam.abbrev ?? "HME")
-                                .font(.subheadline)
-                            Text(String(boxScoreData?.homeTeam.blocks ?? 0))
-                                .font(.subheadline)
-                        }
-                    }
-                }
+
+                Divider()
+                
                 Text(boxScoreData?.boxscore.gameReports.gameSummary ?? "Summary")
                 Text(boxScoreData?.boxscore.gameReports.eventSummary ?? "Events")
                 Text(boxScoreData?.boxscore.gameReports.rosters ?? "Rosters")
+                
+                Divider()
                 
                 Section(header: Text("Misc:").bold().font(.subheadline).padding(.leading)){
                     VStack {
                         Text(boxScoreData?.venue.venueDefault ?? "Venue Name")
                             .font(.subheadline)
+                        
+                        Divider()
+                        
                         Text("Referees: \(refereeList(boxScoreData?.boxscore.gameInfo.referees ?? []))")
                             .font(.caption2)
                         Text("Linesmen: \(refereeList(boxScoreData?.boxscore.gameInfo.linesmen ?? []))")

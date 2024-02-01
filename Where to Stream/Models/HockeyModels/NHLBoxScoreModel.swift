@@ -28,7 +28,7 @@ struct GameDetails: Codable {
     let clock: Clock
     let boxscore: Boxscore
     let gameOutcome: GameOutcome
-    let gameVideo: GameVideo
+    let gameVideo: GameVideo?
 }
 
 // MARK: - WelcomeAwayTeam
@@ -221,7 +221,7 @@ struct Clock: Codable {
 
 // MARK: - GameVideo
 struct GameVideo: Codable {
-    let threeMinRecap, threeMinRecapFr, condensedGame: Int
+    let threeMinRecap, threeMinRecapFr, condensedGame: Int?
 }
 
 // MARK: - WelcomeHomeTeam
