@@ -23,6 +23,7 @@ struct SearchView: View {
 
                 Section {
                     Button("Submit") {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         searchStreamingAPI(title: titleInput)
                         isSearching = true
                     }
