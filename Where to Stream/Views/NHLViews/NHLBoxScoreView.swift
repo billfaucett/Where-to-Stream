@@ -45,54 +45,76 @@ struct NHLBoxScoreView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            HStack {
-                if let awayLogo = awayLogo {
-                    awayLogo
-                        .resizable()
-                        .scaledToFit()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 200, height: 200)
+            Section() {
+                HStack {
+                    if let awayLogo = awayLogo {
+                        awayLogo
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200, height: 200)
+                    }
+                    Text(boxScoreData?.awayTeam.name.venueDefault ?? "Please Work")
+                        .bold()
+                        .font(.title2)
+                    Text(String(boxScoreData?.awayTeam.score ?? 0))
+                        .bold()
+                        .frame(width: 25)
+                        .font(.title2)
+                    //Text("SOG: \(String(boxScoreData?.awayTeam.sog ?? 0))")
+                    
+                    if let homeLogo = homeLogo {
+                        homeLogo
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200, height: 200)
+                    }
+                    Text(boxScoreData?.homeTeam.name.nameDefault ?? "Please Work")
+                        .bold()
+                        .font(.title2)
+                    Text(String(boxScoreData?.homeTeam.score ?? 0))
+                        .bold()
+                        .frame(width: 25)
+                        .font(.title2)
+                    //Text("SOG: \(String(boxScoreData?.homeTeam.sog ?? 0))")
                 }
-                Text(boxScoreData?.awayTeam.name.venueDefault ?? "Please Work")
-                Text(String(boxScoreData?.awayTeam.score ?? 0))
-                Text("SOG: \(String(boxScoreData?.awayTeam.sog ?? 0))")
-            }
-            HStack{
-                if let homeLogo = homeLogo {
-                    homeLogo
-                        .resizable()
-                        .scaledToFit()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 200, height: 200)
-                }
-                Text(boxScoreData?.homeTeam.name.nameDefault ?? "Please Work")
-                Text(String(boxScoreData?.homeTeam.score ?? 0))
-                Text("SOG: \(String(boxScoreData?.homeTeam.sog ?? 0))")
             }
             VStack {
                 Text("Score by Period")
-                Text("")
-                    .frame(width: 50, alignment: .leading)
-                if let periods = boxScoreData?.boxscore.linescore.byPeriod {
-                    ForEach(periods.indices, id: \.self) { index in
-                        let period = periods[index]
-                        Text(String(period.periodDescriptor.number ?? 0))
+                    .frame(width: 200, alignment: .center)
+                    .font(.headline)
+                    .bold()
+                HStack {
+                    Text("")
+                        .frame(width: 50, alignment: .leading)
+                    if let periods = boxScoreData?.boxscore.linescore.byPeriod {
+                        ForEach(periods.indices, id: \.self) { index in
+                            let period = periods[index]
+                            Text(String(period.periodDescriptor.number ?? 0))
+                                .frame(width: 20, alignment: .leading)
+                                .font(.subheadline)
+                                .bold()
+                        }
+                        Text("T")
                             .frame(width: 20, alignment: .leading)
+                            .bold()
                     }
-                    Text("Tot")
-                        .frame(width: 20, alignment: .leading)
                 }
                 HStack {
                     Text(boxScoreData?.awayTeam.abbrev ?? "")
                         .frame(width: 50, alignment: .leading)
+                        .bold()
                     if let byPeriod = boxScoreData?.boxscore.linescore.byPeriod {
                         ForEach(byPeriod.indices, id: \.self) { index in
                             let period = byPeriod[index]
                             Text(String(period.away))
                                 .frame(width: 20, alignment: .leading)
+                                .bold()
                         }
                         Text(String(boxScoreData?.boxscore.linescore.totals.away ?? 0))
                             .frame(width: 20, alignment: .leading)
+                            .bold()
                     }
                 }
                 
@@ -100,29 +122,34 @@ struct NHLBoxScoreView: View {
                     HStack {
                         Text("SOG")
                             .frame(width: 50, alignment: .leading)
+                            .font(.caption)
                         if let shotsByPeriod = boxScoreData?.boxscore.shotsByPeriod {
                             ForEach(shotsByPeriod.indices, id: \.self) { index in
                                 let shots = shotsByPeriod[index]
                                 Text(String(shots.away))
                                     .frame(width: 20, alignment: .leading)
+                                    .font(.subheadline)
                             }
                         }
                         Text(String(boxScoreData?.awayTeam.sog ?? 0))
+                            .font(.subheadline)
                     }
                 }
                 
                 HStack {
                     Text(boxScoreData?.homeTeam.abbrev ?? "")
                         .frame(width: 50, alignment: .leading)
+                        .bold()
                     if let byPeriod = boxScoreData?.boxscore.linescore.byPeriod {
                         ForEach(byPeriod.indices, id: \.self) { index in
                             let period = byPeriod[index]
                             Text(String(period.home))
                                 .frame(width: 20, alignment: .leading)
+                                .bold()
                         }
                         Text(String(boxScoreData?.boxscore.linescore.totals.home ?? 0))
                             .frame(width: 20, alignment: .leading)
-                        
+                            .bold()
                     }
                 }
                 
@@ -130,32 +157,88 @@ struct NHLBoxScoreView: View {
                     HStack {
                         Text("SOG")
                             .frame(width: 50, alignment: .leading)
+                            .font(.caption)
                         if let shotsByPeriod = boxScoreData?.boxscore.shotsByPeriod {
                             ForEach(shotsByPeriod.indices, id: \.self) { index in
                                 let shots = shotsByPeriod[index]
                                 Text(String(shots.home))
                                     .frame(width: 20, alignment: .leading)
+                                    .font(.subheadline)
                             }
                         }
                         Text(String(boxScoreData?.homeTeam.sog ?? 0))
+                            .font(.subheadline)
                     }
                 }
-                VStack {
-
-                }
                 
-                VStack {
-                    Text("Referees: \(refereeList(boxScoreData?.boxscore.gameInfo.referees ?? []))")
-                        .font(.caption2)
-                    Text("Linesmen: \(refereeList(boxScoreData?.boxscore.gameInfo.linesmen ?? []))")
-                        .font(.caption2)
-                    let highlightsUrl = URL(string: "https://www.nhl.com\(urlString)")
-                    Button(action: {
-                        UIApplication.shared.open(highlightsUrl!)
-                    }) {
-                        Text("Highlights")
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                Section (header: Text("PP:").font(.subheadline)){
+                    VStack {
+                        HStack {
+                            Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
+                                .font(.subheadline)
+                            Text(boxScoreData?.awayTeam.powerPlayConversion ?? "0/0")
+                                .font(.subheadline)
+                        }
+                        HStack {
+                            Text(boxScoreData?.homeTeam.abbrev ?? "HME")
+                                .font(.subheadline)
+                            Text(boxScoreData?.homeTeam.powerPlayConversion ?? "0/0")
+                                .font(.subheadline)
+                        }
+                    }
+                }
+                Section (header: Text("Hits:").font(.subheadline)){
+                    VStack {
+                        HStack {
+                            Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
+                                .font(.subheadline)
+                            Text(String(boxScoreData?.awayTeam.hits ?? 0))
+                                .font(.subheadline)
+                        }
+                        HStack {
+                            Text(boxScoreData?.homeTeam.abbrev ?? "HME")
+                                .font(.subheadline)
+                            Text(String(boxScoreData?.homeTeam.hits ?? 0))
+                                .font(.subheadline)
+                        }
+                    }
+                }
+                Section (header: Text("Blocks:").font(.subheadline)){
+                    VStack {
+                        HStack {
+                            Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
+                                .font(.subheadline)
+                            Text(String(boxScoreData?.awayTeam.blocks ?? 0))
+                                .font(.subheadline)
+                        }
+                        HStack {
+                            Text(boxScoreData?.homeTeam.abbrev ?? "HME")
+                                .font(.subheadline)
+                            Text(String(boxScoreData?.homeTeam.blocks ?? 0))
+                                .font(.subheadline)
+                        }
+                    }
+                }
+                Text(boxScoreData?.boxscore.gameReports.gameSummary ?? "Summary")
+                Text(boxScoreData?.boxscore.gameReports.eventSummary ?? "Events")
+                Text(boxScoreData?.boxscore.gameReports.rosters ?? "Rosters")
+                
+                Section(header: Text("Misc:").bold().font(.subheadline).padding(.leading)){
+                    VStack {
+                        Text(boxScoreData?.venue.venueDefault ?? "Venue Name")
                             .font(.subheadline)
+                        Text("Referees: \(refereeList(boxScoreData?.boxscore.gameInfo.referees ?? []))")
+                            .font(.caption2)
+                        Text("Linesmen: \(refereeList(boxScoreData?.boxscore.gameInfo.linesmen ?? []))")
+                            .font(.caption2)
+                        let highlightsUrl = URL(string: "https://www.nhl.com\(urlString)")
+                        Button(action: {
+                            UIApplication.shared.open(highlightsUrl!)
+                        }) {
+                            Text("Highlights")
+                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                .font(.subheadline)
+                        }
                     }
                 }
             }
