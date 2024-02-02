@@ -14,6 +14,7 @@ struct NHLBoxScoreView: View {
     let urlString: String
     @ObservedObject var nhlViewControler = NHLViewController()
     @State var boxScoreData: GameDetails?
+    @State var playByPlayData: PlayByPlay?
     @State private var awayLogo: Image?
     @State private var homeLogo: Image?
     
@@ -21,6 +22,11 @@ struct NHLBoxScoreView: View {
         return referees
             .map { "\($0.venueDefault)" }
             .joined(separator: ", ")
+    }
+    
+    func getGoalPlays() ->[Play]? {
+        let plays = playByPlayData?.plays
+        return plays?.filter { $0.typeDescKey == .goal }
     }
     
     func loadSVGImage(url: String, team: String, completion: @escaping (Image?) -> Void) {
@@ -261,13 +267,26 @@ struct NHLBoxScoreView: View {
 
                 Divider()
                 
-                Text(boxScoreData?.boxscore.gameReports.gameSummary ?? "Summary")
-                Text(boxScoreData?.boxscore.gameReports.eventSummary ?? "Events")
-                Text(boxScoreData?.boxscore.gameReports.rosters ?? "Rosters")
+               if let goals = getGoalPlays(){
+                   ForEach(goals, id: \.eventID) { goal in
+                       Text("Period: \(String(goal.period))")
+                           .font(.subheadline)
+                       Text("Scorer: \(goal.details?.getGoalScorer(playByPlay: playByPlayData!) ?? "Unknown")")
+                           .font(.subheadline)
+                       Text("Assist(s): \(goal.details?.getAssists(playByPlay: playByPlayData!) ?? "Unknown")")
+                           .font(.subheadline)
+                       Text("Time of Goal: \(goal.timeInPeriod)")
+                           .font(.subheadline)
+                       Divider()
+                   }
+               } else {
+                   Text("No Scoring")
+                       .font(.subheadline)
+               }
                 
                 Divider()
                 
-                Section(header: Text("Misc:").bold().font(.subheadline).padding(.leading)){
+                Section(){
                     VStack {
                         Text(boxScoreData?.venue.venueDefault ?? "Venue Name")
                             .font(.subheadline)
@@ -302,6 +321,9 @@ struct NHLBoxScoreView: View {
                         self.homeLogo = image
                     }
                 }
+            }
+            .onReceive(nhlViewControler.$playByPlay) {newPbP in
+                self.playByPlayData = newPbP
             }
         }
     }

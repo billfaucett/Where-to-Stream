@@ -47,9 +47,9 @@ struct Game: Codable {
 // MARK: - Team
 struct Team: Codable {
     let id: Int
-    let placeName: PlaceName
+    let placeName: PlaceName?
     let abbrev: String
-    let logo, darkLogo: String
+    let logo, darkLogo: String?
     let awaySplitSquad: Bool?
     let score: Int?
     let radioLink: String?

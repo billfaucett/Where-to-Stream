@@ -17,7 +17,7 @@ struct PlayByPlay: Codable {
     let id, season, gameType: Int
     let gameDate: String
     let venue: Venue
-    let startTimeUTC: Date
+    let startTimeUTC: String
     let easternUTCOffset, venueUTCOffset: String
     let tvBroadcasts: [TvBroadcast]
     let gameState, gameScheduleState: String
@@ -61,9 +61,9 @@ struct Details: Codable {
     let blockingPlayerID, shootingPlayerID, hittingPlayerID, hitteePlayerID: Int?
     let reason: String?
     let playerID: Int?
-    let shotType: ShotType?
+    let shotType: String?
     let goalieInNetID, awaySOG, homeSOG: Int?
-    let secondaryReason: SecondaryReason?
+    let secondaryReason: String?
     let scoringPlayerID, scoringPlayerTotal, assist1PlayerID, assist1PlayerTotal: Int?
     let awayScore, homeScore: Int?
     let typeCode: TypeCode?
@@ -95,25 +95,35 @@ struct Details: Codable {
         case assist2PlayerTotal
         case servedByPlayerID = "servedByPlayerId"
     }
-}
+    
+        func getGoalScorer(playByPlay: PlayByPlay) -> String {
+            if let scorerID = scoringPlayerID,
+               let scorer = playByPlay.rosterSpots.first(where: { $0.playerID == scorerID }) {
+                return "\(scorer.firstName.stNameDefault) \(scorer.lastName.stNameDefault)"
+            }
+            return "Unknown"
+        }
 
-enum SecondaryReason: String, Codable {
-    case playerInjury = "player-injury"
-    case tvTimeout = "tv-timeout"
-}
+        func getAssists(playByPlay: PlayByPlay) -> String {
+            guard let assist1ID = assist1PlayerID,
+                  let assist2ID = assist2PlayerID,
+                  let assist1 = playByPlay.rosterSpots.first(where: { $0.playerID == assist1ID }),
+                  let assist2 = playByPlay.rosterSpots.first(where: { $0.playerID == assist2ID }) else {
+                return "None"
+            }
 
-enum ShotType: String, Codable {
-    case backhand = "backhand"
-    case deflected = "deflected"
-    case slap = "slap"
-    case snap = "snap"
-    case tipIn = "tip-in"
-    case wrist = "wrist"
+            let assist1Name = "\(assist1.firstName.stNameDefault) \(assist1.lastName.stNameDefault)"
+            let assist2Name = "\(assist2.firstName.stNameDefault) \(assist2.lastName.stNameDefault)"
+
+            return "\(assist1Name), \(assist2Name)"
+        }
 }
 
 enum TypeCode: String, Codable {
     case min = "MIN"
     case mis = "MIS"
+    case maj = "MAJ"
+    case defaultCase
 }
 
 enum ZoneCode: String, Codable {
@@ -142,6 +152,7 @@ enum TypeDescKey: String, Codable {
     case shotOnGoal = "shot-on-goal"
     case stoppage = "stoppage"
     case takeaway = "takeaway"
+    case defaultCase
 }
 
 // MARK: - RosterSpot

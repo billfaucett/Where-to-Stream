@@ -56,7 +56,7 @@ struct GameView: View {
             VStack {
                 HStack {
                     
-                    Text(game.awayTeam.placeName.placeNameDefault)
+                    Text(game.awayTeam.placeName?.placeNameDefault ?? "Away Place")
                         .bold()
                         .frame(width: 120, alignment: .leading)
                     Text(String(game.awayTeam.score ?? 0))
@@ -65,7 +65,7 @@ struct GameView: View {
             }
             VStack {
                 HStack {
-                    Text(game.homeTeam.placeName.placeNameDefault) 
+                    Text(game.homeTeam.placeName?.placeNameDefault ?? "Home Place")
                         .bold()
                         .frame(width: 120, alignment: .leading)
                     Text(String(game.homeTeam.score ?? 0))
