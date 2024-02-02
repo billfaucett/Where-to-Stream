@@ -10,6 +10,8 @@
 		8A63CBCC2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */; };
 		8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */; };
 		8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */; };
+		8A7EB6F42B6D344F00042797 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7EB6F32B6D344F00042797 /* SVGKitSwift */; };
+		8A7EB6F62B6D34F800042797 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7EB6F52B6D34F800042797 /* URLImage */; };
 		8A80D87C2B6054B2007281A8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D87B2B6054B2007281A8 /* SearchView.swift */; };
 		8A80D89E2B6296DE007281A8 /* WatchModeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D89D2B6296DE007281A8 /* WatchModeAPIManager.swift */; };
 		8A80D8A02B629D17007281A8 /* WatchModelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D89F2B629D17007281A8 /* WatchModelResult.swift */; };
@@ -105,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7EB6F62B6D34F800042797 /* URLImage in Frameworks */,
+				8A7EB6F42B6D344F00042797 /* SVGKitSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +300,10 @@
 			dependencies = (
 			);
 			name = "Where to Stream";
+			packageProductDependencies = (
+				8A7EB6F32B6D344F00042797 /* SVGKitSwift */,
+				8A7EB6F52B6D34F800042797 /* URLImage */,
+			);
 			productName = "Where to Stream";
 			productReference = 8A99841E2B6036F3001628C5 /* Where to Stream.app */;
 			productType = "com.apple.product-type.application";
@@ -370,6 +378,7 @@
 			mainGroup = 8A9984152B6036F3001628C5;
 			packageReferences = (
 				8A80D8AF2B644A16007281A8 /* XCRemoteSwiftPackageReference "url-image" */,
+				8A7EB6F22B6D344F00042797 /* XCRemoteSwiftPackageReference "SVGKit" */,
 			);
 			productRefGroup = 8A99841F2B6036F3001628C5 /* Products */;
 			projectDirPath = "";
@@ -769,6 +778,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A7EB6F22B6D344F00042797 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		8A80D8AF2B644A16007281A8 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
@@ -778,6 +795,19 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A7EB6F32B6D344F00042797 /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A7EB6F22B6D344F00042797 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
+		};
+		8A7EB6F52B6D34F800042797 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A80D8AF2B644A16007281A8 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A9984162B6036F3001628C5 /* Project object */;
 }

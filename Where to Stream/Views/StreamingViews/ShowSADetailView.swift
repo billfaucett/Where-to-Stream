@@ -21,7 +21,6 @@ struct ShowSADetailView: View {
                     .frame(width: 200, height: 200)
             } else {
                 Text("Loading image...")
-                    .onAppear(perform: loadImage)
             }
             Text(saViewController.results?.result.first?.streamingInfo?.us?.first?.capitalizedServiceName ?? "Service Name Not Found")
             Text(saViewController.results?.result.first?.streamingInfo?.us?.first?.capitalizedStreamingType ?? "Service Type Not Found")
@@ -35,11 +34,17 @@ struct ShowSADetailView: View {
                 saViewController.shouldClearDetails = false
                 image = nil
             }
+            else {
+                if saViewController.results != nil {
+                    loadImage()
+                }
+            }
         }
     }
         
     
     func loadImage(){
+        print(saViewController.omdbResults?.Poster ?? "Empty from SADetail Load Image")
         guard let url = URL(string: saViewController.omdbResults?.Poster.replacingOccurrences(of: "\\/", with: "/") ?? "No Poster") else {
             return
         }

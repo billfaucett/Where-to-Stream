@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SVGKit
+import URLImage
 
 struct NHLBoxScoreView: View {
     let gameId: Int
