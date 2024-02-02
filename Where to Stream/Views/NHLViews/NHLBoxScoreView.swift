@@ -45,6 +45,38 @@ struct NHLBoxScoreView: View {
         }.resume()
     }
     
+    func loadSVGImage(url: String, team: String, completion: @escaping (Image?) -> Void) {
+        guard let url = URL(string: url.replacingOccurrences(of: "\\/", with: "/")) else {
+            completion(nil)
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+
+            // Use SVGKit to parse the SVG data
+            let svgImage = SVGKImage(data: data)
+            
+            // Convert SVG to UIImage
+            if let uiImage = svgImage?.uiImage {
+                DispatchQueue.main.async {
+                    let image = Image(uiImage: uiImage)
+                    if team == "away" {
+                        completion(image)
+                    }
+                    else {
+                        completion(image)
+                    }
+                }
+            } else {
+                completion(nil)
+            }
+        }.resume()
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
             Section() {
@@ -55,7 +87,7 @@ struct NHLBoxScoreView: View {
                             .resizable()
                             .scaledToFit()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 200, height: 200)
+                            .frame(width: 40, height: 40)
                     }
                     Text(boxScoreData?.awayTeam.name.venueDefault ?? "Please Work")
                         .bold()
@@ -72,7 +104,7 @@ struct NHLBoxScoreView: View {
                             .resizable()
                             .scaledToFit()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 200, height: 200)
+                            .frame(width: 40, height: 40)
                     }
                     Text(boxScoreData?.homeTeam.name.nameDefault ?? "Please Work")
                         .bold()
@@ -285,10 +317,10 @@ struct NHLBoxScoreView: View {
             .onReceive(nhlViewControler.$boxScore) {newBoxScore in
                 self.boxScoreData = newBoxScore
                 if (nhlViewControler.boxScore != nil) {
-                    loadImage(url: nhlViewControler.boxScore?.awayTeam.logo ?? "", team: "away") { image in
+                    loadSVGImage(url: nhlViewControler.boxScore?.awayTeam.logo ?? "", team: "away") { image in
                         self.awayLogo = image
                     }
-                    loadImage(url: nhlViewControler.boxScore?.homeTeam.logo ?? "", team: "home") { image in
+                    loadSVGImage(url: nhlViewControler.boxScore?.homeTeam.logo ?? "", team: "home") { image in
                         self.homeLogo = image
                     }
                 }
