@@ -43,6 +43,7 @@
 		8A99843D2B6036F4001628C5 /* Where_to_StreamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99843C2B6036F4001628C5 /* Where_to_StreamUITests.swift */; };
 		8A99843F2B6036F4001628C5 /* Where_to_StreamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99843E2B6036F4001628C5 /* Where_to_StreamUITestsLaunchTests.swift */; };
 		8A9984512B603A2B001628C5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9984502B603A2B001628C5 /* APIManager.swift */; };
+		8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		8A99843C2B6036F4001628C5 /* Where_to_StreamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Where_to_StreamUITests.swift; sourceTree = "<group>"; };
 		8A99843E2B6036F4001628C5 /* Where_to_StreamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Where_to_StreamUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A9984502B603A2B001628C5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPlayByPlayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,10 +173,11 @@
 		8A80D8CF2B681949007281A8 /* HockeyModels */ = {
 			isa = PBXGroup;
 			children = (
-				8A80D8D02B68197F007281A8 /* NHLStandingsModel.swift */,
 				8A80D8D22B681E69007281A8 /* NHLApiManager.swift */,
+				8A80D8D02B68197F007281A8 /* NHLStandingsModel.swift */,
 				8A80D8DA2B6930F1007281A8 /* NHLScheduleModel.swift */,
 				8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */,
+				8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */,
 			);
 			path = HockeyModels;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				8A63CBCC2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift in Sources */,
 				8A80D8CB2B66DF17007281A8 /* OMdbModelResult.swift in Sources */,
 				8A9984512B603A2B001628C5 /* APIManager.swift in Sources */,
+				8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */,
 				8A80D8A82B640046007281A8 /* StreamingSourceModelResult.swift in Sources */,
 				8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */,
 				8A80D8A62B62E577007281A8 /* ShowDetailView.swift in Sources */,

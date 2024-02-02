@@ -13,6 +13,7 @@ class NHLViewController : ObservableObject {
     @Published var standings: Standings?
     @Published var schedule: Schedule?
     @Published var boxScore: GameDetails?
+    @Published var playByPlay: PlayByPlay?
     
     func getNHLStandings(date: Date){
         let formattedDate = formatDate(date)
@@ -70,6 +71,28 @@ class NHLViewController : ObservableObject {
                                         ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                                         let decoder = JSONDecoder()
                                         self.boxScore = try decoder.decode(GameDetails.self, from: jsonData)
+                                    } catch {
+                                        print ("Decoding JSON error! Error decoding JSON: \(error)")
+                                    }
+                            }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    func getPlayByPlay(gameId: Int) {
+        let id = String(gameId)
+        
+        nhlApiMgr.getPlayByPlay(gameId: id) { result in
+            switch result {
+            case .success(let jsonObject):
+                            if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []){
+                                print(jsonObject.values)
+                                    do{
+                                        ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
+                                        let decoder = JSONDecoder()
+                                        self.playByPlay = try decoder.decode(PlayByPlay.self, from: jsonData)
                                     } catch {
                                         print ("Decoding JSON error! Error decoding JSON: \(error)")
                                     }

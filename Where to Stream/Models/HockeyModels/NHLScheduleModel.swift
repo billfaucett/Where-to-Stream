@@ -55,6 +55,7 @@ struct Team: Codable {
     let radioLink: String?
     let odds: [Odd]?
     let homeSplitSquad: Bool?
+    let onIce: [JSONAny]?
 }
 
 // MARK: - Odd
