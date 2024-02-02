@@ -71,6 +71,7 @@ class NHLViewController : ObservableObject {
                                         ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                                         let decoder = JSONDecoder()
                                         self.boxScore = try decoder.decode(GameDetails.self, from: jsonData)
+                                        self.getPlayByPlay(gameId: gameId)
                                     } catch {
                                         print ("Decoding JSON error! Error decoding JSON: \(error)")
                                     }
