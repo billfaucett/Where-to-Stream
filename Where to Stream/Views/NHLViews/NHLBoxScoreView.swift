@@ -23,28 +23,6 @@ struct NHLBoxScoreView: View {
             .joined(separator: ", ")
     }
     
-    func loadImage(url: String, team: String, completion: @escaping (Image?) -> Void) {
-        guard let url = URL(string: url.replacingOccurrences(of: "\\/", with: "/")) else {
-            completion(nil)
-            return
-        }
-
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data, let uiImage = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    let image = Image(uiImage: uiImage)
-                    if team == "away" {
-                        completion(image)
-                    } else {
-                        completion(image)
-                    }
-                }
-            } else {
-                completion(nil)
-            }
-        }.resume()
-    }
-    
     func loadSVGImage(url: String, team: String, completion: @escaping (Image?) -> Void) {
         guard let url = URL(string: url.replacingOccurrences(of: "\\/", with: "/")) else {
             completion(nil)
