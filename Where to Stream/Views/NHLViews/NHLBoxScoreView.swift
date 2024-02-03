@@ -29,6 +29,11 @@ struct NHLBoxScoreView: View {
         return plays?.filter { $0.typeDescKey == .goal }
     }
     
+    func getPenaltyPlays() ->[Play]? {
+        let plays = playByPlayData?.plays
+        return plays?.filter { $0.typeDescKey == .penalty }
+    }
+    
     func loadSVGImage(url: String, team: String, completion: @escaping (Image?) -> Void) {
         guard let url = URL(string: url.replacingOccurrences(of: "\\/", with: "/")) else {
             completion(nil)
@@ -200,6 +205,60 @@ struct NHLBoxScoreView: View {
                 
                 Divider()
                 
+                Section(header: Text("Scoring Summary").font(.subheadline) .bold()) {
+                    ScrollView {
+                        VStack {
+                            if let goals = getGoalPlays(){
+                                ForEach(goals, id: \.eventID) { goal in
+                                    Text("Period: \(String(goal.period))")
+                                        .font(.subheadline)
+                                    Text("Team: \(boxScoreData?.teamAbbreviation(for: (goal.details?.eventOwnerTeamID!)!) ?? "UNK")")
+                                        .font(.subheadline)
+                                    Text("Scorer: \(goal.details?.getGoalScorer(playByPlay: playByPlayData!) ?? "Unknown")")
+                                        .font(.subheadline)
+                                    Text("Assist(s): \(goal.details?.getAssists(playByPlay: playByPlayData!) ?? "Unknown")")
+                                        .font(.subheadline)
+                                    Text("Time of Goal: \(goal.timeInPeriod)")
+                                        .font(.subheadline)
+                                    Divider()
+                                }
+                            } else {
+                                Text("No Scoring")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+                
+                Divider()
+                
+                Section(header: Text("Penalty Summary").font(.subheadline) .bold()) {
+                    ScrollView {
+                        VStack {
+                            if let penalties = getPenaltyPlays(){
+                                ForEach(penalties, id: \.eventID) { penalty in
+                                    Text("Period: \(String(penalty.period))")
+                                        .font(.subheadline)
+                                    Text("Team: \(boxScoreData?.teamAbbreviation(for: (penalty.details?.eventOwnerTeamID!)!) ?? "UNK")")
+                                        .font(.subheadline)
+                                    Text("Player: \(penalty.details?.getPenalties(playByPlay: playByPlayData!) ?? "Unknown")")
+                                        .font(.subheadline)
+                                    Text("\(String(penalty.details?.duration ?? 0)) mins - \(penalty.details?.descKey ?? "UNK")")
+                                        .font(.subheadline)
+                                    Text("Time: \(penalty.timeInPeriod)")
+                                        .font(.subheadline)
+                                    Divider()
+                                }
+                            } else {
+                                Text("No Penalties")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+                
+                Divider()
+                
                 VStack {
                     HStack {
                         Section() {
@@ -262,32 +321,6 @@ struct NHLBoxScoreView: View {
                             }
                         }
                         Spacer()
-                    }
-                }
-                
-                Divider()
-                Section {
-                    ScrollView {
-                        VStack {
-                            if let goals = getGoalPlays(){
-                                ForEach(goals, id: \.eventID) { goal in
-                                    Text("Period: \(String(goal.period))")
-                                        .font(.subheadline)
-                                    Text("Team: \(boxScoreData?.teamAbbreviation(for: (goal.details?.eventOwnerTeamID!)!) ?? "UNK")")
-                                        .font(.subheadline)
-                                    Text("Scorer: \(goal.details?.getGoalScorer(playByPlay: playByPlayData!) ?? "Unknown")")
-                                        .font(.subheadline)
-                                    Text("Assist(s): \(goal.details?.getAssists(playByPlay: playByPlayData!) ?? "Unknown")")
-                                        .font(.subheadline)
-                                    Text("Time of Goal: \(goal.timeInPeriod)")
-                                        .font(.subheadline)
-                                    Divider()
-                                }
-                            } else {
-                                Text("No Scoring")
-                                    .font(.subheadline)
-                            }
-                        }
                     }
                 }
                 

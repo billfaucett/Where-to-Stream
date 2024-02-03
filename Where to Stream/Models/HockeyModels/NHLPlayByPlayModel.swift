@@ -96,27 +96,35 @@ struct Details: Codable {
         case servedByPlayerID = "servedByPlayerId"
     }
     
-        func getGoalScorer(playByPlay: PlayByPlay) -> String {
-            if let scorerID = scoringPlayerID,
-               let scorer = playByPlay.rosterSpots.first(where: { $0.playerID == scorerID }) {
-                return "\(scorer.firstName.stNameDefault) \(scorer.lastName.stNameDefault)"
-            }
-            return "Unknown"
+    func getGoalScorer(playByPlay: PlayByPlay) -> String {
+        if let scorerID = scoringPlayerID,
+            let scorer = playByPlay.rosterSpots.first(where: { $0.playerID == scorerID }) {
+            return "\(scorer.firstName.stNameDefault) \(scorer.lastName.stNameDefault)"
+        }
+        return "Unknown"
+    }
+
+    func getAssists(playByPlay: PlayByPlay) -> String {
+        guard let assist1ID = assist1PlayerID,
+            let assist2ID = assist2PlayerID,
+            let assist1 = playByPlay.rosterSpots.first(where: { $0.playerID == assist1ID }),
+            let assist2 = playByPlay.rosterSpots.first(where: { $0.playerID == assist2ID }) else {
+            return "None"
         }
 
-        func getAssists(playByPlay: PlayByPlay) -> String {
-            guard let assist1ID = assist1PlayerID,
-                  let assist2ID = assist2PlayerID,
-                  let assist1 = playByPlay.rosterSpots.first(where: { $0.playerID == assist1ID }),
-                  let assist2 = playByPlay.rosterSpots.first(where: { $0.playerID == assist2ID }) else {
-                return "None"
-            }
+        let assist1Name = "\(assist1.firstName.stNameDefault) \(assist1.lastName.stNameDefault)"
+        let assist2Name = "\(assist2.firstName.stNameDefault) \(assist2.lastName.stNameDefault)"
 
-            let assist1Name = "\(assist1.firstName.stNameDefault) \(assist1.lastName.stNameDefault)"
-            let assist2Name = "\(assist2.firstName.stNameDefault) \(assist2.lastName.stNameDefault)"
-
-            return "\(assist1Name), \(assist2Name)"
+        return "\(assist1Name), \(assist2Name)"
+    }
+    
+    func getPenalties(playByPlay: PlayByPlay) -> String {
+        if let penalizedId = committedByPlayerID,
+            let commitedBy = playByPlay.rosterSpots.first(where: { $0.playerID == penalizedId }) {
+            return "\(commitedBy.firstName.stNameDefault) \(commitedBy.lastName.stNameDefault) - "
         }
+        return "Unknown"
+    }
 }
 
 enum TypeCode: String, Codable {
