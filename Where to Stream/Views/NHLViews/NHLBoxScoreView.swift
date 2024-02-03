@@ -264,25 +264,32 @@ struct NHLBoxScoreView: View {
                         Spacer()
                     }
                 }
-
-                Divider()
                 
-               if let goals = getGoalPlays(){
-                   ForEach(goals, id: \.eventID) { goal in
-                       Text("Period: \(String(goal.period))")
-                           .font(.subheadline)
-                       Text("Scorer: \(goal.details?.getGoalScorer(playByPlay: playByPlayData!) ?? "Unknown")")
-                           .font(.subheadline)
-                       Text("Assist(s): \(goal.details?.getAssists(playByPlay: playByPlayData!) ?? "Unknown")")
-                           .font(.subheadline)
-                       Text("Time of Goal: \(goal.timeInPeriod)")
-                           .font(.subheadline)
-                       Divider()
-                   }
-               } else {
-                   Text("No Scoring")
-                       .font(.subheadline)
-               }
+                Divider()
+                Section {
+                    ScrollView {
+                        VStack {
+                            if let goals = getGoalPlays(){
+                                ForEach(goals, id: \.eventID) { goal in
+                                    Text("Period: \(String(goal.period))")
+                                        .font(.subheadline)
+                                    Text("Team: \(boxScoreData?.teamAbbreviation(for: (goal.details?.eventOwnerTeamID!)!) ?? "UNK")")
+                                        .font(.subheadline)
+                                    Text("Scorer: \(goal.details?.getGoalScorer(playByPlay: playByPlayData!) ?? "Unknown")")
+                                        .font(.subheadline)
+                                    Text("Assist(s): \(goal.details?.getAssists(playByPlay: playByPlayData!) ?? "Unknown")")
+                                        .font(.subheadline)
+                                    Text("Time of Goal: \(goal.timeInPeriod)")
+                                        .font(.subheadline)
+                                    Divider()
+                                }
+                            } else {
+                                Text("No Scoring")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
                 
                 Divider()
                 

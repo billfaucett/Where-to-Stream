@@ -29,6 +29,16 @@ struct GameDetails: Codable {
     let boxscore: Boxscore
     let gameOutcome: GameOutcome
     let gameVideo: GameVideo?
+    
+    func teamAbbreviation (for teamId: Int) -> String? {
+        if awayTeam.id == teamId {
+            return awayTeam.abbrev
+        }
+        if homeTeam.id == teamId {
+            return homeTeam.abbrev
+        }
+        return nil
+    }
 }
 
 // MARK: - WelcomeAwayTeam
