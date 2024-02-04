@@ -47,7 +47,7 @@ struct AwayTeam: Codable {
     let name: Venue
     let abbrev: String
     let score, sog: Int
-    //let faceoffWinningPctg: Int
+    let faceoffWinningPctg: Double
     let powerPlayConversion: String
     let pim, hits, blocks: Int
     let logo: String
@@ -179,12 +179,12 @@ struct Forward: Codable {
     let pim, hits, blockedShots, powerPlayGoals: Int
     let powerPlayPoints, shorthandedGoals, shPoints, shots: Int
     let faceoffs: String
-    //let faceoffWinningPctg: Double
+    let faceoffWinningPctg: Double
     let toi, powerPlayToi, shorthandedToi: String
 
     enum CodingKeys: String, CodingKey {
         case playerID = "playerId"
-        case sweaterNumber, name, position, goals, assists, points, plusMinus, pim, hits, blockedShots, powerPlayGoals, powerPlayPoints, shorthandedGoals, shPoints, shots, faceoffs, /*faceoffWinningPctg,*/ toi, powerPlayToi, shorthandedToi
+        case sweaterNumber, name, position, goals, assists, points, plusMinus, pim, hits, blockedShots, powerPlayGoals, powerPlayPoints, shorthandedGoals, shPoints, shots, faceoffs, faceoffWinningPctg, toi, powerPlayToi, shorthandedToi
     }
 }
 
@@ -240,7 +240,7 @@ struct HomeTeam: Codable {
     let name: HomeTeamName
     let abbrev: String
     let score, sog: Int
-    //let faceoffWinningPctg: Int
+    let faceoffWinningPctg: Double
     let powerPlayConversion: String
     let pim, hits, blocks: Int
     let logo: String

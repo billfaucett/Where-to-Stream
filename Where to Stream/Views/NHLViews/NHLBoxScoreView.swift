@@ -227,6 +227,7 @@ struct NHLBoxScoreView: View {
                                     .font(.subheadline)
                             }
                         }
+                        Spacer()
                     }
                 }
                 
@@ -254,6 +255,7 @@ struct NHLBoxScoreView: View {
                                     .font(.subheadline)
                             }
                         }
+                        Spacer()
                     }
                 }
                 
@@ -321,9 +323,28 @@ struct NHLBoxScoreView: View {
                             }
                         }
                         Spacer()
+                        Divider()
+                        Section() {
+                            VStack {
+                                Text("Faceoffs")
+                                    .font(.subheadline)
+                                HStack {
+                                    Text(boxScoreData?.homeTeam.abbrev ?? "AWY")
+                                        .font(.subheadline)
+                                    Text(String(boxScoreData?.awayTeam.faceoffWinningPctg.rounded(toPlaces: 2) ?? 0.00))
+                                        .font(.subheadline)
+                                }
+                                HStack {
+                                    Text(boxScoreData?.homeTeam.abbrev ?? "HME")
+                                        .font(.subheadline)
+                                    Text(String(boxScoreData?.homeTeam.faceoffWinningPctg.rounded(toPlaces: 2) ?? 0.00))
+                                        .font(.subheadline)
+                                }
+                            }
+                        }
+                        Spacer()
                     }
                 }
-                
                 Divider()
                 
                 Section(){
