@@ -66,7 +66,7 @@ struct Details: Codable {
     let secondaryReason: String?
     let scoringPlayerID, scoringPlayerTotal, assist1PlayerID, assist1PlayerTotal: Int?
     let awayScore, homeScore: Int?
-    let typeCode: TypeCode?
+    let typeCode: String?
     let descKey: String?
     let duration, committedByPlayerID, drawnByPlayerID, assist2PlayerID: Int?
     let assist2PlayerTotal, servedByPlayerID: Int?
@@ -125,13 +125,6 @@ struct Details: Codable {
         }
         return "Unknown"
     }
-}
-
-enum TypeCode: String, Codable {
-    case min = "MIN"
-    case mis = "MIS"
-    case maj = "MAJ"
-    case defaultCase
 }
 
 enum ZoneCode: String, Codable {

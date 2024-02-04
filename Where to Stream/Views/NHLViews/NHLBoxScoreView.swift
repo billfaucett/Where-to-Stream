@@ -85,7 +85,6 @@ struct NHLBoxScoreView: View {
                         .bold()
                         .frame(width: 25)
                         .font(.title2)
-                    //Text("SOG: \(String(boxScoreData?.awayTeam.sog ?? 0))")
                     Spacer()
                     
                     if let homeLogo = homeLogo {
@@ -102,7 +101,6 @@ struct NHLBoxScoreView: View {
                         .bold()
                         .frame(width: 25)
                         .font(.title2)
-                    //Text("SOG: \(String(boxScoreData?.homeTeam.sog ?? 0))")
                     Spacer()
                 }
             }
