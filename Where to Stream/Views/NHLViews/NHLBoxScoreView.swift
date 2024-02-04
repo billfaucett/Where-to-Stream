@@ -78,7 +78,7 @@ struct NHLBoxScoreView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 40, height: 40)
                     }
-                    Text(boxScoreData?.awayTeam.name.venueDefault ?? "Please Work")
+                    Text(boxScoreData?.awayTeam.name.venueDefault ?? "Away Team")
                         .bold()
                         .font(.title2)
                     Text(String(boxScoreData?.awayTeam.score ?? 0))
@@ -95,7 +95,7 @@ struct NHLBoxScoreView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 40, height: 40)
                     }
-                    Text(boxScoreData?.homeTeam.name.nameDefault ?? "Please Work")
+                    Text(boxScoreData?.homeTeam.name.nameDefault ?? "Home Team")
                         .bold()
                         .font(.title2)
                     Text(String(boxScoreData?.homeTeam.score ?? 0))
@@ -351,7 +351,6 @@ struct NHLBoxScoreView: View {
                     VStack {
                         Text(boxScoreData?.venue.venueDefault ?? "Venue Name")
                             .font(.subheadline)
-                        
                         Divider()
                         
                         Text("Referees: \(refereeList(boxScoreData?.boxscore.gameInfo.referees ?? []))")
