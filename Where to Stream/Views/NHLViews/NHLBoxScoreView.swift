@@ -121,10 +121,17 @@ struct NHLBoxScoreView: View {
                     if let periods = boxScoreData?.boxscore.linescore.byPeriod {
                         ForEach(periods.indices, id: \.self) { index in
                             let period = periods[index]
-                            Text(String(period.periodDescriptor.number ?? 0))
-                                .frame(width: 20, alignment: .leading)
-                                .font(.subheadline)
-                                .bold()
+                            if period.periodDescriptor.number! <= 3 {
+                                Text(String(period.periodDescriptor.number ?? 0))
+                                    .frame(width: 20, alignment: .leading)
+                                    .font(.subheadline)
+                                    .bold()
+                            } else {
+                                Text(period.periodDescriptor.periodType ?? "")
+                                    .frame(width: 20, alignment: .leading)
+                                    .font(.caption)
+                                    .bold()
+                            }
                         }
                         Text("T")
                             .frame(width: 20, alignment: .leading)
@@ -150,7 +157,7 @@ struct NHLBoxScoreView: View {
                 
                 VStack {
                     HStack {
-                        Text("SOG")
+                        Text("(SOG)")
                             .frame(width: 50, alignment: .leading)
                             .font(.caption)
                         if let shotsByPeriod = boxScoreData?.boxscore.shotsByPeriod {
@@ -185,7 +192,7 @@ struct NHLBoxScoreView: View {
                 
                 VStack {
                     HStack {
-                        Text("SOG")
+                        Text("(SOG)")
                             .frame(width: 50, alignment: .leading)
                             .font(.caption)
                         if let shotsByPeriod = boxScoreData?.boxscore.shotsByPeriod {
@@ -327,7 +334,7 @@ struct NHLBoxScoreView: View {
                                 Text("Faceoffs")
                                     .font(.subheadline)
                                 HStack {
-                                    Text(boxScoreData?.homeTeam.abbrev ?? "AWY")
+                                    Text(boxScoreData?.awayTeam.abbrev ?? "AWY")
                                         .font(.subheadline)
                                     Text(String(boxScoreData?.awayTeam.faceoffWinningPctg.rounded(toPlaces: 2) ?? 0.00))
                                         .font(.subheadline)

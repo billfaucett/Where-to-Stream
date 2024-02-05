@@ -84,7 +84,7 @@ struct GameView: View {
                 NavigationLink("Box Score", destination: NHLBoxScoreView(gameId: game.id, urlString: game.threeMinRecap ?? "https://www.nhl.com"))
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     .font(.caption)
-                Text("GWG: \(game.winningGoalScorer?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalScorer?.lastName.placeNameDefault ?? "error")")
+                Text("GWG: \(game.winningGoalScorer?.firstInitial.placeNameDefault ?? "") \(game.winningGoalScorer?.lastName.placeNameDefault ?? "")")
                     .font(.caption)
                 Text("Winning Goaltender: \(game.winningGoalie?.firstInitial.placeNameDefault ?? "error") \(game.winningGoalie?.lastName.placeNameDefault ?? "error")") 
                     .font(.caption)

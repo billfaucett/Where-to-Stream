@@ -121,7 +121,10 @@ struct Details: Codable {
     func getPenalties(playByPlay: PlayByPlay) -> String {
         if let penalizedId = committedByPlayerID,
             let commitedBy = playByPlay.rosterSpots.first(where: { $0.playerID == penalizedId }) {
-            return "\(commitedBy.firstName.stNameDefault) \(commitedBy.lastName.stNameDefault) - "
+            return "\(commitedBy.firstName.stNameDefault) \(commitedBy.lastName.stNameDefault)"
+        } else if let servedById = servedByPlayerID,
+                  let servedById = playByPlay.rosterSpots.first(where: { $0.playerID == servedById }) {
+            return "Served by \(servedById.firstName.stNameDefault) \(servedById.lastName.stNameDefault)"
         }
         return "Unknown"
     }
@@ -153,6 +156,7 @@ enum TypeDescKey: String, Codable {
     case shotOnGoal = "shot-on-goal"
     case stoppage = "stoppage"
     case takeaway = "takeaway"
+    case shootoutComplete = "shootout-complete"
     case defaultCase
 }
 
