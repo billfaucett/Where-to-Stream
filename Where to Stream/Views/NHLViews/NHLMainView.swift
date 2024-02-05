@@ -12,6 +12,7 @@ struct NHLMainView: View {
     let currentDate = Date()
     @State private var showStandings = false
     @State private var showSchedule = false
+    @State private var showPlayerLeaders = false
     
     func getYesterday() -> Date {
         let calendar = Calendar.current
@@ -63,6 +64,21 @@ struct NHLMainView: View {
             NavigationLink (destination: NHLScheduleByDateView()) {
                 Text("Get Schedue for Specific Date")
             }
+        }
+        VStack {
+            Button("NHL Statistical Leaders") {
+                self.nhlViewControler.getNHLSkaterLeaders(category: "points")
+                self.nhlViewControler.getNHLSkaterLeaders(category: "goals")
+                self.nhlViewControler.getNHLSkaterLeaders(category: "assists")
+            }
+        }
+        .onReceive(nhlViewControler.$leaders) { players in
+            if let leaders = players?.points, !leaders.isEmpty {
+                showPlayerLeaders = true
+            }
+        }
+        .sheet(isPresented: $showPlayerLeaders) {
+            NHLLeadersView(pointsLeaders: nhlViewControler.leaders?.points ?? [], goalsLeaders: nhlViewControler.leaders?.goals ?? [], assistsLeaders: nhlViewControler.leaders?.assists ?? [])
         }
     }
 }
