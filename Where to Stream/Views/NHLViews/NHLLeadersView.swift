@@ -15,52 +15,10 @@ struct NHLLeadersView: View {
     let assistsLeaders: [Player]
     
     var body: some View {
-        
-        Spacer()
-        
         VStack {
-            Text("NHL Scoring Leaders")
-                .bold()
-            List(pointsLeaders) { player in
-                HStack {
-                    Text(player.lastName.venueDefault)
-                        .font(.subheadline)
-                    Text(player.teamAbbrev)
-                        .font(.subheadline)
-                    Text(String(player.value))
-                        .font(.subheadline)
-                }
-            }
-        }
-            
-        VStack {
-            Text("NHL Goals Leaders")
-                .bold()
-            List(goalsLeaders) { player in
-                HStack {
-                    Text(player.lastName.venueDefault)
-                        .font(.subheadline)
-                    Text(player.teamAbbrev)
-                        .font(.subheadline)
-                    Text(String(player.value))
-                    .font(.subheadline)
-                }
-            }
-        }
-            
-        VStack {
-            Text("NHL Assist Leaders")
-                .bold()
-            List(assistsLeaders) { player in
-                HStack {
-                    Text(player.lastName.venueDefault)
-                        .font(.subheadline)
-                    Text(player.teamAbbrev)
-                        .font(.subheadline)
-                    Text(String(player.value))
-                        .font(.subheadline)
-                }
-            }
+            NHLPlayerListView(title: "NHL Points Leaders", players: pointsLeaders)
+            NHLPlayerListView(title: "NHL Goals Leaders", players: goalsLeaders)
+            NHLPlayerListView(title: "NHL Assists Leaders", players: assistsLeaders)
         }
     }
 }

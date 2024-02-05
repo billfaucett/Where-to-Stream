@@ -46,6 +46,7 @@
 		8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */; };
 		8AEDD2552B7145A300707FA0 /* NHLLeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD2542B7145A300707FA0 /* NHLLeaderModel.swift */; };
 		8AEDD2572B71478C00707FA0 /* NHLLeadersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD2562B71478C00707FA0 /* NHLLeadersView.swift */; };
+		8AEDD2592B716D7600707FA0 /* NHLPlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPlayByPlayModel.swift; sourceTree = "<group>"; };
 		8AEDD2542B7145A300707FA0 /* NHLLeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLLeaderModel.swift; sourceTree = "<group>"; };
 		8AEDD2562B71478C00707FA0 /* NHLLeadersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLLeadersView.swift; sourceTree = "<group>"; };
+		8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPlayerListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 				8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */,
 				8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */,
 				8AEDD2562B71478C00707FA0 /* NHLLeadersView.swift */,
+				8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */,
 			);
 			path = NHLViews;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				8A9984512B603A2B001628C5 /* APIManager.swift in Sources */,
 				8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */,
 				8A80D8A82B640046007281A8 /* StreamingSourceModelResult.swift in Sources */,
+				8AEDD2592B716D7600707FA0 /* NHLPlayerListView.swift in Sources */,
 				8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */,
 				8AEDD2552B7145A300707FA0 /* NHLLeaderModel.swift in Sources */,
 				8A80D8A62B62E577007281A8 /* ShowDetailView.swift in Sources */,
