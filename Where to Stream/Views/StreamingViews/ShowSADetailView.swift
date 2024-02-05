@@ -34,10 +34,10 @@ struct ShowSADetailView: View {
                 saViewController.shouldClearDetails = false
                 image = nil
             }
-            else {
-                if saViewController.results != nil {
-                    loadImage()
-                }
+        }
+        .onReceive(saViewController.$omdbResults) { result in
+            if result != nil {
+                loadImage()
             }
         }
     }

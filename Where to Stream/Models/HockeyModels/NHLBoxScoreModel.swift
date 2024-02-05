@@ -12,7 +12,7 @@
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - GameDetails
 struct GameDetails: Codable {
     let id, season, gameType: Int
     let gameDate: String

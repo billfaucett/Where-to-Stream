@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ModelHelpers{
     static let modelHelper = ModelHelpers() //Singleton Instance
@@ -60,6 +61,23 @@ struct ModelHelpers{
                 }
             }.resume()
         }
+    }
+    
+    func loadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: urlString.replacingOccurrences(of: "\\/", with: "/")) else {
+            completion(nil)
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let uiImage = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    completion(uiImage)
+                }
+            } else {
+                completion(nil)
+            }
+        }.resume()
     }
 }
 
