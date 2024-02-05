@@ -277,9 +277,9 @@
 				8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */,
 				8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */,
 				8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */,
-				8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */,
 				8AEDD2562B71478C00707FA0 /* NHLLeadersView.swift */,
 				8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */,
+				8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */,
 			);
 			path = NHLViews;
 			sourceTree = "<group>";

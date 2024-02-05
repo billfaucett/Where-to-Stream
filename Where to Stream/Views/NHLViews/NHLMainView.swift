@@ -66,7 +66,7 @@ struct NHLMainView: View {
             }
         }
         VStack {
-            Button("NHL Statistical Leaders") {
+            Button("NHL Statistical Leaders - Skaters") {
                 self.nhlViewControler.getNHLSkaterLeaders(category: "points")
                 self.nhlViewControler.getNHLSkaterLeaders(category: "goals")
                 self.nhlViewControler.getNHLSkaterLeaders(category: "assists")
