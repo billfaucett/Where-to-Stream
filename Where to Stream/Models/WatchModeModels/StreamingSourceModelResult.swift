@@ -19,7 +19,7 @@ struct StreamingSource: Codable {
     let webURL: String?
     let format: String
     let price: Double?
-    let seasons: Int
+    let seasons: Int?
     let episodes: Int
 
     enum CodingKeys: String, CodingKey {

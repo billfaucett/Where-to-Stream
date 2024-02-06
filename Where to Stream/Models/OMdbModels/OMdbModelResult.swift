@@ -28,7 +28,7 @@ struct OMdbModelResult: Codable {
     let imdbVotes: String
     let imdbID: String
     //let type: String
-    let totalSeasons: String
+    let totalSeasons: String?
     let Response: String
 
     struct Rating: Codable {

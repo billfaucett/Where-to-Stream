@@ -16,7 +16,7 @@ class SASearchViewController : ObservableObject {
     
     func searchByTitle (title: String) {
         apiManager.searchTitles(
-            title: title, country: "us", showType: "series", outputLanguage: "en"
+            title: title, country: "us", showType: "all", outputLanguage: "en"
         ) { result in
             switch result {
             case .success(let jsonObject):

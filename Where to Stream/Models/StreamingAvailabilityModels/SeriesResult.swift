@@ -12,29 +12,29 @@ struct TVSeriesResult: Decodable {
 }
 
 struct SATVSeriesDetails: Decodable {
-    let firstAirYear: Int
+    let firstAirYear: Int?
     let originalTitle: String
-    let creators: [String]
+    let creators: [String]?
     let imdbId: String
     let tmdbId: Int
     let type: String
     let title: String
-    let lastAirYear: Int
+    let lastAirYear: Int?
     //let seasons: [Season]
     let genres: [Genre]
-    let seasonCount: Int
-    let episodeCount: Int
-    let status: Status
+    let seasonCount: Int?
+    let episodeCount: Int?
+    let status: Status?
     let streamingInfo: StreamingInfo?
 }
 
 struct Season: Decodable {
     let streamingInfo: StreamingInfo?
     let title: String
-    let lastAirYear: Int
+    let lastAirYear: Int?
     let type: String
-    let firstAirYear: Int
-    let episodes: [Episode]
+    let firstAirYear: Int?
+    let episodes: [Episode]?
 }
 
 struct Episode: Decodable {
@@ -56,7 +56,6 @@ struct Status: Decodable {
 
 struct StreamingInfo: Decodable {
     let us: [StreamingOption]?
-    // Add other regions as needed
 }
 
 struct StreamingOption: Decodable {
