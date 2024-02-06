@@ -17,7 +17,7 @@ struct ContentView: View {
                 Text("Sandbox App")
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                NavigationLink(destination: SearchView()){
+                /*NavigationLink(destination: SearchView()){
                     Text("Search WM API")
                         .padding()
                         .background(Color.blue)
@@ -25,8 +25,9 @@ struct ContentView: View {
                         .cornerRadius(10)
                         .foregroundColor(.white)
                 }
+                */
                 NavigationLink(destination: SearchSAView()){
-                    Text("Search SA API")
+                    Text("Where can I watch?")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.black)
@@ -34,7 +35,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
                 NavigationLink(destination: NHLMainView()){
-                    Text("NHL Information")
+                    Text("NHL Results & Stats")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.black)
@@ -42,7 +43,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
             }
-            .navigationTitle("Hello")
+            .navigationTitle("Welcome!")
         }
     }
 }
