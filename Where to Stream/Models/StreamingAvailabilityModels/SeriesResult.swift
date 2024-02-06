@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct TVSeriesResult: Decodable {
-    let result: [SATVSeriesDetails]
+struct ProgramResults: Decodable {
+    let result: [ProgramDetails]
 }
 
-struct SATVSeriesDetails: Decodable {
+struct ProgramDetails: Decodable {
     let firstAirYear: Int?
     let originalTitle: String
     let creators: [String]?

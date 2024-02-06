@@ -17,15 +17,14 @@ struct ContentView: View {
                 Text("Sandbox App")
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                /*NavigationLink(destination: SearchView()){
-                    Text("Search WM API")
+                NavigationLink(destination: SASearchView()){
+                    Text("Where can I watch? - New")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.black)
                         .cornerRadius(10)
                         .foregroundColor(.white)
                 }
-                */
                 NavigationLink(destination: SearchSAView()){
                     Text("Where can I watch?")
                         .padding()

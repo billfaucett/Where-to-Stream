@@ -10,7 +10,7 @@ import Foundation
 class SASearchViewController : ObservableObject {
     let apiManager = APIManager.sharedApiManager
     let omdbApiManager = OmdbAPIManager.omdbApiManager
-    @Published var results : TVSeriesResult?
+    @Published var results : ProgramResults?
     @Published var omdbResults : OMdbModelResult?
     @Published var shouldClearDetails = false
     
@@ -25,7 +25,7 @@ class SASearchViewController : ObservableObject {
                         do{
                             ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                             let decoder = JSONDecoder()
-                            self.results = try decoder.decode(TVSeriesResult.self, from: jsonData)
+                            self.results = try decoder.decode(ProgramResults.self, from: jsonData)
                             self.getOmdbDetails(title: title)
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
