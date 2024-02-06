@@ -11,6 +11,7 @@ struct SASearchView: View {
     @State private var titleInput: String = ""
     @ObservedObject var saViewController = SASearchViewController()
     @State var showResults = false
+    @State var isLoading = false
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,11 @@ struct SASearchView: View {
                 Section {
                     Button("Submit") {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        isLoading = true
                         searchStreamingAPI(title: titleInput)
+                    }
+                    if isLoading {
+                        ProgressView("Searching...")
                     }
                 }
                 .multilineTextAlignment(.center)
@@ -32,6 +37,9 @@ struct SASearchView: View {
                         titleInput = ""
                         saViewController.results = nil
                         showResults = false
+                        if isLoading {
+                            isLoading = false
+                        }
                     }
                     .foregroundColor(.red)
                     .multilineTextAlignment(.center)
@@ -39,12 +47,13 @@ struct SASearchView: View {
             }
             .navigationTitle("Search Programing")
             .sheet(isPresented: $showResults) {
-                SAResultListView(resultsList: saViewController.results)
+                SAResultListView(resultsList: saViewController.results, searchText: titleInput)
             }
         }
         .onReceive(saViewController.$results) { receivedResults in
             if receivedResults != nil {
                 showResults = true
+                isLoading = false
             }
         }
     }
