@@ -18,7 +18,6 @@ struct SATitleDetailsView: View {
             Text(programDetails?.genres.first?.name ?? "genre")
             SAStreamingServiceList(streamers: programDetails?.streamingInfo)
         }
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 

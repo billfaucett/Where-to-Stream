@@ -26,6 +26,16 @@ struct SASearchView: View {
                         searchStreamingAPI(title: titleInput)
                     }
                 }
+                .multilineTextAlignment(.center)
+                Section {
+                    Button("Reset") {
+                        titleInput = ""
+                        saViewController.results = nil
+                        showResults = false
+                    }
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                }
             }
             .navigationTitle("Search Programing")
             .sheet(isPresented: $showResults) {
