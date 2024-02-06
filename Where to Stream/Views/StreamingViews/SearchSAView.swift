@@ -65,7 +65,6 @@ struct SearchSAView: View {
         saViewController.omdbResults = nil
         saViewController.shouldClearDetails = true
         showResults = false
-        isSearching = false
         image = nil
     }
     
