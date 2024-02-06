@@ -26,9 +26,9 @@ struct SearchSAView: View {
                 Section {
                     Button("Submit") {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        isSearching = true
                         searchStreamingAPI(title: titleInput)
                         loadImage()
-                        isSearching = true
                     }
                 }
                 
