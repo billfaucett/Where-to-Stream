@@ -169,16 +169,16 @@
 			path = "Old Views";
 			sourceTree = "<group>";
 		};
-		8A788E4D2B72C31400CACF3F /* Search Availibility Views */ = {
+		8A788E4D2B72C31400CACF3F /* SearchAvailibilityViews */ = {
 			isa = PBXGroup;
 			children = (
 				8A788E472B72B2F800CACF3F /* SAStreamingServiceList.swift */,
 				8A788E432B72841000CACF3F /* SAResultListView.swift */,
-				8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */,
 				8A788E4E2B72C35C00CACF3F /* SASearchView.swift */,
+				8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */,
 				8A6D81072B73CF1F00158EBD /* SAImageView.swift */,
 			);
-			path = "Search Availibility Views";
+			path = SearchAvailibilityViews;
 			sourceTree = "<group>";
 		};
 		8A80D87D2B605FD1007281A8 /* ViewModels */ = {
@@ -331,7 +331,7 @@
 		8AC0A4BC2B699DB00020E326 /* StreamingViews */ = {
 			isa = PBXGroup;
 			children = (
-				8A788E4D2B72C31400CACF3F /* Search Availibility Views */,
+				8A788E4D2B72C31400CACF3F /* SearchAvailibilityViews */,
 				8A6D81132B73E1BD00158EBD /* WM Views */,
 				8A6D81162B73E25200158EBD /* Old Views */,
 			);

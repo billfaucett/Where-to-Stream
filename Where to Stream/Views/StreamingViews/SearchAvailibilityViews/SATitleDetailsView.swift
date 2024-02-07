@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SATitleDetailsView: View {
-    //@ObservedObject var saViewController : SASearchViewController
     var programDetails: ProgramDetails?
     var omdbDetails: OMdbModelResult?
+    @State private var isImageLoaded = false
     
     var body: some View {
         NavigationView {
@@ -42,6 +42,8 @@ struct SATitleDetailsView: View {
                             if (omdbDetails != nil && omdbDetails?.imdbID == programDetails?.imdbId) {
                                 Divider()
                                 Text(omdbDetails!.Plot)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                Spacer()
                             }
                         }
                     }
