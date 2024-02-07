@@ -39,9 +39,14 @@ struct SATitleDetailsView: View {
                             }
                             VStack {
                                 Divider()
+                                Text("Cast: \(omdbDetails.Actors)")
+                                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                    .font(.subheadline)
+                                Divider()
                                 Text(omdbDetails.Plot)
                                     .fixedSize(horizontal: false, vertical: true)
-                                Spacer()
+                                    .font(.subheadline)
+                                Divider()
                             }
                         }
                     }
