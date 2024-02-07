@@ -28,7 +28,7 @@ struct SASearchView: View {
                         searchStreamingAPI(title: titleInput)
                     }
                     if isLoading {
-                        ProgressView()
+                        ProgressView().progressViewStyle(CircularProgressViewStyle())
                     }
                 }
                 .multilineTextAlignment(.center)
@@ -50,8 +50,9 @@ struct SASearchView: View {
                 SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResults, searchText: titleInput)
             }
         }
-        .onReceive(saViewController.$results) { receivedResults in
-            if receivedResults != nil {
+        //Using this because the second object is the long poll and always retuns last
+        .onReceive(saViewController.$omdbResults) { omdbRecResults in
+            if omdbRecResults != nil {
                 showResults = true
                 isLoading = false
             }
