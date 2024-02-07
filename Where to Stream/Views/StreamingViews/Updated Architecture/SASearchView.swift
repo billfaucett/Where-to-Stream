@@ -47,7 +47,7 @@ struct SASearchView: View {
             }
             .navigationTitle("Search Programing")
             .sheet(isPresented: $showResults) {
-                SAResultListView(resultsList: saViewController.results, searchText: titleInput)
+                SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResults, searchText: titleInput)
             }
         }
         .onReceive(saViewController.$results) { receivedResults in

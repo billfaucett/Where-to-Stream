@@ -25,6 +25,11 @@ struct SAResultListView: View {
                                 Text(resultsList[index].streamingInfo?.us?.first?.capitalizedStreamingType ?? "Service Type")
                             }
                         }
+                        VStack {
+                            if resultsList[index].imdbId == omdbResult?.imdbID {
+                                Text("Plot: \(omdbResult?.Plot.description ?? "")")
+                            }
+                        }
                     }
                 }
             }
