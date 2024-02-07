@@ -10,6 +10,7 @@
 		8A63CBCC2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */; };
 		8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */; };
 		8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */; };
+		8A6D81082B73CF1F00158EBD /* SAImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D81072B73CF1F00158EBD /* SAImageView.swift */; };
 		8A788E442B72841000CACF3F /* SAResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A788E432B72841000CACF3F /* SAResultListView.swift */; };
 		8A788E482B72B2F800CACF3F /* SAStreamingServiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A788E472B72B2F800CACF3F /* SAStreamingServiceList.swift */; };
 		8A788E4C2B72BEE500CACF3F /* SATitleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */; };
@@ -74,6 +75,7 @@
 		8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLBoxScoreModel.swift; sourceTree = "<group>"; };
 		8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLBoxScoreView.swift; sourceTree = "<group>"; };
 		8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		8A6D81072B73CF1F00158EBD /* SAImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAImageView.swift; sourceTree = "<group>"; };
 		8A788E432B72841000CACF3F /* SAResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAResultListView.swift; sourceTree = "<group>"; };
 		8A788E472B72B2F800CACF3F /* SAStreamingServiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAStreamingServiceList.swift; sourceTree = "<group>"; };
 		8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATitleDetailsView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				8A788E432B72841000CACF3F /* SAResultListView.swift */,
 				8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */,
 				8A788E4E2B72C35C00CACF3F /* SASearchView.swift */,
+				8A6D81072B73CF1F00158EBD /* SAImageView.swift */,
 			);
 			path = "Updated Architecture";
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */,
 				8A80D8A82B640046007281A8 /* StreamingSourceModelResult.swift in Sources */,
 				8AEDD2592B716D7600707FA0 /* NHLPlayerListView.swift in Sources */,
+				8A6D81082B73CF1F00158EBD /* SAImageView.swift in Sources */,
 				8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */,
 				8AEDD2552B7145A300707FA0 /* NHLLeaderModel.swift in Sources */,
 				8A80D8A62B62E577007281A8 /* ShowDetailView.swift in Sources */,

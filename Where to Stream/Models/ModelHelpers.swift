@@ -63,7 +63,7 @@ struct ModelHelpers{
         }
     }
     
-    func loadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
+    func loadImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: urlString.replacingOccurrences(of: "\\/", with: "/")) else {
             completion(nil)
             return

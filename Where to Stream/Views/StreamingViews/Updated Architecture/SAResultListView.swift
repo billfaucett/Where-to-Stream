@@ -11,15 +11,29 @@ struct SAResultListView: View {
     var resultsList: ProgramResults?
     var omdbResult: OMdbModelResult?
     var searchText: String?
+    @State var plot: String = ""
     
     var body: some View {
         Section (header: Text("Results")) {
             if let resultsList = resultsList?.result {
                 List(resultsList.indices, id: \.self) { index in
                     if resultsList[index].title.contains(searchText!) && ((resultsList[index].streamingInfo?.us?.first) != nil) {
+                        VStack {
+                            HStack{
+                                Text(resultsList[index].title)
+                                    .bold()
+                                    .font(.title2)
+                                Spacer()
+                                if resultsList[index].imdbId == omdbResult?.imdbID {
+                                    SAImageView(urlString: omdbResult!.Poster)
+                                }
+                            }
+                        }
                         HStack {
-                            Text("\(resultsList[index].title) - \(resultsList[index].type)")
-                                .bold()
+                            VStack {
+                                Text(resultsList[index].type.capitalized)
+                                Text(resultsList[index].genres.first?.name ?? "Genre")
+                            }
                             Spacer()
                             VStack {
                                 Text(resultsList[index].streamingInfo?.us?.first?.capitalizedServiceName ?? "Service Name")
@@ -29,7 +43,7 @@ struct SAResultListView: View {
                         }
                         VStack {
                             if resultsList[index].imdbId == omdbResult?.imdbID {
-                                Text("Plot: \(omdbResult?.Plot.description ?? "")")
+                                Text(omdbResult?.Plot.description ?? "")
                             }
                         }
                     }
