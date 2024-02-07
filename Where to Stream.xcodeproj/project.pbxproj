@@ -11,6 +11,11 @@
 		8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */; };
 		8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */; };
 		8A6D81082B73CF1F00158EBD /* SAImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D81072B73CF1F00158EBD /* SAImageView.swift */; };
+		8A6D810F2B73E07400158EBD /* ShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D810A2B73E07400158EBD /* ShowDetailView.swift */; };
+		8A6D81102B73E07400158EBD /* ShowSADetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D810B2B73E07400158EBD /* ShowSADetailView.swift */; };
+		8A6D81112B73E07400158EBD /* SASearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D810C2B73E07400158EBD /* SASearchResultsView.swift */; };
+		8A6D81122B73E07400158EBD /* SearchSAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D810D2B73E07400158EBD /* SearchSAView.swift */; };
+		8A6D81152B73E21700158EBD /* StreamingServiceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D81142B73E21700158EBD /* StreamingServiceListView.swift */; };
 		8A788E442B72841000CACF3F /* SAResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A788E432B72841000CACF3F /* SAResultListView.swift */; };
 		8A788E482B72B2F800CACF3F /* SAStreamingServiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A788E472B72B2F800CACF3F /* SAStreamingServiceList.swift */; };
 		8A788E4C2B72BEE500CACF3F /* SATitleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */; };
@@ -22,14 +27,10 @@
 		8A80D8A02B629D17007281A8 /* WatchModelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D89F2B629D17007281A8 /* WatchModelResult.swift */; };
 		8A80D8A22B62A1BC007281A8 /* WMSearchViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8A12B62A1BC007281A8 /* WMSearchViewControler.swift */; };
 		8A80D8A42B62D62E007281A8 /* TitleDetailsModelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8A32B62D62E007281A8 /* TitleDetailsModelResult.swift */; };
-		8A80D8A62B62E577007281A8 /* ShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8A52B62E577007281A8 /* ShowDetailView.swift */; };
 		8A80D8A82B640046007281A8 /* StreamingSourceModelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8A72B640046007281A8 /* StreamingSourceModelResult.swift */; };
-		8A80D8AE2B6445CC007281A8 /* StreamingServiceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8AD2B6445CC007281A8 /* StreamingServiceListView.swift */; };
-		8A80D8B12B645BD5007281A8 /* SearchSAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8B02B645BD5007281A8 /* SearchSAView.swift */; };
 		8A80D8B32B645C56007281A8 /* SASearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8B22B645C56007281A8 /* SASearchViewController.swift */; };
 		8A80D8C52B647502007281A8 /* ModelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8C42B647502007281A8 /* ModelHelpers.swift */; };
 		8A80D8C72B6561D2007281A8 /* SeriesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8C62B6561D2007281A8 /* SeriesResult.swift */; };
-		8A80D8C92B65C77F007281A8 /* ShowSADetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8C82B65C77F007281A8 /* ShowSADetailView.swift */; };
 		8A80D8CB2B66DF17007281A8 /* OMdbModelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8CA2B66DF17007281A8 /* OMdbModelResult.swift */; };
 		8A80D8CE2B66DFEF007281A8 /* OmdbAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8CD2B66DFEF007281A8 /* OmdbAPIManager.swift */; };
 		8A80D8D12B68197F007281A8 /* NHLStandingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80D8D02B68197F007281A8 /* NHLStandingsModel.swift */; };
@@ -76,6 +77,11 @@
 		8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLBoxScoreView.swift; sourceTree = "<group>"; };
 		8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		8A6D81072B73CF1F00158EBD /* SAImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAImageView.swift; sourceTree = "<group>"; };
+		8A6D810A2B73E07400158EBD /* ShowDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailView.swift; sourceTree = "<group>"; };
+		8A6D810B2B73E07400158EBD /* ShowSADetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSADetailView.swift; sourceTree = "<group>"; };
+		8A6D810C2B73E07400158EBD /* SASearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SASearchResultsView.swift; sourceTree = "<group>"; };
+		8A6D810D2B73E07400158EBD /* SearchSAView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSAView.swift; sourceTree = "<group>"; };
+		8A6D81142B73E21700158EBD /* StreamingServiceListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamingServiceListView.swift; sourceTree = "<group>"; };
 		8A788E432B72841000CACF3F /* SAResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAResultListView.swift; sourceTree = "<group>"; };
 		8A788E472B72B2F800CACF3F /* SAStreamingServiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAStreamingServiceList.swift; sourceTree = "<group>"; };
 		8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATitleDetailsView.swift; sourceTree = "<group>"; };
@@ -85,14 +91,10 @@
 		8A80D89F2B629D17007281A8 /* WatchModelResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModelResult.swift; sourceTree = "<group>"; };
 		8A80D8A12B62A1BC007281A8 /* WMSearchViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSearchViewControler.swift; sourceTree = "<group>"; };
 		8A80D8A32B62D62E007281A8 /* TitleDetailsModelResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailsModelResult.swift; sourceTree = "<group>"; };
-		8A80D8A52B62E577007281A8 /* ShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailView.swift; sourceTree = "<group>"; };
 		8A80D8A72B640046007281A8 /* StreamingSourceModelResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingSourceModelResult.swift; sourceTree = "<group>"; };
-		8A80D8AD2B6445CC007281A8 /* StreamingServiceListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamingServiceListView.swift; sourceTree = "<group>"; };
-		8A80D8B02B645BD5007281A8 /* SearchSAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSAView.swift; sourceTree = "<group>"; };
 		8A80D8B22B645C56007281A8 /* SASearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SASearchViewController.swift; sourceTree = "<group>"; };
 		8A80D8C42B647502007281A8 /* ModelHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelHelpers.swift; sourceTree = "<group>"; };
 		8A80D8C62B6561D2007281A8 /* SeriesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesResult.swift; sourceTree = "<group>"; };
-		8A80D8C82B65C77F007281A8 /* ShowSADetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSADetailView.swift; sourceTree = "<group>"; };
 		8A80D8CA2B66DF17007281A8 /* OMdbModelResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMdbModelResult.swift; sourceTree = "<group>"; };
 		8A80D8CD2B66DFEF007281A8 /* OmdbAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmdbAPIManager.swift; sourceTree = "<group>"; };
 		8A80D8D02B68197F007281A8 /* NHLStandingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLStandingsModel.swift; sourceTree = "<group>"; };
@@ -147,7 +149,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8A788E4D2B72C31400CACF3F /* Updated Architecture */ = {
+		8A6D81132B73E1BD00158EBD /* WM Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A80D87B2B6054B2007281A8 /* SearchView.swift */,
+			);
+			path = "WM Views";
+			sourceTree = "<group>";
+		};
+		8A6D81162B73E25200158EBD /* Old Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A6D810D2B73E07400158EBD /* SearchSAView.swift */,
+				8A6D810A2B73E07400158EBD /* ShowDetailView.swift */,
+				8A6D810B2B73E07400158EBD /* ShowSADetailView.swift */,
+				8A6D81142B73E21700158EBD /* StreamingServiceListView.swift */,
+				8A6D810C2B73E07400158EBD /* SASearchResultsView.swift */,
+			);
+			path = "Old Views";
+			sourceTree = "<group>";
+		};
+		8A788E4D2B72C31400CACF3F /* Search Availibility Views */ = {
 			isa = PBXGroup;
 			children = (
 				8A788E472B72B2F800CACF3F /* SAStreamingServiceList.swift */,
@@ -156,7 +178,7 @@
 				8A788E4E2B72C35C00CACF3F /* SASearchView.swift */,
 				8A6D81072B73CF1F00158EBD /* SAImageView.swift */,
 			);
-			path = "Updated Architecture";
+			path = "Search Availibility Views";
 			sourceTree = "<group>";
 		};
 		8A80D87D2B605FD1007281A8 /* ViewModels */ = {
@@ -309,12 +331,9 @@
 		8AC0A4BC2B699DB00020E326 /* StreamingViews */ = {
 			isa = PBXGroup;
 			children = (
-				8A788E4D2B72C31400CACF3F /* Updated Architecture */,
-				8A80D87B2B6054B2007281A8 /* SearchView.swift */,
-				8A80D8AD2B6445CC007281A8 /* StreamingServiceListView.swift */,
-				8A80D8A52B62E577007281A8 /* ShowDetailView.swift */,
-				8A80D8B02B645BD5007281A8 /* SearchSAView.swift */,
-				8A80D8C82B65C77F007281A8 /* ShowSADetailView.swift */,
+				8A788E4D2B72C31400CACF3F /* Search Availibility Views */,
+				8A6D81132B73E1BD00158EBD /* WM Views */,
+				8A6D81162B73E25200158EBD /* Old Views */,
 			);
 			path = StreamingViews;
 			sourceTree = "<group>";
@@ -460,6 +479,7 @@
 				8A80D8D52B681F7C007281A8 /* NHLMainView.swift in Sources */,
 				8A80D8B32B645C56007281A8 /* SASearchViewController.swift in Sources */,
 				8A63CBCC2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift in Sources */,
+				8A6D810F2B73E07400158EBD /* ShowDetailView.swift in Sources */,
 				8A80D8CB2B66DF17007281A8 /* OMdbModelResult.swift in Sources */,
 				8A9984512B603A2B001628C5 /* APIManager.swift in Sources */,
 				8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */,
@@ -468,11 +488,9 @@
 				8A6D81082B73CF1F00158EBD /* SAImageView.swift in Sources */,
 				8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */,
 				8AEDD2552B7145A300707FA0 /* NHLLeaderModel.swift in Sources */,
-				8A80D8A62B62E577007281A8 /* ShowDetailView.swift in Sources */,
 				8A80D8DF2B6960F6007281A8 /* NHLScheduleByDateView.swift in Sources */,
 				8A80D8DD2B6933CF007281A8 /* NHLScheduleView.swift in Sources */,
 				8AEDD2572B71478C00707FA0 /* NHLLeadersView.swift in Sources */,
-				8A80D8C92B65C77F007281A8 /* ShowSADetailView.swift in Sources */,
 				8A788E442B72841000CACF3F /* SAResultListView.swift in Sources */,
 				8A788E4F2B72C35C00CACF3F /* SASearchView.swift in Sources */,
 				8A80D8C52B647502007281A8 /* ModelHelpers.swift in Sources */,
@@ -481,15 +499,17 @@
 				8A80D8D32B681E69007281A8 /* NHLApiManager.swift in Sources */,
 				8A80D8A22B62A1BC007281A8 /* WMSearchViewControler.swift in Sources */,
 				8A80D8A02B629D17007281A8 /* WatchModelResult.swift in Sources */,
-				8A80D8B12B645BD5007281A8 /* SearchSAView.swift in Sources */,
 				8A9984222B6036F3001628C5 /* Where_to_StreamApp.swift in Sources */,
 				8A80D8A42B62D62E007281A8 /* TitleDetailsModelResult.swift in Sources */,
+				8A6D81122B73E07400158EBD /* SearchSAView.swift in Sources */,
 				8A80D8D12B68197F007281A8 /* NHLStandingsModel.swift in Sources */,
+				8A6D81112B73E07400158EBD /* SASearchResultsView.swift in Sources */,
 				8A80D8DB2B6930F1007281A8 /* NHLScheduleModel.swift in Sources */,
+				8A6D81152B73E21700158EBD /* StreamingServiceListView.swift in Sources */,
 				8A80D8D72B681FE0007281A8 /* NHLViewController.swift in Sources */,
 				8A788E482B72B2F800CACF3F /* SAStreamingServiceList.swift in Sources */,
 				8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */,
-				8A80D8AE2B6445CC007281A8 /* StreamingServiceListView.swift in Sources */,
+				8A6D81102B73E07400158EBD /* ShowSADetailView.swift in Sources */,
 				8A80D89E2B6296DE007281A8 /* WatchModeAPIManager.swift in Sources */,
 				8A80D8CE2B66DFEF007281A8 /* OmdbAPIManager.swift in Sources */,
 				8A80D8D92B6837D2007281A8 /* NHLStandingsView.swift in Sources */,

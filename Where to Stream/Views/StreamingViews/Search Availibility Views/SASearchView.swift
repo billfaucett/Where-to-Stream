@@ -28,7 +28,7 @@ struct SASearchView: View {
                         searchStreamingAPI(title: titleInput)
                     }
                     if isLoading {
-                        ProgressView("Searching...")
+                        ProgressView()
                     }
                 }
                 .multilineTextAlignment(.center)
