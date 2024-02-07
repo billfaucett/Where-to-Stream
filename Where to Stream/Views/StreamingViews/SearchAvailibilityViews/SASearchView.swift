@@ -32,6 +32,8 @@ struct SASearchView: View {
                     }
                 }
                 .multilineTextAlignment(.center)
+                .id(UUID())
+                
                 Section {
                     Button("Reset") {
                         titleInput = ""
