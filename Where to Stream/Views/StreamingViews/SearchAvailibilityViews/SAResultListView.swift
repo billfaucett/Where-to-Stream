@@ -11,14 +11,9 @@ struct SAResultListView: View {
     @ObservedObject var controller = SASearchViewController()
     var resultsList: ProgramResults?
     @State var omdbResult: OMdbModelResult?
-    @State var updatedOmdbResult: OMdbModelResult?
+    @State var omdbResults: [OMdbModelResult]?
     @State var updatedOmdb = false
     var searchText: String?
-    
-    func updateOMDBData(title: String) {
-        controller.getOmdbDetails(title: title)
-        updatedOmdbResult = controller.omdbResults
-    }
     
     var body: some View {
         Section (header: Text("Search Results").bold().font(.headline)) {

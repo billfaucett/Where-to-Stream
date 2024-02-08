@@ -11,7 +11,8 @@ class SASearchViewController : ObservableObject {
     let apiManager = APIManager.sharedApiManager
     let omdbApiManager = OmdbAPIManager.omdbApiManager
     @Published var results : ProgramResults?
-    @Published var omdbResults : OMdbModelResult?
+    @Published var omdbResult : OMdbModelResult?
+    @Published var omdbResults : [OMdbModelResult]?
     @Published var shouldClearDetails = false
     
     func searchByTitle (title: String) {
@@ -48,7 +49,9 @@ class SASearchViewController : ObservableObject {
                         do{
                             ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                             let decoder = JSONDecoder()
-                            self.omdbResults = try decoder.decode(OMdbModelResult.self, from: jsonData)
+                            self.omdbResult = try decoder.decode(OMdbModelResult.self, from: jsonData)
+                            let omdbItem = self.omdbResult
+                            self.omdbResults?.append(omdbItem!)
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }

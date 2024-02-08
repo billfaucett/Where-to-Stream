@@ -62,7 +62,7 @@ struct SearchSAView: View {
     func ClearForm () {
         titleInput = ""
         saViewController.results = nil
-        saViewController.omdbResults = nil
+        saViewController.omdbResult = nil
         saViewController.shouldClearDetails = true
         showResults = false
         image = nil
@@ -73,7 +73,7 @@ struct SearchSAView: View {
     }
     
     func loadImage(){
-        guard let url = URL(string: saViewController.omdbResults?.Poster ?? "No Poster") else {
+        guard let url = URL(string: saViewController.omdbResult?.Poster ?? "No Poster") else {
             return
         }
         

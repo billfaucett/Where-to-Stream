@@ -25,17 +25,17 @@ struct ShowSADetailView: View {
             Text(saViewController.results?.result.first?.streamingInfo?.us?.first?.capitalizedServiceName ?? "Service Name Not Found")
             Text(saViewController.results?.result.first?.streamingInfo?.us?.first?.capitalizedStreamingType ?? "Service Type Not Found")
             Text(saViewController.results?.result.first?.genres.first?.name ?? "")
-            Text(saViewController.omdbResults?.Plot ?? "")
+            Text(saViewController.omdbResult?.Plot ?? "")
         }
         .onReceive(saViewController.$shouldClearDetails) { shouldClear in
             if shouldClear {
                 saViewController.results = nil
-                saViewController.omdbResults = nil
+                saViewController.omdbResult = nil
                 saViewController.shouldClearDetails = false
                 image = nil
             }
         }
-        .onReceive(saViewController.$omdbResults) { result in
+        .onReceive(saViewController.$omdbResult) { result in
             if result != nil {
                 loadImage()
             }
@@ -44,8 +44,8 @@ struct ShowSADetailView: View {
         
     
     func loadImage(){
-        print(saViewController.omdbResults?.Poster ?? "Empty from SADetail Load Image")
-        guard let url = URL(string: saViewController.omdbResults?.Poster.replacingOccurrences(of: "\\/", with: "/") ?? "No Poster") else {
+        print(saViewController.omdbResult?.Poster ?? "Empty from SADetail Load Image")
+        guard let url = URL(string: saViewController.omdbResult?.Poster.replacingOccurrences(of: "\\/", with: "/") ?? "No Poster") else {
             return
         }
         

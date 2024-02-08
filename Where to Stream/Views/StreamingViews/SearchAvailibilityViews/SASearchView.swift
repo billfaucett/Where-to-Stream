@@ -49,11 +49,11 @@ struct SASearchView: View {
             }
             .navigationTitle("Search Programing")
             .sheet(isPresented: $showResults) {
-                SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResults, searchText: titleInput)
+                SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResult, searchText: titleInput)
             }
         }
         //Using this because the second object is the long poll and always retuns last
-        .onReceive(saViewController.$omdbResults) { omdbRecResults in
+        .onReceive(saViewController.$omdbResult) { omdbRecResults in
             if omdbRecResults != nil {
                 showResults = true
                 isLoading = false

@@ -19,7 +19,7 @@ struct DetailsWrapperView: View {
     func getOmdbDetail (title: String) {
         let controller = SASearchViewController()
         controller.getOmdbDetails(title: title)
-        self.updatedOmdb = controller.omdbResults
+        self.updatedOmdb = controller.omdbResult
     }
 }
 
