@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SATitleDetailsView: View {
     var programDetails: ProgramDetails?
-    var omdbDetails: OMdbModelResult?
+    @State var omdbDetails: OMdbModelResult?
     
     var body: some View {
         if let omdbDetails = omdbDetails, !omdbDetails.Poster.isEmpty, !omdbDetails.Plot.isEmpty {
@@ -21,7 +21,6 @@ struct SATitleDetailsView: View {
                                 .font(.title2)
                                 .bold()
                             Spacer()
-                            
                             SAImageView(urlString: omdbDetails.Poster)
                         }
                         VStack{

@@ -64,6 +64,19 @@ struct SASearchView: View {
     func searchStreamingAPI (title: String) {
         saViewController.searchByTitle(title: title)
     }
+    
+    func getOmdbDetails () {
+        guard let titles = saViewController.results else {
+            return
+        }
+        
+        for index in titles.result.indices {
+            let myTitle = titles.result[index].title
+            if myTitle.contains(titleInput) {
+                saViewController.getOmdbDetails(title: myTitle)
+            }
+        }
+    }
 }
 
 #Preview {
