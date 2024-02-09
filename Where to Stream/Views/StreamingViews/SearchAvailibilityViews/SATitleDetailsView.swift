@@ -21,7 +21,7 @@ struct SATitleDetailsView: View {
                                 .font(.title2)
                                 .bold()
                             Spacer()
-                            SAImageView(urlString: programDetails?.omdbResult?.Actors ?? omdbDetails.Poster)
+                            SAImageView(urlString: programDetails?.omdbResult?.Poster ?? omdbDetails.Poster)
                         }
                         VStack{
                             Divider()
