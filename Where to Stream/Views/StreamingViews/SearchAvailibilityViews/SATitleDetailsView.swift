@@ -13,8 +13,8 @@ struct SATitleDetailsView: View {
     var isLoaded = false
     
     var body: some View {
-        if let omdbDetails = omdbDetails, !omdbDetails.Poster.isEmpty, !omdbDetails.Plot.isEmpty {
-            if let programs = programDetails {
+        if let programs = programDetails {
+            if let omdbDetails = programDetails?.omdbResult, !omdbDetails.Poster.isEmpty, !omdbDetails.Plot.isEmpty {
                 NavigationView {
                     Section(header: Text("Program Details")) {
                         VStack{
