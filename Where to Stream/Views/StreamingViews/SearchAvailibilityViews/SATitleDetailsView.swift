@@ -14,39 +14,43 @@ struct SATitleDetailsView: View {
     
     var body: some View {
         if let omdbDetails = omdbDetails, !omdbDetails.Poster.isEmpty, !omdbDetails.Plot.isEmpty {
-            NavigationView {
-                Section(header: Text("Program Details")) {
-                    VStack{
-                        HStack{
-                            Text(programDetails?.title ?? "title")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            SAImageView(urlString: programDetails?.omdbResult?.Poster ?? omdbDetails.Poster)
-                        }
+            if let programs = programDetails {
+                NavigationView {
+                    Section(header: Text("Program Details")) {
                         VStack{
-                            Divider()
-                            HStack {
-                                VStack{
-                                    Text(programDetails?.type.capitalized ?? "Service")
-                                    Text(programDetails?.genres.first?.name ?? "genre")
-                                }
+                            HStack{
+                                Text(programs.title )
+                                    .font(.title2)
+                                    .bold()
                                 Spacer()
-                                VStack {
-                                    Text(programDetails?.streamingInfo?.us?.first?.capitalizedServiceName ?? "service")
-                                    Text(programDetails?.streamingInfo?.us?.first?.capitalizedStreamingType ?? "type")
+                                if let poster = programs.omdbResult?.Poster{
+                                    SAImageView(urlString: poster)
                                 }
                             }
-                            VStack {
+                            VStack{
                                 Divider()
-                                Text("Cast: \(programDetails?.omdbResult?.Actors ?? "")")
-                                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                                    .font(.subheadline)
-                                Divider()
-                                Text(programDetails?.omdbResult?.Plot ?? "")
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .font(.subheadline)
-                                Divider()
+                                HStack {
+                                    VStack{
+                                        Text(programs.type.capitalized)
+                                        Text(programs.genres.first?.name ?? "Genre")
+                                    }
+                                    Spacer()
+                                    VStack {
+                                        Text(programs.streamingInfo?.us?.first?.capitalizedServiceName ?? "service")
+                                        Text(programs.streamingInfo?.us?.first?.capitalizedStreamingType ?? "type")
+                                    }
+                                }
+                                VStack {
+                                    Divider()
+                                    Text("Cast: \(programs.omdbResult?.Actors ?? "")")
+                                        .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                        .font(.subheadline)
+                                    Divider()
+                                    Text(programs.omdbResult?.Plot ?? "")
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .font(.subheadline)
+                                    Divider()
+                                }
                             }
                         }
                     }
