@@ -10,6 +10,7 @@ import SwiftUI
 struct SATitleDetailsView: View {
     var programDetails: ProgramDetails?
     var omdbDetails: OMdbModelResult?
+    var isLoaded = false
     
     var body: some View {
         if let omdbDetails = omdbDetails, !omdbDetails.Poster.isEmpty, !omdbDetails.Plot.isEmpty {

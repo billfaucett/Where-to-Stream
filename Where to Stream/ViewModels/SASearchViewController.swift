@@ -28,9 +28,7 @@ class SASearchViewController : ObservableObject {
                             let decoder = JSONDecoder()
                             self.results = try decoder.decode(ProgramResults.self, from: jsonData)
                             self.getOmdbDetails(title: title)
-                            print("!!! Search GET - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
-                            self.findOmdbDetails()
-                            print("!!! Search FIND - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
+                            self.findOmdbDetails(title: title)
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }
@@ -53,8 +51,6 @@ class SASearchViewController : ObservableObject {
                             ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                             let decoder = JSONDecoder()
                             self.omdbResult = try decoder.decode(OMdbModelResult.self, from: jsonData)
-                            //let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
-                            //self.omdbResults.append(omdb)
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }
@@ -89,10 +85,12 @@ class SASearchViewController : ObservableObject {
         }
     }
     
-    func findOmdbDetails () {
+    func findOmdbDetails (title: String) {
         if let titles = results {
             for index in results!.result.indices {
-                getOmdbDetailsToArray(title: results!.result[index].title)
+                if results!.result[index].title.contains(title) {
+                    getOmdbDetailsToArray(title: results!.result[index].title)
+                }
             }
             print("Find Details - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
             updateWithOmdbData()
@@ -122,7 +120,6 @@ extension ProgramDetails {
                     ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                     let decoder = JSONDecoder()
                     let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
-                    //updateOMDB(result: omdb)
                 } catch {
                     print("Decoding JSON error! Error decoding JSON: \(error)")
                 }

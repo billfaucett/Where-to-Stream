@@ -48,8 +48,13 @@ struct SASearchView: View {
                 }
             }
             .navigationTitle("Search Programing")
-            .sheet(isPresented: $showResults) {
-                SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResult, searchText: titleInput)
+            .sheet(isPresented: Binding<Bool>(
+                get: {saViewController.results != nil && showResults},
+                set: {_ in}
+            )) {
+                if saViewController.results != nil {
+                    SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResult, searchText: titleInput)
+                }
             }
         }
         //Using this because the second object is the long poll and always retuns last
@@ -62,19 +67,8 @@ struct SASearchView: View {
     }
     
     func searchStreamingAPI (title: String) {
-        saViewController.searchByTitle(title: title)
-    }
-    
-    func getOmdbDetails () {
-        guard let titles = saViewController.results else {
-            return
-        }
-        
-        for index in titles.result.indices {
-            let myTitle = titles.result[index].title
-            if myTitle.contains(titleInput) {
-                saViewController.getOmdbDetails(title: myTitle)
-            }
+        DispatchQueue.main.async {
+            saViewController.searchByTitle(title: title)
         }
     }
 }
