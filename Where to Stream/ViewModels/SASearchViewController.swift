@@ -28,8 +28,8 @@ class SASearchViewController : ObservableObject {
                             let decoder = JSONDecoder()
                             self.results = try decoder.decode(ProgramResults.self, from: jsonData)
                             self.getOmdbDetails(title: title)
-                            //self.getOmdbDetails(title: title, num: 0)
-                            print("***********")
+                            self.findOmdbDetails()
+                            self.updateWithOmdbData()
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }
@@ -52,6 +52,8 @@ class SASearchViewController : ObservableObject {
                             ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                             let decoder = JSONDecoder()
                             self.omdbResult = try decoder.decode(OMdbModelResult.self, from: jsonData)
+                            //let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
+                            //self.omdbResults.append(omdb)
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }
@@ -62,36 +64,64 @@ class SASearchViewController : ObservableObject {
         }
     }
     
-    func getOmdbDetails (title: String, num: Int){
-        guard let titles = results else {
-            return
-        }
-        
-        for index in titles.result.indices {
-            let myTitle = titles.result[index].title
-            
-            if myTitle.contains(title) {
-                omdbApiManager.searchTitles(
-                    title: myTitle
-                ) { result in
-                    switch result {
-                    case .success(let jsonObject):
-                        if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []){
-                            print(jsonObject.values)
-                            do{
-                                ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
-                                let decoder = JSONDecoder()
-                                let omdbItem = try decoder.decode(OMdbModelResult.self, from: jsonData)
-                                self.omdbResults.append(omdbItem)
-                            } catch {
-                                print ("Decoding JSON error! Error decoding JSON: \(error)")
-                            }
+    func getOmdbDetailsToArray (title: String){
+        omdbApiManager.searchTitles(
+            title: title
+        ) { result in
+            switch result {
+            case .success(let jsonObject):
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []){
+                    print(jsonObject.values)
+                        do{
+                            ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
+                            let decoder = JSONDecoder()
+                            let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
+                            self.omdbResults.append(omdb)
+                        } catch {
+                            print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }
-                    case .failure(let error):
-                        print("Error: \(error)")
-                    }
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    func findOmdbDetails () {
+        if let titles = results {
+            for index in results!.result.indices {
+                getOmdbDetailsToArray(title: results!.result[index].title)
+            }
+        }
+    }
+    
+    func updateWithOmdbData () {
+        for index in results!.result.indices {
+            let title = results?.result[index]
+            let omdb = omdbResults.first {$0.imdbID == title?.imdbId}
+            results?.result[index].omdbResult = omdb
+        }
+    }
+}
+
+extension ProgramDetails {
+    mutating func getOmdbInfo (omdbApiManager: OmdbAPIManager) {
+        omdbApiManager.searchTitles(title: title) { result in
+            let jsonObject = result
+            if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) {
+                do{
+                    ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
+                    let decoder = JSONDecoder()
+                    let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
+                    //updateOMDB(result: omdb)
+                } catch {
+                    print("Decoding JSON error! Error decoding JSON: \(error)")
                 }
             }
         }
+    }
+    
+    mutating func updateOMDB (result: OMdbModelResult) {
+        self.omdbResult = result
     }
 }

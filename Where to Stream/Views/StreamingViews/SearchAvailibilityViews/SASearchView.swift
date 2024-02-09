@@ -53,8 +53,8 @@ struct SASearchView: View {
             }
         }
         //Using this because the second object is the long poll and always retuns last
-        .onReceive(saViewController.$omdbResult) { omdbRecResults in
-            if omdbRecResults != nil {
+        .onReceive(saViewController.$results) { results in
+            if results != nil {
                 showResults = true
                 isLoading = false
             }

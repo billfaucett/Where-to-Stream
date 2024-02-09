@@ -13,7 +13,7 @@ struct DetailsWrapperView: View {
     @State var updatedOmdb: OMdbModelResult?
     
     var body: some View {
-        SATitleDetailsView(programDetails: programDetails, omdbDetails: omdbDetails)
+        SATitleDetailsView(programDetails: programDetails)
     }
     
     func getOmdbDetail (title: String) {

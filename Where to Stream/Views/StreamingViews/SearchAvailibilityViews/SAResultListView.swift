@@ -10,9 +10,7 @@ import SwiftUI
 struct SAResultListView: View {
     @ObservedObject var controller = SASearchViewController()
     var resultsList: ProgramResults?
-    @State var omdbResult: OMdbModelResult?
-    @State var omdbResults: [OMdbModelResult]?
-    @State var updatedOmdb = false
+    var omdbResult: OMdbModelResult?
     var searchText: String?
     
     var body: some View {

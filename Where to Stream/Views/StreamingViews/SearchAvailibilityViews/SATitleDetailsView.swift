@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SATitleDetailsView: View {
     var programDetails: ProgramDetails?
-    @State var omdbDetails: OMdbModelResult?
+    var omdbDetails: OMdbModelResult?
     
     var body: some View {
         if let omdbDetails = omdbDetails, !omdbDetails.Poster.isEmpty, !omdbDetails.Plot.isEmpty {
@@ -38,7 +38,7 @@ struct SATitleDetailsView: View {
                             }
                             VStack {
                                 Divider()
-                                Text("Cast: \(omdbDetails.Actors)")
+                                Text("Cast: \(omdbDetails.Actors )")
                                     .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                                     .font(.subheadline)
                                 Divider()

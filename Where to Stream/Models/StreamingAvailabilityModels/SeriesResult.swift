@@ -8,7 +8,7 @@
 import Foundation
 
 struct ProgramResults: Decodable {
-    let result: [ProgramDetails]
+    var result: [ProgramDetails]
 }
 
 struct ProgramDetails: Decodable {
@@ -26,6 +26,7 @@ struct ProgramDetails: Decodable {
     let episodeCount: Int?
     let status: Status?
     let streamingInfo: StreamingInfo?
+    var omdbResult: OMdbModelResult?
 }
 
 struct Season: Decodable {
