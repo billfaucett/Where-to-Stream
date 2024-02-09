@@ -28,8 +28,9 @@ class SASearchViewController : ObservableObject {
                             let decoder = JSONDecoder()
                             self.results = try decoder.decode(ProgramResults.self, from: jsonData)
                             self.getOmdbDetails(title: title)
+                            print("!!! Search GET - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
                             self.findOmdbDetails()
-                            self.updateWithOmdbData()
+                            print("!!! Search FIND - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }
@@ -77,6 +78,7 @@ class SASearchViewController : ObservableObject {
                             let decoder = JSONDecoder()
                             let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
                             self.omdbResults.append(omdb)
+                            print("Array of omdb items Count: \(String(self.omdbResults.count)) ****")
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
                         }
@@ -92,14 +94,21 @@ class SASearchViewController : ObservableObject {
             for index in results!.result.indices {
                 getOmdbDetailsToArray(title: results!.result[index].title)
             }
+            print("Find Details - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
+            updateWithOmdbData()
         }
     }
     
     func updateWithOmdbData () {
-        for index in results!.result.indices {
-            let title = results?.result[index]
-            let omdb = omdbResults.first {$0.imdbID == title?.imdbId}
-            results?.result[index].omdbResult = omdb
+        print("Update with Data - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
+        DispatchQueue.main.async {
+            for index in self.results!.result.indices {
+                let title = self.results?.result[index]
+                let omdb = self.omdbResults.first {$0.imdbID == title?.imdbId}
+                DispatchQueue.main.async {
+                    self.results?.result[index].omdbResult = omdb
+                }
+            }
         }
     }
 }

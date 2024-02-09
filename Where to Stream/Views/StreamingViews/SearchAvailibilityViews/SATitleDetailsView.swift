@@ -21,7 +21,7 @@ struct SATitleDetailsView: View {
                                 .font(.title2)
                                 .bold()
                             Spacer()
-                            SAImageView(urlString: omdbDetails.Poster)
+                            SAImageView(urlString: programDetails?.omdbResult?.Actors ?? omdbDetails.Poster)
                         }
                         VStack{
                             Divider()
@@ -38,11 +38,11 @@ struct SATitleDetailsView: View {
                             }
                             VStack {
                                 Divider()
-                                Text("Cast: \(omdbDetails.Actors )")
+                                Text("Cast: \(programDetails?.omdbResult?.Actors ?? "")")
                                     .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                                     .font(.subheadline)
                                 Divider()
-                                Text(omdbDetails.Plot)
+                                Text(programDetails?.omdbResult?.Plot ?? "")
                                     .fixedSize(horizontal: false, vertical: true)
                                     .font(.subheadline)
                                 Divider()
