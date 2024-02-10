@@ -27,7 +27,7 @@ class SASearchViewController : ObservableObject {
                             ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                             let decoder = JSONDecoder()
                             self.results = try decoder.decode(ProgramResults.self, from: jsonData)
-                            self.getOmdbDetails(title: title)
+                            //self.getOmdbDetails(title: title)
                             self.findOmdbDetails(title: title)
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
@@ -61,9 +61,9 @@ class SASearchViewController : ObservableObject {
         }
     }
     
-    func getOmdbDetailsToArray (title: String){
+    func getOmdbDetailsToArray (imdbId: String){
         omdbApiManager.searchTitles(
-            title: title
+            imdbId: imdbId
         ) { result in
             switch result {
             case .success(let jsonObject):
@@ -89,7 +89,7 @@ class SASearchViewController : ObservableObject {
         if let titles = results {
             for index in results!.result.indices {
                 if results!.result[index].title.contains(title) {
-                    getOmdbDetailsToArray(title: results!.result[index].title)
+                    getOmdbDetailsToArray(imdbId: results!.result[index].imdbId)
                 }
             }
             print("Find Details - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
@@ -108,26 +108,5 @@ class SASearchViewController : ObservableObject {
                 }
             }
         }
-    }
-}
-
-extension ProgramDetails {
-    mutating func getOmdbInfo (omdbApiManager: OmdbAPIManager) {
-        omdbApiManager.searchTitles(title: title) { result in
-            let jsonObject = result
-            if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) {
-                do{
-                    ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
-                    let decoder = JSONDecoder()
-                    let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
-                } catch {
-                    print("Decoding JSON error! Error decoding JSON: \(error)")
-                }
-            }
-        }
-    }
-    
-    mutating func updateOMDB (result: OMdbModelResult) {
-        self.omdbResult = result
     }
 }
