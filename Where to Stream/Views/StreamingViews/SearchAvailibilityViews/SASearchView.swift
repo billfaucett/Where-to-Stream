@@ -25,7 +25,7 @@ struct SASearchView: View {
                     Button("Submit") {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         isLoading = true
-                        searchStreamingAPI(title: titleInput)
+                        searchStreamingAPI(title: titleInput.capitalized)
                     }
                     if isLoading {
                         ProgressView().progressViewStyle(CircularProgressViewStyle())
@@ -52,7 +52,7 @@ struct SASearchView: View {
                 if saViewController.results != nil {
                     SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResult, searchText: titleInput)
                         .onAppear {
-                            saViewController.findOmdbDetails(title: titleInput)
+                            saViewController.findOmdbDetails(title: titleInput.capitalized)
                         }
                 }
             }
