@@ -27,7 +27,6 @@ class SASearchViewController : ObservableObject {
                             ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                             let decoder = JSONDecoder()
                             self.results = try decoder.decode(ProgramResults.self, from: jsonData)
-                            //self.getOmdbDetails(title: title)
                             self.findOmdbDetails(title: title)
                         } catch {
                             print ("Decoding JSON error! Error decoding JSON: \(error)")
@@ -86,7 +85,7 @@ class SASearchViewController : ObservableObject {
     }
     
     func findOmdbDetails (title: String) {
-        if let titles = results {
+        if results != nil {
             for index in results!.result.indices {
                 if results!.result[index].title.contains(title) {
                     getOmdbDetailsToArray(imdbId: results!.result[index].imdbId)

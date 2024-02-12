@@ -48,12 +48,12 @@ struct SASearchView: View {
                 }
             }
             .navigationTitle("Search Programing")
-            .sheet(isPresented: Binding<Bool>(
-                get: {saViewController.results != nil && showResults},
-                set: {_ in}
-            )) {
+            .sheet(isPresented: $showResults) {
                 if saViewController.results != nil {
                     SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResult, searchText: titleInput)
+                        .onAppear {
+                            saViewController.findOmdbDetails(title: titleInput)
+                        }
                 }
             }
         }

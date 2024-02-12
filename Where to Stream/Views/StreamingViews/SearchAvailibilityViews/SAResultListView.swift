@@ -27,5 +27,7 @@ struct SAResultListView: View {
 }
 
 #Preview {
+    /*static let myResults = ProgramResults(result: ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures", creators: nil, imdbId: "tt2802850", tmdbId: 123, type: "RomCom", title: "Jenny and Billy's Adventures", lastAirYear: 2024, genres: [Genre](), seasonCount: 4, episodeCount: 100, status: Status(statusText: "Active", statusCode: 69), streamingInfo: StreamingInfo(us: StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil))))*/
+    
     SAResultListView()
 }
