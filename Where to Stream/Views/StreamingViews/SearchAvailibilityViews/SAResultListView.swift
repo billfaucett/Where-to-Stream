@@ -31,7 +31,7 @@ struct SAResultListView_Previews: PreviewProvider {
     
     static var results = ProgramResults.init(result: [title])
     
-    static var omdb = OMdbModelResult(Title: "Jenny and Billy's Adventures", Year: "2021", Rated: "R", Released: "2021", Runtime: "60", Genre: "RomCom", Director: "BF", Writer: "JB", Actors: "JB, BF", Plot: "You get it", Language: "en", Country: "us", Awards: "Engagement", Poster: "https://m.media-amazon.com/images/M/MV5BZjZjMzQ2ZmUtZWEyZC00NWJiLWFjM2UtMzhmYzZmZDcxMzllXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg", Ratings: [OMdbModelResult.Rating(Source: "Rating Source", Value: "100")], Metascore: "10", imdbRating: "10", imdbVotes: "100", imdbID: "tt2802850", totalSeasons: "10", Response: "Response")
+    static var omdb = OMdbModelResult(Title: "Jenny and Billy's Adventures", Year: "2021", Rated: "R", Released: "2021", Runtime: "60", Genre: "RomCom", Director: "BF", Writer: "JB", Actors: "JB, BF", Plot: "You get it, they met, played golf, enjoyed countless cocktails, cuddled pets, fell in love, and are getting married", Language: "en", Country: "us", Awards: "Engagement", Poster: "https://m.media-amazon.com/images/M/MV5BZjZjMzQ2ZmUtZWEyZC00NWJiLWFjM2UtMzhmYzZmZDcxMzllXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg", Ratings: [OMdbModelResult.Rating(Source: "Rating Source", Value: "100")], Metascore: "10", imdbRating: "10", imdbVotes: "100", imdbID: "tt2802850", totalSeasons: "10", Response: "Response")
     
     static var previews: some View {
         SAResultListView(resultsList: results, searchText: "Jenny and Billy's Adventures")

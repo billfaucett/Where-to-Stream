@@ -29,6 +29,7 @@ struct SATitleDetailsView: View {
                         VStack{
                             Divider()
                             HStack {
+                                Spacer()
                                 VStack{
                                     Text(program.type.capitalized)
                                     Text(program.genres.first?.name ?? "Genre")
@@ -38,6 +39,7 @@ struct SATitleDetailsView: View {
                                     Text(program.streamingInfo?.us?.first?.capitalizedServiceName ?? "service")
                                     Text(program.streamingInfo?.us?.first?.capitalizedStreamingType ?? "type")
                                 }
+                                Spacer()
                             }
                             VStack {
                                 Divider()
