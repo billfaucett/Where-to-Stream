@@ -127,10 +127,10 @@ struct NHLScheduleView: View {
 /*struct NHLScheduleView_Preview : PreviewProvider {
     static var previews: some View {
         let games = getScheduleFromJSON()
-        NHLScheduleView(schedule: games)
+        NHLScheduleView(schedule: games.gameWeek!)
     }
     
-    static func getScheduleFromJSON() -> [GameWeek] {
+    static func getScheduleFromJSON() -> Schedule {
         guard let url = Bundle.main.url(forResource: "Schedule", withExtension: "json") else {
             fatalError("Failed to locate JSON file in bundle.")
         }
@@ -141,7 +141,7 @@ struct NHLScheduleView: View {
                 
             if let dictionary = json as? [String: Any], let scheduleArray = dictionary["schedule"] as? [[String: Any]] {
                 let scheduleData = try JSONSerialization.data(withJSONObject: scheduleArray, options: [])
-                let schedule = try JSONDecoder().decode([GameWeek].self, from: scheduleData)
+                let schedule = try JSONDecoder().decode(Schedule.self, from: scheduleData)
                 return schedule
             } else {
                 fatalError("JSON format is invalid or does not contain expected data.")
