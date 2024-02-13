@@ -55,8 +55,8 @@ struct SATitleDetailsView: View {
                         }
                     }
                 }
+                .navigationTitle("Program Info:")
             }
-            .navigationTitle("Program Info:")
         }
     }
 }
