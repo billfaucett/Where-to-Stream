@@ -10,12 +10,11 @@ import SwiftUI
 struct SATitleDetailsView: View {
     var programDetails: ProgramDetails?
     var omdbDetails: OMdbModelResult?
-    var isLoaded = false
     
     var body: some View {
-        if let program = programDetails, let omdbInfo = programDetails?.omdbResult {
+        if let program = programDetails, let omdb = programDetails?.omdbResult{
             NavigationView {
-                Section(header: Text("Program Details: \(program.title)")) {
+                Section(header: Text("Loading...: \(program.title)")) {
                     VStack{
                         HStack{
                             Text(program.title )
@@ -70,7 +69,7 @@ struct SATitleDetailsView_Previews: PreviewProvider {
         SATitleDetailsView(programDetails: programDetails, omdbDetails: omdbDetails)
             .previewDisplayName("With Details")
         
-        SATitleDetailsView(programDetails: nil, omdbDetails: nil)
-            .previewDisplayName("No Details")
+        //SATitleDetailsView(programDetails: nil, omdbDetails: nil)
+          //  .previewDisplayName("No Details")
     }
 }
