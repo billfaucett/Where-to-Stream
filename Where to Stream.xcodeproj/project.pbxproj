@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A3BE7DB2B7BA23C0057944B /* SkinnySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BE7DA2B7BA23C0057944B /* SkinnySearchView.swift */; };
 		8A63CBCC2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */; };
 		8A63CBCE2B6A807E00AD80C7 /* NHLBoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */; };
 		8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A3BE7DA2B7BA23C0057944B /* SkinnySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinnySearchView.swift; sourceTree = "<group>"; };
 		8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLBoxScoreModel.swift; sourceTree = "<group>"; };
 		8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLBoxScoreView.swift; sourceTree = "<group>"; };
 		8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				8A788E4B2B72BEE500CACF3F /* SATitleDetailsView.swift */,
 				8A6D81072B73CF1F00158EBD /* SAImageView.swift */,
 				8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */,
+				8A3BE7DA2B7BA23C0057944B /* SkinnySearchView.swift */,
 			);
 			path = SearchAvailibilityViews;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				8A80D8A42B62D62E007281A8 /* TitleDetailsModelResult.swift in Sources */,
 				8A6D81122B73E07400158EBD /* SearchSAView.swift in Sources */,
 				8A80D8D12B68197F007281A8 /* NHLStandingsModel.swift in Sources */,
+				8A3BE7DB2B7BA23C0057944B /* SkinnySearchView.swift in Sources */,
 				8A6D81112B73E07400158EBD /* SASearchResultsView.swift in Sources */,
 				8A80D8DB2B6930F1007281A8 /* NHLScheduleModel.swift in Sources */,
 				8A6D81152B73E21700158EBD /* StreamingServiceListView.swift in Sources */,

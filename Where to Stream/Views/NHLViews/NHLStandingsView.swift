@@ -97,3 +97,9 @@ struct StandingsRow: View {
         .padding(10)
     }
 }
+
+/*struct NHLStandingsView_Preview: PreviewProvider {
+    static var previews: some View {
+        NHLStandingsView(standings: Standings())
+    }
+}*/
