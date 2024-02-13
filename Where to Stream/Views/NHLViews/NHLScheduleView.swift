@@ -124,7 +124,7 @@ struct NHLScheduleView: View {
     }
 }
 
-/*struct NHLScheduleView_Preview : PreviewProvider {
+struct NHLScheduleView_Preview: PreviewProvider {
     static var previews: some View {
         let games = getScheduleFromJSON()
         NHLScheduleView(schedule: games.gameWeek!)
@@ -137,18 +137,13 @@ struct NHLScheduleView: View {
         
         do {
             let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: [])
-                
-            if let dictionary = json as? [String: Any], let scheduleArray = dictionary["schedule"] as? [[String: Any]] {
-                let scheduleData = try JSONSerialization.data(withJSONObject: scheduleArray, options: [])
-                let schedule = try JSONDecoder().decode(Schedule.self, from: scheduleData)
-                return schedule
-            } else {
-                fatalError("JSON format is invalid or does not contain expected data.")
-            }
+            let decoder = JSONDecoder()
+            let schedule = try decoder.decode(Schedule.self, from: data)
+            return schedule
+            
         } catch {
             fatalError("Failed to decode JSON: \(error)")
         }
     }
-}*/
+}
 
