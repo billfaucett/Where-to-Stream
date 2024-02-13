@@ -98,8 +98,30 @@ struct StandingsRow: View {
     }
 }
 
-/*struct NHLStandingsView_Preview: PreviewProvider {
+struct NHLStandingsView_Preview: PreviewProvider {
     static var previews: some View {
-        NHLStandingsView(standings: Standings())
+        let standings = loadStandingsFromJSON()
+        NHLStandingsView(standings: standings)
     }
-}*/
+    
+    static func loadStandingsFromJSON() -> [Standing] {
+        guard let url = Bundle.main.url(forResource: "StandingData", withExtension: "json") else {
+            fatalError("Failed to locate JSON file in bundle.")
+        }
+        
+    do {
+        let data = try Data(contentsOf: url)
+        let json = try JSONSerialization.jsonObject(with: data, options: [])
+            
+        if let dictionary = json as? [String: Any], let standingsArray = dictionary["standings"] as? [[String: Any]] {
+            let standingsData = try JSONSerialization.data(withJSONObject: standingsArray, options: [])
+            let standings = try JSONDecoder().decode([Standing].self, from: standingsData)
+            return standings
+        } else {
+            fatalError("JSON format is invalid or does not contain expected data.")
+            }
+        } catch {
+            fatalError("Failed to decode JSON: \(error)")
+        }
+    }
+}
