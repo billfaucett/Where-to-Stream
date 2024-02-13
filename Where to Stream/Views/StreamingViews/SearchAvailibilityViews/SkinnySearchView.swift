@@ -26,7 +26,16 @@ struct SkinnySearchView: View {
                         SAResultListView(searchText: titleInput)
                     }
                 }
+                Section {
+                    Button("Reset") {
+                        titleInput = ""
+                        presentResultView = false
+                    }
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                }
             }
+            .navigationTitle("Search Programs")
         }
     }
 }
