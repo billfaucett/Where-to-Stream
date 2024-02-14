@@ -15,11 +15,15 @@ struct Player: Codable, Identifiable {
     //let teamName: String
     let teamLogo: String
     let position: String
-    let value: Int
+    let value: Double
 }
 
 struct PlayerLeadersResponse: Codable {
     let points: [Player]?
     let goals: [Player]?
     let assists: [Player]?
+    let goalsAgainstAverage: [Player]?
+    let wins: [Player]?
+    let shutouts: [Player]?
+    let savePctg: [Player]?
 }

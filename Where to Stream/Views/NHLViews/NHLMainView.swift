@@ -13,6 +13,7 @@ struct NHLMainView: View {
     @State private var showStandings = false
     @State private var showSchedule = false
     @State private var showPlayerLeaders = false
+    @State private var showGoalieLeaders = false
     
     func getYesterday() -> Date {
         let calendar = Calendar.current
@@ -67,9 +68,9 @@ struct NHLMainView: View {
         }
         VStack {
             Button("NHL Statistical Leaders - Skaters") {
-                self.nhlViewControler.getNHLSkaterLeaders(category: "points")
-                self.nhlViewControler.getNHLSkaterLeaders(category: "goals")
-                self.nhlViewControler.getNHLSkaterLeaders(category: "assists")
+                self.nhlViewControler.getNHLPlayerLeaders(category: "points", playerType: "skater")
+                self.nhlViewControler.getNHLPlayerLeaders(category: "goals", playerType: "skater")
+                self.nhlViewControler.getNHLPlayerLeaders(category: "assists", playerType: "skater")
             }
         }
         .onReceive(nhlViewControler.$leaders) { players in
@@ -80,12 +81,25 @@ struct NHLMainView: View {
         .sheet(isPresented: $showPlayerLeaders) {
             NHLLeadersView(pointsLeaders: nhlViewControler.leaders?.points ?? [], goalsLeaders: nhlViewControler.leaders?.goals ?? [], assistsLeaders: nhlViewControler.leaders?.assists ?? [])
         }
+        VStack {
+            Button("NHL Statistical Leaders - Goalies") {
+                self.nhlViewControler.getNHLPlayerLeaders(category: "wins", playerType: "goalie")
+                self.nhlViewControler.getNHLPlayerLeaders(category: "goalsAgainstAverage", playerType: "goalie")
+                self.nhlViewControler.getNHLPlayerLeaders(category: "savePctg", playerType: "goalie")
+                self.nhlViewControler.getNHLPlayerLeaders(category: "shutouts", playerType: "goalie")
+            }
+        }
+        .onReceive(nhlViewControler.$leaders) { players in
+            if let leaders = players?.goalsAgainstAverage, !leaders.isEmpty {
+                showGoalieLeaders = true
+            }
+        }
+        .sheet(isPresented: $showGoalieLeaders) {
+            NHLGoalieLeadersView(goalsAgainst: nhlViewControler.leaders?.goalsAgainstAverage ?? [], wins: nhlViewControler.leaders?.wins ?? [], shutouts: nhlViewControler.leaders?.shutouts ?? [], savePercentage: nhlViewControler.leaders?.savePctg ?? [])
+        }
     }
 }
 
 #Preview {
     NHLMainView()
 }
-/*if showStandings {
- NHLStandingsView(standings: nhlViewControler.welcome!.standings)
-}*/

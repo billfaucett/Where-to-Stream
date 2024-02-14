@@ -132,4 +132,25 @@ class NHLViewController : ObservableObject {
             }
         }
     }
+    
+    func getNHLPlayerLeaders(category: String, playerType: String){
+        
+        nhlApiMgr.getPlayerStatLeaders(playerType: playerType, category: category) { result in
+            switch result {
+            case .success(let jsonObject):
+                            if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []){
+                                print(jsonObject.values)
+                                    do{
+                                        ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
+                                        let decoder = JSONDecoder()
+                                        self.leaders = try decoder.decode(PlayerLeadersResponse.self, from: jsonData)
+                                    } catch {
+                                        print ("Decoding JSON error! Error decoding JSON: \(error)")
+                                    }
+                            }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
 }
