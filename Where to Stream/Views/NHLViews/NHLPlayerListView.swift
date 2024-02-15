@@ -16,12 +16,14 @@ struct NHLPlayerListView: View {
     var body: some View {
         VStack {
             Section(header: Text(title).bold()) {
-                VStack{
-                    ForEach(players) { player in
-                        NHLLeaderRow(player: player, stat: title)
-                            .frame(maxHeight: .infinity)
+                ScrollView {
+                    VStack{
+                        ForEach(players) { player in
+                            NHLLeaderRow(player: player, stat: title)
+                                .frame(maxHeight: .infinity)
+                        }
+                        .frame(minHeight: 5 * 10)
                     }
-                    .frame(minHeight: 5)
                 }
             }
         }

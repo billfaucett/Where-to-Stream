@@ -28,6 +28,7 @@ struct NHLLeaderRow: View {
             
             Divider()
             Text(formatStatValue(statType: stat, value: player.value))
+                .frame(width: 60)
             Divider()
         }
         .onAppear() {
