@@ -334,17 +334,17 @@
 			children = (
 				8A3BE7E12B7BFDC60057944B /* Schedule.json */,
 				8A3BE7DF2B7BEDC60057944B /* StandingData.json */,
+				8AE2E7AE2B7E915B00782B3E /* PreviewData.swift */,
 				8A80D8D42B681F7C007281A8 /* NHLMainView.swift */,
 				8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */,
 				8A80D8DC2B6933CF007281A8 /* NHLScheduleView.swift */,
 				8A80D8DE2B6960F6007281A8 /* NHLScheduleByDateView.swift */,
 				8A63CBCD2B6A807E00AD80C7 /* NHLBoxScoreView.swift */,
+				8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */,
 				8AEDD2562B71478C00707FA0 /* NHLLeadersView.swift */,
 				8A8903252B7D5A8400F5F2C2 /* NHLGoalieLeadersView.swift */,
 				8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */,
-				8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */,
 				8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */,
-				8AE2E7AE2B7E915B00782B3E /* PreviewData.swift */,
 			);
 			path = NHLViews;
 			sourceTree = "<group>";

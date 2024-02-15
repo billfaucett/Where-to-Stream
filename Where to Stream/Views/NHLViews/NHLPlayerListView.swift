@@ -15,10 +15,14 @@ struct NHLPlayerListView: View {
     
     var body: some View {
         VStack {
-            Text(title)
-                .bold()
-            List(players) { player in
-                NHLLeaderRow(player: player, stat: title)
+            Section(header: Text(title).bold()) {
+                VStack{
+                    ForEach(players) { player in
+                        NHLLeaderRow(player: player, stat: title)
+                            .frame(maxHeight: .infinity)
+                    }
+                    .frame(minHeight: 5)
+                }
             }
         }
     }
