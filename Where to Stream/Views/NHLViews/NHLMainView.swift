@@ -14,6 +14,7 @@ struct NHLMainView: View {
     @State private var showSchedule = false
     @State private var showPlayerLeaders = false
     @State private var showGoalieLeaders = false
+    @State var nhlShield: Image?
     
     func getYesterday() -> Date {
         let calendar = Calendar.current
@@ -22,6 +23,18 @@ struct NHLMainView: View {
     }
 
     var body: some View {
+        VStack {
+            Image("NHL-Logo")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 200, height: 200)
+        }
+        .onAppear {
+            ModelHelpers.modelHelper.loadSVGImage(url: "https://assets.nhle.com/logos/nhl/svg/NHL_dark.svg") { image in
+                self.nhlShield = image
+            }
+        }
+        Divider()
         VStack {
             Button("Get Current NHL Standings") {
                 self.nhlViewControler.getNHLStandings(date: currentDate)
