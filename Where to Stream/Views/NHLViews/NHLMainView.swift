@@ -24,6 +24,8 @@ struct NHLMainView: View {
 
     var body: some View {
         VStack {
+            Text("NHL Standings, Stats and Schedule")
+                .font(.title2)
             Image("NHL-Logo")
                 .resizable()
                 .scaledToFill()
