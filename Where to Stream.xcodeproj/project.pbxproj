@@ -57,6 +57,10 @@
 		8ACB6E782B74435F00DB47EB /* DetailsWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */; };
 		8AE2E7AD2B7E709D00782B3E /* NHLLeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */; };
 		8AE2E7AF2B7E915B00782B3E /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2E7AE2B7E915B00782B3E /* PreviewData.swift */; };
+		8AE2E7B32B7EB68000782B3E /* NHLSkaterStatSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2E7B22B7EB68000782B3E /* NHLSkaterStatSummary.swift */; };
+		8AE2E7B52B7EB90100782B3E /* NHLPLayerStatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2E7B42B7EB90100782B3E /* NHLPLayerStatRow.swift */; };
+		8AE2E7B72B7EBA5500782B3E /* PlayerStatSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AE2E7B62B7EBA5500782B3E /* PlayerStatSummary.json */; };
+		8AE2E7B92B7EBFAA00782B3E /* NHLPlayerStatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2E7B82B7EBFAA00782B3E /* NHLPlayerStatListView.swift */; };
 		8AEDD2552B7145A300707FA0 /* NHLLeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD2542B7145A300707FA0 /* NHLLeaderModel.swift */; };
 		8AEDD2572B71478C00707FA0 /* NHLLeadersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD2562B71478C00707FA0 /* NHLLeadersView.swift */; };
 		8AEDD2592B716D7600707FA0 /* NHLPlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */; };
@@ -131,6 +135,10 @@
 		8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWrapperView.swift; sourceTree = "<group>"; };
 		8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLLeaderRow.swift; sourceTree = "<group>"; };
 		8AE2E7AE2B7E915B00782B3E /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		8AE2E7B22B7EB68000782B3E /* NHLSkaterStatSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLSkaterStatSummary.swift; sourceTree = "<group>"; };
+		8AE2E7B42B7EB90100782B3E /* NHLPLayerStatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPLayerStatRow.swift; sourceTree = "<group>"; };
+		8AE2E7B62B7EBA5500782B3E /* PlayerStatSummary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PlayerStatSummary.json; sourceTree = "<group>"; };
+		8AE2E7B82B7EBFAA00782B3E /* NHLPlayerStatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPlayerStatListView.swift; sourceTree = "<group>"; };
 		8AEDD2542B7145A300707FA0 /* NHLLeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLLeaderModel.swift; sourceTree = "<group>"; };
 		8AEDD2562B71478C00707FA0 /* NHLLeadersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLLeadersView.swift; sourceTree = "<group>"; };
 		8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPlayerListView.swift; sourceTree = "<group>"; };
@@ -245,6 +253,7 @@
 				8A63CBCB2B6A7F8B00AD80C7 /* NHLBoxScoreModel.swift */,
 				8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */,
 				8AEDD2542B7145A300707FA0 /* NHLLeaderModel.swift */,
+				8AE2E7B22B7EB68000782B3E /* NHLSkaterStatSummary.swift */,
 			);
 			path = HockeyModels;
 			sourceTree = "<group>";
@@ -334,6 +343,7 @@
 			children = (
 				8A3BE7E12B7BFDC60057944B /* Schedule.json */,
 				8A3BE7DF2B7BEDC60057944B /* StandingData.json */,
+				8AE2E7B62B7EBA5500782B3E /* PlayerStatSummary.json */,
 				8AE2E7AE2B7E915B00782B3E /* PreviewData.swift */,
 				8A80D8D42B681F7C007281A8 /* NHLMainView.swift */,
 				8A80D8D82B6837D2007281A8 /* NHLStandingsView.swift */,
@@ -345,6 +355,8 @@
 				8A8903252B7D5A8400F5F2C2 /* NHLGoalieLeadersView.swift */,
 				8AEDD2582B716D7600707FA0 /* NHLPlayerListView.swift */,
 				8A63CBCF2B6AA84400AD80C7 /* VideoPlayerView.swift */,
+				8AE2E7B42B7EB90100782B3E /* NHLPLayerStatRow.swift */,
+				8AE2E7B82B7EBFAA00782B3E /* NHLPlayerStatListView.swift */,
 			);
 			path = NHLViews;
 			sourceTree = "<group>";
@@ -472,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9984292B6036F4001628C5 /* Preview Assets.xcassets in Resources */,
+				8AE2E7B72B7EBA5500782B3E /* PlayerStatSummary.json in Resources */,
 				8A3BE7E02B7BEDC60057944B /* StandingData.json in Resources */,
 				8A3BE7E22B7BFDC60057944B /* Schedule.json in Resources */,
 				8A9984262B6036F4001628C5 /* Assets.xcassets in Resources */,
@@ -521,10 +534,12 @@
 				8A9984242B6036F3001628C5 /* ContentView.swift in Sources */,
 				8A80D8C72B6561D2007281A8 /* SeriesResult.swift in Sources */,
 				8A80D8D32B681E69007281A8 /* NHLApiManager.swift in Sources */,
+				8AE2E7B52B7EB90100782B3E /* NHLPLayerStatRow.swift in Sources */,
 				8AE2E7AD2B7E709D00782B3E /* NHLLeaderRow.swift in Sources */,
 				8ACB6E782B74435F00DB47EB /* DetailsWrapperView.swift in Sources */,
 				8A80D8A22B62A1BC007281A8 /* WMSearchViewControler.swift in Sources */,
 				8A80D8A02B629D17007281A8 /* WatchModelResult.swift in Sources */,
+				8AE2E7B92B7EBFAA00782B3E /* NHLPlayerStatListView.swift in Sources */,
 				8A9984222B6036F3001628C5 /* Where_to_StreamApp.swift in Sources */,
 				8A80D8A42B62D62E007281A8 /* TitleDetailsModelResult.swift in Sources */,
 				8A6D81122B73E07400158EBD /* SearchSAView.swift in Sources */,
@@ -536,6 +551,7 @@
 				8A80D8D72B681FE0007281A8 /* NHLViewController.swift in Sources */,
 				8A788E482B72B2F800CACF3F /* SAStreamingServiceList.swift in Sources */,
 				8AE2E7AF2B7E915B00782B3E /* PreviewData.swift in Sources */,
+				8AE2E7B32B7EB68000782B3E /* NHLSkaterStatSummary.swift in Sources */,
 				8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */,
 				8A6D81102B73E07400158EBD /* ShowSADetailView.swift in Sources */,
 				8A80D89E2B6296DE007281A8 /* WatchModeAPIManager.swift in Sources */,

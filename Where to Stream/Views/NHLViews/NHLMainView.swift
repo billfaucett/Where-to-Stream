@@ -14,7 +14,7 @@ struct NHLMainView: View {
     @State private var showSchedule = false
     @State private var showPlayerLeaders = false
     @State private var showGoalieLeaders = false
-    @State var nhlShield: Image?
+    @State private var showPlayerStatSummary = false
     
     func getYesterday() -> Date {
         let calendar = Calendar.current
@@ -30,11 +30,6 @@ struct NHLMainView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 200, height: 200)
-        }
-        .onAppear {
-            ModelHelpers.modelHelper.loadSVGImage(url: "https://assets.nhle.com/logos/nhl/svg/NHL_dark.svg") { image in
-                self.nhlShield = image
-            }
         }
         Divider()
         VStack {
@@ -111,6 +106,21 @@ struct NHLMainView: View {
         }
         .sheet(isPresented: $showGoalieLeaders) {
             NHLGoalieLeadersView(goalsAgainst: nhlViewControler.leaders?.goalsAgainstAverage ?? [], wins: nhlViewControler.leaders?.wins ?? [], shutouts: nhlViewControler.leaders?.shutouts ?? [], savePercentage: nhlViewControler.leaders?.savePctg ?? [])
+        }
+        VStack {
+            Button("NHL Top 50 Scorers") {
+                self.nhlViewControler.getNHLPlayerStatSummary()
+            }
+        }
+        .onReceive(nhlViewControler.$playerStats) { stats in
+            if let playerStats = stats, !(stats?.data.isEmpty)!{
+                showPlayerStatSummary.toggle()
+            }
+        }
+        .sheet(isPresented: $showPlayerStatSummary) {
+            if let stats = nhlViewControler.playerStats {
+                NHLPlayerStatListView(stats: stats)
+            }
         }
     }
 }

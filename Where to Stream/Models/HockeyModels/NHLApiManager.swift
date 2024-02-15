@@ -87,4 +87,16 @@ struct NHLApiManager {
         
         ModelHelpers.NetworkRequestManager.makeGETRequest(url: url, apiKey: apiKey, apiHost: apiHost, completion: completion)
     }
+    
+    func getPlayerStatSummary(completion: @escaping (Result<[String: Any], Error>) -> Void) {
+        // Construct the URL for the search endpoint with the provided parameters
+        let urlString = "https://api.nhle.com/stats/rest/en/skater/summary?limit=-1&sort=points&cayenneExp=seasonId=20232024"
+        print(urlString)
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
+        ModelHelpers.NetworkRequestManager.makeGETRequest(url: url, apiKey: apiKey, apiHost: apiHost, completion: completion)
+    }
 }
