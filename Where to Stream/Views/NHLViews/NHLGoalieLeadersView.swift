@@ -25,6 +25,8 @@ struct NHLGoalieLeadersView: View {
     }
 }
 
-#Preview {
-    NHLGoalieLeadersView(goalsAgainst: [], wins: [], shutouts: [], savePercentage: [])
+struct NHLGoalieLeadersView_Preview: PreviewProvider {
+    static var previews: some View {
+        NHLGoalieLeadersView(goalsAgainst: PreviewData.gaa, wins: PreviewData.wins, shutouts: PreviewData.shutouts, savePercentage: PreviewData.svPctg)
+    }
 }
