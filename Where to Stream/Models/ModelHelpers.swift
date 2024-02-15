@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SVGKit
 
 struct ModelHelpers{
     static let modelHelper = ModelHelpers() //Singleton Instance
@@ -73,6 +74,33 @@ struct ModelHelpers{
             if let data = data, let uiImage = UIImage(data: data) {
                 DispatchQueue.main.async {
                     completion(uiImage)
+                }
+            } else {
+                completion(nil)
+            }
+        }.resume()
+    }
+    
+    func loadSVGImage(url: String, completion: @escaping (Image?) -> Void) {
+        guard let url = URL(string: url.replacingOccurrences(of: "\\/", with: "/")) else {
+            completion(nil)
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+
+            // Use SVGKit to parse the SVG data
+            let svgImage = SVGKImage(data: data)
+            
+            // Convert SVG to UIImage
+            if let uiImage = svgImage?.uiImage {
+                DispatchQueue.main.async {
+                    let image = Image(uiImage: uiImage)
+                    completion(image)
                 }
             } else {
                 completion(nil)
