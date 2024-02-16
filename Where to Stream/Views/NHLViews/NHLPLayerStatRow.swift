@@ -16,7 +16,7 @@ struct NHLPLayerStatRow: View {
         HStack {
             Text(playerStats.skaterFullName)
                 .font(.subheadline)
-                .frame(width: 120, alignment: .leading)
+                .frame(width: 115, alignment: .leading)
             Text(playerStats.positionCode)
                 .font(.subheadline)
                 .frame(width: 20)
@@ -38,9 +38,9 @@ struct NHLPLayerStatRow: View {
             Text(String(playerStats.penaltyMinutes))
                 .font(.subheadline)
                 .frame(width: 25)
-            Text(String(playerStats.plusMinus))
+            Text(playerStats.plusMinus > 0 ? "+\(playerStats.plusMinus)" : "\(playerStats.plusMinus)")
                 .font(.subheadline)
-                .frame(width: 25)
+                .frame(width: 35)
         }
     }
 }

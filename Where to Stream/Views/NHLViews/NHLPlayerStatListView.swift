@@ -16,6 +16,36 @@ struct NHLPlayerStatListView: View {
             
             Section(header: Text("NHL Top 50 Scorers")) {
                 ScrollView {
+                    HStack {
+                        Text("Player")
+                            .font(.subheadline)
+                            .frame(width: 115, alignment: .center)
+                        Text("")
+                            .font(.subheadline)
+                            .frame(width: 20)
+                        Text("")
+                            .font(.subheadline)
+                            .frame(width: 35)
+                        Text(String("GP"))
+                            .font(.subheadline)
+                            .frame(width: 25)
+                        Text(String("G"))
+                            .font(.subheadline)
+                            .frame(width: 25)
+                        Text(String("A"))
+                            .font(.subheadline)
+                            .frame(width: 25)
+                        Text(String("Pts"))
+                            .font(.subheadline)
+                            .frame(width: 25)
+                        Text(String("PIM"))
+                            .font(.caption)
+                            .frame(width: 25)
+                        Text(String("+/-"))
+                            .font(.subheadline)
+                            .frame(width: 35)
+                        Divider()
+                    }
                     ForEach(sortedByPoints, id: \.playerID) { playerStat in
                         NHLPLayerStatRow(playerStats: playerStat)
                     }
