@@ -12,11 +12,42 @@ struct NHLGoalieStatListView: View {
     
     var body: some View {
         VStack {
-            let sortedByGAA = stats.data.sorted {$0.goalsAgainstAverage < $1.goalsAgainstAverage}
-                .filter {$0.gamesPlayed >= 5}
+            let maxGamesPlayed = stats.data.map { $0.gamesPlayed }.max() ?? 0
+            var sortedByGAA = stats.data.sorted {$0.goalsAgainstAverage < $1.goalsAgainstAverage}
                 .prefix(25)
+            if maxGamesPlayed >= 10 {
+                let sortedByGAA = stats.data.sorted{$0.goalsAgainstAverage < $1.goalsAgainstAverage}
+                    .filter{ $0.gamesPlayed >= 5 }
+                    .prefix(25)
+            }
             
             Section {
+                HStack {
+                    Text("Player")
+                        .frame(width: 100, alignment: .center)
+                        .font(.subheadline)
+                    Text("GP")
+                        .frame(width: 25)
+                        .font(.subheadline)
+                    Text("W")
+                        .frame(width: 25)
+                        .font(.subheadline)
+                    Text("L")
+                        .frame(width: 25)
+                        .font(.subheadline)
+                    Text("OL")
+                        .frame(width: 25)
+                        .font(.subheadline)
+                    Text("GAA")
+                        .frame(width: 50)
+                        .font(.subheadline)
+                    Text("Sv%")
+                        .frame(width: 50)
+                        .font(.subheadline)
+                    Text("SO")
+                        .frame(width: 25)
+                        .font(.subheadline)
+                }
                 ForEach (sortedByGAA, id: \.playerID) { stat in
                     NHLGoalieStatRow(goalie: stat)
                 }

@@ -13,13 +13,29 @@ struct NHLGoalieStatRow: View {
     var body: some View {
         HStack{
             Text(goalie.goalieFullName)
+                .frame(width: 100, alignment: .leading)
+                .font(.subheadline)
             Text(String(goalie.gamesPlayed))
+                .frame(width: 25)
+                .font(.subheadline)
             Text(String(goalie.wins))
+                .frame(width: 25)
+                .font(.subheadline)
             Text(String(goalie.losses))
+                .frame(width: 25)
+                .font(.subheadline)
             Text(String(goalie.otLosses))
-            Text(String(goalie.goalsAgainstAverage))
+                .frame(width: 25)
+                .font(.subheadline)
+            Text(String(goalie.goalsAgainstAverage.rounded(toPlaces: 2)))
+                .frame(width: 50)
+                .font(.subheadline)
             Text(String(goalie.savePct.rounded(toPlaces: 3)))
+                .frame(width: 50)
+                .font(.subheadline)
             Text(String(goalie.shutouts))
+                .frame(width: 25)
+                .font(.subheadline)
         }
     }
 }
