@@ -13,15 +13,11 @@ struct NHLGoalieStatListView: View {
     var body: some View {
         VStack {
             let maxGamesPlayed = stats.data.map { $0.gamesPlayed }.max() ?? 0
-            var sortedByGAA = stats.data.sorted {$0.goalsAgainstAverage < $1.goalsAgainstAverage}
-                .prefix(25)
-            if maxGamesPlayed >= 10 {
-                let sortedByGAA = stats.data.sorted{$0.goalsAgainstAverage < $1.goalsAgainstAverage}
+            let sortedByGAA = stats.data.sorted{$0.goalsAgainstAverage < $1.goalsAgainstAverage}
                     .filter{ $0.gamesPlayed >= 5 }
                     .prefix(25)
-            }
-            
-            Section {
+
+            Section(header: Text("NHL Top 25 Goalies")){
                 HStack {
                     Text("Player")
                         .frame(width: 100, alignment: .center)
