@@ -15,6 +15,7 @@ struct NHLMainView: View {
     @State private var showPlayerLeaders = false
     @State private var showGoalieLeaders = false
     @State private var showPlayerStatSummary = false
+    @State private var showGoalieStatSummary = false
     
     func getYesterday() -> Date {
         let calendar = Calendar.current
@@ -120,6 +121,21 @@ struct NHLMainView: View {
         .sheet(isPresented: $showPlayerStatSummary) {
             if let stats = nhlViewControler.playerStats {
                 NHLPlayerStatListView(stats: stats)
+            }
+        }
+        VStack {
+            Button("NHL 25 Top Goalies") {
+                self.nhlViewControler.getNHLGoalieStatSummary()
+            }
+        }
+        .onReceive(nhlViewControler.$goalieStats) { stats in
+            if let playerStats = stats, !(stats?.data.isEmpty)!{
+                showGoalieStatSummary.toggle()
+            }
+        }
+        .sheet(isPresented: $showGoalieStatSummary) {
+            if let stats = nhlViewControler.goalieStats {
+                NHLGoalieStatListView(stats: stats)
             }
         }
     }
