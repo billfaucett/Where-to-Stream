@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NHLPlayerStatListView: View {
     let stats: PlayerStats
+    @State var team: String?
     
     var body: some View {
         VStack{

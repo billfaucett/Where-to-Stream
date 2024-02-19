@@ -138,6 +138,11 @@ struct NHLMainView: View {
                 NHLGoalieStatListView(stats: stats)
             }
         }
+        VStack {
+            NavigationLink (destination: NHLPlayerStatsByTeam()) {
+                Text("Get Player Stats by Team")
+            }
+        }
     }
 }
 

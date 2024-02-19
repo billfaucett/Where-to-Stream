@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct NHLGoalieStatListView: View {
-    let stats: GoalieData
+    var stats: GoalieData
     
     var body: some View {
         VStack {
-            let maxGamesPlayed = stats.data.map { $0.gamesPlayed }.max() ?? 0
             let sortedByGAA = stats.data.sorted { $0.goalsAgainstAverage < $1.goalsAgainstAverage }
                     .filter { $0.gamesPlayed >= 5 }
                     .prefix(25)
