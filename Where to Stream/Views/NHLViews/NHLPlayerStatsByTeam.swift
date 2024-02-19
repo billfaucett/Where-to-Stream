@@ -27,17 +27,13 @@ struct NHLPlayerStatsByTeam: View {
                 selectedTeam = teams[selectedTeamIndex]
                 nhlViewControler.getNHLPlayerStatSummary()
             }
-            .onReceive(nhlViewControler.$playerStats) { data in
-                if nhlViewControler.playerStats?.data != nil {
+            .onReceive(nhlViewControler.$playerStats) { stats in
+                if stats?.data != nil {
                     showStats = true
                 }
             }
             .sheet(isPresented: $showStats) {
-                if showStats {
-                    if nhlViewControler.playerStats != nil{
-                        NHLPlayerStatListView(stats: nhlViewControler.playerStats!, team: selectedTeam)
-                    }
-                }
+                    NHLPlayerStatListView(stats: nhlViewControler.playerStats!, team: selectedTeam)
             }
         }
     }

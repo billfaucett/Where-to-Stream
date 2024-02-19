@@ -13,10 +13,10 @@ struct NHLPlayerStatListView: View {
     
     var body: some View {
         VStack {
-            let filteredStats = team != nil ? stats.data.filter {$0.teamAbbrevs == team } : stats.data
+            let filteredStats = team != nil ? stats.data.filter { $0.teamAbbrevs == team } : stats.data
             let sortedByPoints = filteredStats.sorted { $0.points > $1.points}.prefix(50)
-            
-            Section(header: Text("NHL Top 50 Scorers")) {
+
+            Section(header: team != nil ? Text("\(team!) Scoring") : Text("NHL Top 50 Scorers")) {
                 ScrollView {
                     HStack {
                         Text("Player")
