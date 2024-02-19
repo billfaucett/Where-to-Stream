@@ -16,18 +16,16 @@ struct NHLPlayerStatsByTeam: View {
     
     var body: some View {
         VStack {
-            Picker("Select a Team", selection: $selectedTeam) {
+            Picker("Select a Team", selection: $selectedTeamIndex) {
                 ForEach(teams.indices, id: \.self) { index in
                     Text(teams[index])
                 }
             }
             .pickerStyle(WheelPickerStyle())
             
-            Text(teams[selectedTeamIndex])
-            Text(String(selectedTeamIndex))
-            
             Button("Get Team Player Stats") {
-                //nhlViewControler.getNHLPlayerStatSummaryForTeam(team: teams[selectedTeamIndex])
+                selectedTeam = teams[selectedTeamIndex]
+                nhlViewControler.getNHLPlayerStatSummaryForTeam(team: selectedTeam)
             }
             .onReceive(nhlViewControler.$playerStats) { data in
                 if nhlViewControler.playerStats?.data != nil {
