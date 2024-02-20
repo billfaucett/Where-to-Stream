@@ -16,9 +16,9 @@ struct SAResultListView: View {
     
     var body: some View {
         Section (header: Text("Search Results").bold().font(.title)) {
-            if let resultsList = resultsList?.result {
+            if let resultsList = resultsList?.result, let searchText = searchText {
                 List(resultsList.indices, id: \.self) { index in
-                    if resultsList[index].title.contains(searchText!) && ((resultsList[index].streamingInfo?.us?.first) != nil) {
+                    if resultsList[index].title.contains(searchText) && ((resultsList[index].streamingInfo?.us?.first) != nil) {
                         SATitleDetailsView(programDetails: resultsList[index], omdbDetails: resultsList[index].omdbResult)
                     }
                 }

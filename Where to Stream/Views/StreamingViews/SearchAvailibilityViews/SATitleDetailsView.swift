@@ -12,9 +12,9 @@ struct SATitleDetailsView: View {
     var omdbDetails: OMdbModelResult?
     
     var body: some View {
-        if let program = programDetails, let omdb = programDetails?.omdbResult{
+        if let program = programDetails{
             NavigationView {
-                Section(header: Text("Loading...: \(program.title)")) {
+                Section() {
                     VStack{
                         HStack{
                             Text(program.title )
@@ -54,7 +54,6 @@ struct SATitleDetailsView: View {
                         }
                     }
                 }
-                .navigationTitle("Program Info:")
             }
         }
     }
@@ -67,9 +66,5 @@ struct SATitleDetailsView_Previews: PreviewProvider {
     
     static var previews: some View {
         SATitleDetailsView(programDetails: programDetails, omdbDetails: omdbDetails)
-            .previewDisplayName("With Details")
-        
-        //SATitleDetailsView(programDetails: nil, omdbDetails: nil)
-          //  .previewDisplayName("No Details")
     }
 }
