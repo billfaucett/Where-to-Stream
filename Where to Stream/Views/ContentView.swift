@@ -25,14 +25,14 @@ struct ContentView: View {
                         .cornerRadius(10)
                         .foregroundColor(.white)
                 }
-                NavigationLink(destination: SkinnySearchView()){
+                /*NavigationLink(destination: SkinnySearchView()){
                     Text("Where can I watch - Skinny?")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.black)
                         .cornerRadius(10)
                         .foregroundColor(.white)
-                }
+                }*/
                 NavigationLink(destination: NHLMainView()){
                     Text("NHL Results & Stats")
                         .padding()
