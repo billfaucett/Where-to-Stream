@@ -15,36 +15,38 @@ struct SAResultListView: View {
     var searchText: String?
     
     var body: some View {
-        Section (header: Text("Search Results").bold().font(.title)) {
-            if let resultsList = resultsList?.result, let searchText = searchText {
-                List(resultsList.indices, id: \.self) { index in
-                    if resultsList[index].title.contains(searchText) && ((resultsList[index].streamingInfo?.us?.first) != nil) {
-                        SATitleDetailsView(programDetails: resultsList[index], omdbDetails: resultsList[index].omdbResult)
+        ScrollView {
+            Section (header: Text("Search Results").bold().font(.title)) {
+                if let resultsList = resultsList?.result, let searchText = searchText {
+                    ForEach(resultsList.indices, id: \.self) { index in
+                        if resultsList[index].title.contains(searchText) && ((resultsList[index].streamingInfo?.us?.first) != nil) {
+                            SATitleDetailsView(programDetails: resultsList[index], omdbDetails: resultsList[index].omdbResult)
+                        }
                     }
-                }
-            } else {
-                if let results = saViewController.results {
-                    if isLoading {
-                        ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
-                    } else {
-                        List (results.result.indices, id: \.self) { index in
-                            if results.result[index].title.contains(searchText!) && ((results.result[index].streamingInfo?.us?.first) != nil) {
-                                SATitleDetailsView(programDetails: results.result[index])
+                } else {
+                    if let results = saViewController.results {
+                        if isLoading {
+                            ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
+                        } else {
+                            ForEach(results.result.indices, id: \.self) { index in
+                                if results.result[index].title.contains(searchText!) && ((results.result[index].streamingInfo?.us?.first) != nil) {
+                                    SATitleDetailsView(programDetails: results.result[index])
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        .onAppear() {
-            if resultsList == nil && searchText != nil {
-                isLoading = true
-                searchStreamingAPI(title: searchText!)
+            .onAppear() {
+                if resultsList == nil && searchText != nil {
+                    isLoading = true
+                    searchStreamingAPI(title: searchText!)
+                }
             }
-        }
-        .onReceive(saViewController.$results) { results in
-            if results != nil {
-                isLoading = false
+            .onReceive(saViewController.$results) { results in
+                if results != nil {
+                    isLoading = false
+                }
             }
         }
     }
