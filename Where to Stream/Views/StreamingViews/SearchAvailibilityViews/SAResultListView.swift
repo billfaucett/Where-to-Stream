@@ -24,6 +24,9 @@ struct SAResultListView: View {
                         }
                     }
                 } else {
+                    if isLoading {
+                        ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
+                    }
                     if let results = saViewController.results {
                         if isLoading {
                             ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
@@ -61,7 +64,13 @@ struct SAResultListView: View {
 struct SAResultListView_Previews: PreviewProvider {
     static var title = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
     
-    static var results = ProgramResults.init(result: [title])
+    static var title2 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures in Philly", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
+    
+    static var title3 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures in NJ", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
+    
+    static var title4 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures on Vacation", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
+    
+    static var results = ProgramResults.init(result: [title, title2, title3, title4])
     
     static var omdb = OMdbModelResult(Title: "Jenny and Billy's Adventures", Year: "2021", Rated: "R", Released: "2021", Runtime: "60", Genre: "RomCom", Director: "BF", Writer: "JB", Actors: "JB, BF", Plot: "You get it, they met, played mini golf, enjoyed countless cocktails, cuddled pets, fell in love, and are getting married", Language: "en", Country: "us", Awards: "Engagement", Poster: "https://m.media-amazon.com/images/M/MV5BZjZjMzQ2ZmUtZWEyZC00NWJiLWFjM2UtMzhmYzZmZDcxMzllXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg", Ratings: [OMdbModelResult.Rating(Source: "Rating Source", Value: "100")], Metascore: "10", imdbRating: "10", imdbVotes: "100", imdbID: "tt2802850", totalSeasons: "10", Response: "Response")
     
