@@ -27,10 +27,14 @@ struct SAResultListView: View {
                     if isLoading {
                         ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
                     }
-                    if let results = saViewController.results {
-                        if isLoading {
-                            ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
-                        } else {
+                    if let results = saViewController.results, let omdbResult = results.result.first?.omdbResult {
+                        ForEach(results.result.indices, id: \.self) { index in
+                            if results.result[index].title.contains(searchText!) && ((results.result[index].streamingInfo?.us?.first) != nil) {
+                                SATitleDetailsView(programDetails: results.result[index])
+                            }
+                        }
+                    } else {
+                        if let results = saViewController.results {
                             ForEach(results.result.indices, id: \.self) { index in
                                 if results.result[index].title.contains(searchText!) && ((results.result[index].streamingInfo?.us?.first) != nil) {
                                     SATitleDetailsView(programDetails: results.result[index])
@@ -44,6 +48,7 @@ struct SAResultListView: View {
                 if resultsList == nil && searchText != nil {
                     isLoading = true
                     searchStreamingAPI(title: searchText!)
+                    //searchStreamingAPILong(title: searchText!)
                 }
             }
             .onReceive(saViewController.$results) { results in
@@ -57,6 +62,19 @@ struct SAResultListView: View {
     func searchStreamingAPI (title: String) {
         DispatchQueue.main.async {
             saViewController.searchByTitle(title: title)
+        }
+    }
+    
+    func searchStreamingAPILong(title: String) {
+        DispatchQueue.main.async {
+            saViewController.searchByTitle(title: title) { result in
+                switch result {
+                case .success(let results):
+                    print("First omdb: \(saViewController.omdbResults.first?.Title ?? "Nothing")")
+                case .failure(let error):
+                    print("Error searching for titles: \(error)")
+                }
+            }
         }
     }
 }
