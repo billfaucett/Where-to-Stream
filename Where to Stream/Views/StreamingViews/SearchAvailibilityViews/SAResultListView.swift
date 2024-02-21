@@ -17,7 +17,7 @@ struct SAResultListView: View {
     var body: some View {
         ScrollView {
             Section (header: Text("Search Results").bold().font(.title)) {
-                if let resultsList = resultsList?.result, let searchText = searchText {
+                if let resultsList = resultsList?.result, let searchText = searchText, let omdbResult = resultsList.first?.omdbResult {
                     ForEach(resultsList.indices, id: \.self) { index in
                         if resultsList[index].title.contains(searchText) && ((resultsList[index].streamingInfo?.us?.first) != nil) {
                             SATitleDetailsView(programDetails: resultsList[index], omdbDetails: resultsList[index].omdbResult)

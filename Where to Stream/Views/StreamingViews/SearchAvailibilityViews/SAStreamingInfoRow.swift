@@ -10,9 +10,11 @@ import SwiftUI
 struct SAStreamingInfoRow: View {
     let streamingRow: StreamingOption
     var body: some View {
-        HStack {
-            Text("\(streamingRow.service): \(streamingRow.streamingType)")
-                .font(.subheadline)
+        ScrollView{
+            HStack {
+                Text("\(streamingRow.service.capitalized): \(streamingRow.streamingType.capitalized)")
+                    .font(.subheadline)
+            }
         }
     }
 }

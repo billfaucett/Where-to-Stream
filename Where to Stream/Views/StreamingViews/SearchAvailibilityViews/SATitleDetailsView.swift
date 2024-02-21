@@ -13,7 +13,7 @@ struct SATitleDetailsView: View {
     
     var body: some View {
         if let program = programDetails{
-            NavigationView {
+            ScrollView {
                 Section() {
                     VStack{
                         HStack{
