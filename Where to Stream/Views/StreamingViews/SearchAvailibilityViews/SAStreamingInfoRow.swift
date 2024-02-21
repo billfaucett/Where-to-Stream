@@ -12,6 +12,7 @@ struct SAStreamingInfoRow: View {
     var body: some View {
         HStack {
             Text("\(streamingRow.service): \(streamingRow.streamingType)")
+                .font(.subheadline)
         }
     }
 }

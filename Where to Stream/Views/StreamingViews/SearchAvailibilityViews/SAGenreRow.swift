@@ -11,6 +11,7 @@ struct SAGenreRow: View {
     let genre: Genre
     var body: some View {
         Text(genre.name)
+            .font(.subheadline)
     }
 }
 
