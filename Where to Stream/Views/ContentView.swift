@@ -18,15 +18,7 @@ struct ContentView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 NavigationLink(destination: SASearchView()){
-                    Text("Where can I watch?")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.black)
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                }
-                NavigationLink(destination: SkinnySearchView()){
-                    Text("Where can I watch - Skinny?")
+                    Text("Where can I watch a Show?")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.black)

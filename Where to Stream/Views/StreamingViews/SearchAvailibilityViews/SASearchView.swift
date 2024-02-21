@@ -1,74 +1,41 @@
 //
-//  SASearchView.swift
+//  SkinnySearchView.swift
 //  Where to Stream
 //
-//  Created by William Faucett on 2/6/24.
+//  Created by William Faucett on 2/13/24.
 //
 
 import SwiftUI
 
 struct SASearchView: View {
     @State private var titleInput: String = ""
-    @ObservedObject var saViewController = SASearchViewController()
-    @State var showResults = false
-    @State var isLoading = false
+    @State private var presentResultView = false
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Text("Where can I watch?")
-                        .font(.subheadline)
+                    Text("Where can I Watch?")
                     TextField("Enter Title", text: $titleInput)
                 }
                 Section {
-                    Button("Submit") {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        isLoading = true
-                        searchStreamingAPI(title: titleInput.capitalized)
+                    Button("Search") {
+                        presentResultView.toggle()
                     }
-                    if isLoading {
-                        ProgressView().progressViewStyle(CircularProgressViewStyle())
+                    .sheet(isPresented: $presentResultView) {
+                        SAResultListView(searchText: titleInput)
                     }
                 }
-                .multilineTextAlignment(.center)
-                .id(UUID())
-                
                 Section {
                     Button("Reset") {
                         titleInput = ""
-                        saViewController.results = nil
-                        showResults = false
-                        if isLoading {
-                            isLoading = false
-                        }
+                        presentResultView = false
                     }
                     .foregroundColor(.red)
                     .multilineTextAlignment(.center)
                 }
             }
-            .navigationTitle("Search Programing")
-            .sheet(isPresented: $showResults) {
-                if saViewController.results != nil {
-                    SAResultListView(resultsList: saViewController.results, omdbResult: saViewController.omdbResult, searchText: titleInput)
-                        .onAppear {
-                            saViewController.findOmdbDetails(title: titleInput.capitalized)
-                        }
-                }
-            }
-        }
-        //Using this because the second object is the long poll and always retuns last
-        .onReceive(saViewController.$results) { results in
-            if results != nil && results?.result.first?.omdbResult != nil {
-                showResults = true
-                isLoading = false
-            }
-        }
-    }
-    
-    func searchStreamingAPI (title: String) {
-        DispatchQueue.main.async {
-            saViewController.searchByTitle(title: title)
+            .navigationTitle("Search Programs")
         }
     }
 }
