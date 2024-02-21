@@ -54,6 +54,8 @@
 		8A99843F2B6036F4001628C5 /* Where_to_StreamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99843E2B6036F4001628C5 /* Where_to_StreamUITestsLaunchTests.swift */; };
 		8A9984512B603A2B001628C5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9984502B603A2B001628C5 /* APIManager.swift */; };
 		8AA337272B850D5B00F12FFF /* TitleSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA337262B850D5B00F12FFF /* TitleSearchService.swift */; };
+		8AB6EEEB2B8635BD00AFFFF7 /* SAStreamingInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6EEEA2B8635BD00AFFFF7 /* SAStreamingInfoRow.swift */; };
+		8AB6EEED2B863E5500AFFFF7 /* SAGenreRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6EEEC2B863E5500AFFFF7 /* SAGenreRow.swift */; };
 		8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */; };
 		8ACB6E782B74435F00DB47EB /* DetailsWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */; };
 		8AE2E7AD2B7E709D00782B3E /* NHLLeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */; };
@@ -138,6 +140,8 @@
 		8A99843E2B6036F4001628C5 /* Where_to_StreamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Where_to_StreamUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A9984502B603A2B001628C5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8AA337262B850D5B00F12FFF /* TitleSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSearchService.swift; sourceTree = "<group>"; };
+		8AB6EEEA2B8635BD00AFFFF7 /* SAStreamingInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAStreamingInfoRow.swift; sourceTree = "<group>"; };
+		8AB6EEEC2B863E5500AFFFF7 /* SAGenreRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAGenreRow.swift; sourceTree = "<group>"; };
 		8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPlayByPlayModel.swift; sourceTree = "<group>"; };
 		8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWrapperView.swift; sourceTree = "<group>"; };
 		8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLLeaderRow.swift; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 				8A6D81072B73CF1F00158EBD /* SAImageView.swift */,
 				8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */,
 				8A3BE7DA2B7BA23C0057944B /* SkinnySearchView.swift */,
+				8AB6EEEA2B8635BD00AFFFF7 /* SAStreamingInfoRow.swift */,
+				8AB6EEEC2B863E5500AFFFF7 /* SAGenreRow.swift */,
 			);
 			path = SearchAvailibilityViews;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 				8A80D8A02B629D17007281A8 /* WatchModelResult.swift in Sources */,
 				8AE2E7B92B7EBFAA00782B3E /* NHLPlayerStatListView.swift in Sources */,
 				8A9984222B6036F3001628C5 /* Where_to_StreamApp.swift in Sources */,
+				8AB6EEEB2B8635BD00AFFFF7 /* SAStreamingInfoRow.swift in Sources */,
 				8AE2E7C12B7EFDAE00782B3E /* NHLGoalieStatListView.swift in Sources */,
 				8A80D8A42B62D62E007281A8 /* TitleDetailsModelResult.swift in Sources */,
 				8A6D81122B73E07400158EBD /* SearchSAView.swift in Sources */,
@@ -584,6 +591,7 @@
 				8A788E482B72B2F800CACF3F /* SAStreamingServiceList.swift in Sources */,
 				8AE2E7AF2B7E915B00782B3E /* PreviewData.swift in Sources */,
 				8AE2E7B32B7EB68000782B3E /* NHLSkaterStatSummary.swift in Sources */,
+				8AB6EEED2B863E5500AFFFF7 /* SAGenreRow.swift in Sources */,
 				8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */,
 				8A6D81102B73E07400158EBD /* ShowSADetailView.swift in Sources */,
 				8A80D89E2B6296DE007281A8 /* WatchModeAPIManager.swift in Sources */,
