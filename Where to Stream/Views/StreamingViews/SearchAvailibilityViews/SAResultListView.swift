@@ -27,14 +27,8 @@ struct SAResultListView: View {
                     if isLoading {
                         ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
                     }
-                    if let results = saViewController.results, let omdbResult = results.result.first?.omdbResult {
-                        ForEach(results.result.indices, id: \.self) { index in
-                            if results.result[index].title.contains(searchText!) && ((results.result[index].streamingInfo?.us?.first) != nil) {
-                                SATitleDetailsView(programDetails: results.result[index])
-                            }
-                        }
-                    } else {
-                        if let results = saViewController.results {
+                    else {
+                        if let results = saViewController.resultsWithOmbd {
                             ForEach(results.result.indices, id: \.self) { index in
                                 if results.result[index].title.contains(searchText!) && ((results.result[index].streamingInfo?.us?.first) != nil) {
                                     SATitleDetailsView(programDetails: results.result[index])
@@ -47,8 +41,8 @@ struct SAResultListView: View {
             .onAppear() {
                 if resultsList == nil && searchText != nil {
                     isLoading = true
-                    searchStreamingAPI(title: searchText!)
-                    //searchStreamingAPILong(title: searchText!)
+                    //searchStreamingAPI(title: searchText!)
+                    searchStreamingAPILong(title: searchText!)
                 }
             }
             .onReceive(saViewController.$results) { results in
@@ -70,6 +64,7 @@ struct SAResultListView: View {
             saViewController.searchByTitle(title: title) { result in
                 switch result {
                 case .success(let results):
+                    print("First Title: \(saViewController.results?.result.first?.title ?? "empty")")
                     print("First omdb: \(saViewController.omdbResults.first?.Title ?? "Nothing")")
                 case .failure(let error):
                     print("Error searching for titles: \(error)")

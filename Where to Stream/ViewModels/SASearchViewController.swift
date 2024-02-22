@@ -11,6 +11,7 @@ class SASearchViewController : ObservableObject {
     let apiManager = APIManager.sharedApiManager
     let omdbApiManager = OmdbAPIManager.omdbApiManager
     @Published var results : ProgramResults?
+    @Published var resultsWithOmbd : ProgramResults?
     @Published var omdbResult : OMdbModelResult?
     var omdbResults : [OMdbModelResult] = []
     @Published var shouldClearDetails = false
@@ -50,7 +51,15 @@ class SASearchViewController : ObservableObject {
                         ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                         let decoder = JSONDecoder()
                         let results = try decoder.decode(ProgramResults.self, from: jsonData)
-                        self.findOmdbDetails(for: results, completion: completion)
+                        self.findOmdbDetails(for: results) { result in
+                            switch result {
+                            case .success:
+                                self.results = results
+                                completion(.success(results))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                        }
                     } catch {
                         completion(.failure(error))
                         print("Decoding JSON error! Error decoding JSON: \(error)")
@@ -62,9 +71,10 @@ class SASearchViewController : ObservableObject {
             }
         }
     }
+
     
     func findOmdbDetails(for results: ProgramResults, completion: @escaping (Result<ProgramResults, Error>) -> Void) {
-        var resultsWithOmdb = results
+        self.resultsWithOmbd = results
         let dispatchGroup = DispatchGroup()
 
         for (index, result) in results.result.enumerated() {
@@ -78,7 +88,7 @@ class SASearchViewController : ObservableObject {
                             ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
                             let decoder = JSONDecoder()
                             let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
-                            resultsWithOmdb.result[index].omdbResult = omdb
+                            self.resultsWithOmbd!.result[index].omdbResult = omdb
                             dispatchGroup.leave()
                         } catch {
                             print("Decoding JSON error! Error decoding JSON: \(error)")
@@ -93,7 +103,7 @@ class SASearchViewController : ObservableObject {
         }
 
         dispatchGroup.notify(queue: .main) {
-            completion(.success(resultsWithOmdb))
+            completion(.success(self.resultsWithOmbd!))
         }
     }
     
@@ -155,6 +165,54 @@ class SASearchViewController : ObservableObject {
         }
     }
     
+    func findOmdbDetails(title: String, completion: @escaping () -> Void) {
+        guard let results = results else {
+            completion()
+            return
+        }
+
+        let dispatchGroup = DispatchGroup()
+        for index in results.result.indices {
+            if results.result[index].title.contains(title) {
+                dispatchGroup.enter()
+                getOmdbDetailsToArray(imdbId: results.result[index].imdbId) {
+                    dispatchGroup.leave()
+                }
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) { [self] in
+            print("Find Details - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
+            updateWithOmdbData()
+            completion()
+        }
+    }
+
+    func getOmdbDetailsToArray(imdbId: String, completion: @escaping () -> Void) {
+        omdbApiManager.searchTitles(
+            imdbId: imdbId
+        ) { result in
+            switch result {
+            case .success(let jsonObject):
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []){
+                    print(jsonObject.values)
+                    do{
+                        ModelHelpers.modelHelper.jsonDataToString(data: jsonData)
+                        let decoder = JSONDecoder()
+                        let omdb = try decoder.decode(OMdbModelResult.self, from: jsonData)
+                        self.omdbResults.append(omdb)
+                        print("Array of omdb items Count: \(String(self.omdbResults.count)) ****")
+                        completion()
+                    } catch {
+                        print ("Decoding JSON error! Error decoding JSON: \(error)")
+                    }
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
+
     func updateWithOmdbData () {
         print("Update with Data - Array of omdb items Count: \(String(self.omdbResults.count)) ****")
         DispatchQueue.main.async {
