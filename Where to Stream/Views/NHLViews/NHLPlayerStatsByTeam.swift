@@ -26,6 +26,7 @@ struct NHLPlayerStatsByTeam: View {
             Button("Get Team Player Stats") {
                 selectedTeam = teams[selectedTeamIndex]
                 nhlViewControler.getNHLPlayerStatSummary()
+                nhlViewControler.getNHLGoalieStatSummary()
             }
             .onReceive(nhlViewControler.$playerStats) { stats in
                 if stats?.data != nil {
@@ -33,7 +34,7 @@ struct NHLPlayerStatsByTeam: View {
                 }
             }
             .sheet(isPresented: $showStats) {
-                    NHLPlayerStatListView(stats: nhlViewControler.playerStats!, team: selectedTeam)
+                NHLPlayerStatListView(stats: nhlViewControler.playerStats!, goalies: nhlViewControler.goalieStats!, team: selectedTeam)
             }
         }
     }

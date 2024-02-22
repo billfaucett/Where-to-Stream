@@ -140,7 +140,7 @@ struct NHLMainView: View {
         }
         VStack {
             NavigationLink (destination: NHLPlayerStatsByTeam()) {
-                Text("Get Skater Stats by Team")
+                Text("Get Player Stats by Team")
             }
         }
     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NHLPlayerStatListView: View {
     let stats: PlayerStats
+    var goalies: GoalieData?
     var team: String?
     
     var body: some View {
@@ -50,6 +51,9 @@ struct NHLPlayerStatListView: View {
                     }
                     ForEach(sortedByPoints, id: \.playerID) { playerStat in
                         NHLPLayerStatRow(playerStats: playerStat)
+                    }
+                    if goalies != nil {
+                        NHLGoalieStatListView(stats: goalies!,team: team)
                     }
                 }
             }

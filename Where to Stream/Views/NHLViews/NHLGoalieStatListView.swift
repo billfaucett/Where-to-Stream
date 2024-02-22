@@ -9,16 +9,18 @@ import SwiftUI
 
 struct NHLGoalieStatListView: View {
     var stats: GoalieData
+    var team: String?
     
     var body: some View {
         VStack {
-            let totalGames = stats.data.reduce(0) { $0 + $1.gamesPlayed }
-            let avgGames = totalGames/stats.data.count
+            let totalGames = team == nil ? stats.data.reduce(0) { $0 + $1.gamesPlayed } : 0
+            let avgGames = team == nil ? totalGames/stats.data.count : 1
             let filteredGoalies = stats.data.sorted { $0.goalsAgainstAverage < $1.goalsAgainstAverage }
             let leaderGoalies = avgGames > 10 ? filteredGoalies .filter { $0.gamesPlayed >= avgGames / 4 } : filteredGoalies
-            let sortedByGAA = leaderGoalies .prefix(25)
+            let goalies = team == nil ? leaderGoalies : leaderGoalies.filter { $0.teamAbbrevs == team }
+            let sortedByGAA = goalies .prefix(25)
 
-            Section(header: Text("NHL Top 25 Goalies")){
+            Section(header: team != nil ? Text("\(team!) Goaltending") : Text("NHL Top 25 Goalies")){
                 HStack {
                     Text("Player")
                         .frame(width: 100, alignment: .center)
