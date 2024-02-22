@@ -308,6 +308,7 @@
 		8A9984202B6036F3001628C5 /* Where to Stream */ = {
 			isa = PBXGroup;
 			children = (
+				8AB6EEF92B87F25100AFFFF7 /* CocktailRecipes.json */,
 				8A9984212B6036F3001628C5 /* Where_to_StreamApp.swift */,
 				8A99844C2B603761001628C5 /* Views */,
 				8A99844D2B603796001628C5 /* Models */,
@@ -396,7 +397,6 @@
 		8AB6EEF82B87F15900AFFFF7 /* CocktailData */ = {
 			isa = PBXGroup;
 			children = (
-				8AB6EEF92B87F25100AFFFF7 /* CocktailRecipes.json */,
 			);
 			path = CocktailData;
 			sourceTree = "<group>";

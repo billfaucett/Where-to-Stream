@@ -15,7 +15,7 @@ class CocktailsViewModel: ObservableObject {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(recipe)
             if let jsonString = String(data: jsonData, encoding: .utf8) {
-                if let fileURL = Bundle.main.url(forResource: "CocktailRecipies", withExtension: "json") {
+                if let fileURL = Bundle.main.url(forResource: "CocktailRecipes", withExtension: "json") {
                     try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
                     print("Cocktail recipe saved to: \(fileURL)")
                     
