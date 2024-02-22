@@ -30,7 +30,7 @@ struct SAResultListView: View {
                     else {
                         if let results = saViewController.resultsWithOmbd {
                             ForEach(results.result.indices, id: \.self) { index in
-                                if results.result[index].title.contains(searchText!) && ((results.result[index].streamingInfo?.us?.first) != nil) {
+                                if results.result[index].title.contains(searchText!) {
                                     SATitleDetailsView(programDetails: results.result[index])
                                 }
                             }
@@ -41,8 +41,7 @@ struct SAResultListView: View {
             .onAppear() {
                 if resultsList == nil && searchText != nil {
                     isLoading = true
-                    //searchStreamingAPI(title: searchText!)
-                    searchStreamingAPILong(title: searchText!)
+                    searchStreamingAPI(title: searchText!)
                 }
             }
             .onReceive(saViewController.$results) { results in
@@ -53,13 +52,7 @@ struct SAResultListView: View {
         }
     }
     
-    func searchStreamingAPI (title: String) {
-        DispatchQueue.main.async {
-            saViewController.searchByTitle(title: title)
-        }
-    }
-    
-    func searchStreamingAPILong(title: String) {
+    func searchStreamingAPI(title: String) {
         DispatchQueue.main.async {
             saViewController.searchByTitle(title: title) { result in
                 switch result {
@@ -75,13 +68,13 @@ struct SAResultListView: View {
 }
  
 struct SAResultListView_Previews: PreviewProvider {
-    static var title = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
+    static var title = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: "https://www.netflix.com/title/70153373/")]), omdbResult: omdb)
     
-    static var title2 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures in Philly", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures in Philly", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
+    static var title2 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures in Philly", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures in Philly", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: "https://www.netflix.com/title/70153373/")]), omdbResult: omdb)
     
-    static var title3 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures in NJ", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures in NJ", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
+    static var title3 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures in NJ", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures in NJ", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: "https://www.netflix.com/title/70153373/")]), omdbResult: omdb)
     
-    static var title4 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures on Vacation", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures on Vacation", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: nil)]), omdbResult: omdb)
+    static var title4 = ProgramDetails(firstAirYear: 2021, originalTitle: "Jenny and Billy's Adventures on Vacation", creators: ["Bill","Jen"], imdbId: "tt2802850", tmdbId: 123, type: "Series", title: "Jenny and Billy's Adventures on Vacation", lastAirYear: 2024, genres: [Genre(id: 1, name: "RomCom")], seasonCount: 4, episodeCount: 100, status: Status(statusText: "status", statusCode: 2), streamingInfo: StreamingInfo(us: [StreamingOption(audios: nil, subtitles: nil, streamingType: "Subscription", availableSince: 2021, service: "Netflix", link: "https://www.netflix.com/title/70153373/")]), omdbResult: omdb)
     
     static var results = ProgramResults.init(result: [title, title2, title3, title4])
     
