@@ -25,7 +25,7 @@ struct SAResultListView: View {
                     }
                 } else {
                     if isLoading {
-                        ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID())
+                        ProgressView().progressViewStyle(CircularProgressViewStyle()) .id(UUID()) .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
                     }
                     else {
                         if let results = saViewController.resultsWithOmbd {
