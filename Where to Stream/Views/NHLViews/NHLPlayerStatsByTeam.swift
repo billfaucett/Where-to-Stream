@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NHLPlayerStatsByTeam: View {
     @ObservedObject var nhlViewControler = NHLViewController()
-    let teams = ["FLA", "BOS", "TOR", "TBL", "DET", "BUF", "MTL", "OTT", "NYR", "CAR", "PHI", "NJD", "NYI", "WSH", "PIT", "CBJ", "DAL", "COL", "WPG", "STL", "NSH", "MIN", "ARI", "CHI", "VAN", "VGK", "EDM", "LAK", "SEA", "CGY", "ANA", "SJS"]
+    let teams = ["FLA", "BOS", "TOR", "TBL", "DET", "BUF", "MTL", "OTT", "NYR", "CAR", "PHI", "NJD", "NYI", "WSH", "PIT", "CBJ", "DAL", "COL", "WPG", "STL", "NSH", "MIN", "ARI", "CHI", "VAN", "VGK", "EDM", "LAK", "SEA", "CGY", "ANA", "SJS"].sorted {$0 < $1}
     @State private var selectedTeamIndex = 0
     @State private var selectedTeam = ""
     @State var showStats = false
