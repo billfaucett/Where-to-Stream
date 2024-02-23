@@ -60,6 +60,9 @@
 		8AB6EEF72B87EF0C00AFFFF7 /* CocktailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6EEF62B87EF0C00AFFFF7 /* CocktailsViewModel.swift */; };
 		8AB6EEFA2B87F25100AFFFF7 /* CocktailRecipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6EEF92B87F25100AFFFF7 /* CocktailRecipes.json */; };
 		8AB6EEFC2B87F7C400AFFFF7 /* CocktailsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6EEFB2B87F7C400AFFFF7 /* CocktailsMain.swift */; };
+		8AB6EEFE2B88E7BA00AFFFF7 /* CocktailRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6EEFD2B88E7BA00AFFFF7 /* CocktailRecipeView.swift */; };
+		8AB6EF002B89076C00AFFFF7 /* CocktailListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6EEFF2B89076C00AFFFF7 /* CocktailListRow.swift */; };
+		8AB6EF022B89079900AFFFF7 /* CocktailRecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6EF012B89079900AFFFF7 /* CocktailRecipeList.swift */; };
 		8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */; };
 		8ACB6E782B74435F00DB47EB /* DetailsWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */; };
 		8AE2E7AD2B7E709D00782B3E /* NHLLeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */; };
@@ -150,6 +153,9 @@
 		8AB6EEF62B87EF0C00AFFFF7 /* CocktailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsViewModel.swift; sourceTree = "<group>"; };
 		8AB6EEF92B87F25100AFFFF7 /* CocktailRecipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CocktailRecipes.json; sourceTree = "<group>"; };
 		8AB6EEFB2B87F7C400AFFFF7 /* CocktailsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsMain.swift; sourceTree = "<group>"; };
+		8AB6EEFD2B88E7BA00AFFFF7 /* CocktailRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailRecipeView.swift; sourceTree = "<group>"; };
+		8AB6EEFF2B89076C00AFFFF7 /* CocktailListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailListRow.swift; sourceTree = "<group>"; };
+		8AB6EF012B89079900AFFFF7 /* CocktailRecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailRecipeList.swift; sourceTree = "<group>"; };
 		8ABAAB412B6D78E7009A178D /* NHLPlayByPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLPlayByPlayModel.swift; sourceTree = "<group>"; };
 		8ACB6E772B74435F00DB47EB /* DetailsWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWrapperView.swift; sourceTree = "<group>"; };
 		8AE2E7AC2B7E709D00782B3E /* NHLLeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLLeaderRow.swift; sourceTree = "<group>"; };
@@ -313,7 +319,6 @@
 				8A99844C2B603761001628C5 /* Views */,
 				8A99844D2B603796001628C5 /* Models */,
 				8A80D87D2B605FD1007281A8 /* ViewModels */,
-				8AB6EEF82B87F15900AFFFF7 /* CocktailData */,
 				8A9984252B6036F4001628C5 /* Assets.xcassets */,
 				8A9984272B6036F4001628C5 /* Preview Content */,
 			);
@@ -382,6 +387,9 @@
 			children = (
 				8AB6EEF12B87DBCC00AFFFF7 /* AddCocktailRecipeView.swift */,
 				8AB6EEFB2B87F7C400AFFFF7 /* CocktailsMain.swift */,
+				8AB6EEFD2B88E7BA00AFFFF7 /* CocktailRecipeView.swift */,
+				8AB6EEFF2B89076C00AFFFF7 /* CocktailListRow.swift */,
+				8AB6EF012B89079900AFFFF7 /* CocktailRecipeList.swift */,
 			);
 			path = CocktailRecipeViews;
 			sourceTree = "<group>";
@@ -392,13 +400,6 @@
 				8AB6EEF32B87EC7B00AFFFF7 /* CocktailRecipeModel.swift */,
 			);
 			path = Cocktails;
-			sourceTree = "<group>";
-		};
-		8AB6EEF82B87F15900AFFFF7 /* CocktailData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CocktailData;
 			sourceTree = "<group>";
 		};
 		8AC0A4BB2B699D620020E326 /* NHLViews */ = {
@@ -591,6 +592,7 @@
 				8AB6EEFC2B87F7C400AFFFF7 /* CocktailsMain.swift in Sources */,
 				8A80D8CB2B66DF17007281A8 /* OMdbModelResult.swift in Sources */,
 				8A9984512B603A2B001628C5 /* APIManager.swift in Sources */,
+				8AB6EF022B89079900AFFFF7 /* CocktailRecipeList.swift in Sources */,
 				8AB6EEF42B87EC7B00AFFFF7 /* CocktailRecipeModel.swift in Sources */,
 				8ABAAB422B6D78E7009A178D /* NHLPlayByPlayModel.swift in Sources */,
 				8A80D8A82B640046007281A8 /* StreamingSourceModelResult.swift in Sources */,
@@ -629,6 +631,7 @@
 				8A80D8D72B681FE0007281A8 /* NHLViewController.swift in Sources */,
 				8A788E482B72B2F800CACF3F /* SAStreamingServiceList.swift in Sources */,
 				8AE2E7AF2B7E915B00782B3E /* PreviewData.swift in Sources */,
+				8AB6EEFE2B88E7BA00AFFFF7 /* CocktailRecipeView.swift in Sources */,
 				8AE2E7B32B7EB68000782B3E /* NHLSkaterStatSummary.swift in Sources */,
 				8AB6EEED2B863E5500AFFFF7 /* SAGenreRow.swift in Sources */,
 				8A63CBD02B6AA84400AD80C7 /* VideoPlayerView.swift in Sources */,
@@ -638,6 +641,7 @@
 				8AB6EEF72B87EF0C00AFFFF7 /* CocktailsViewModel.swift in Sources */,
 				8A80D8D92B6837D2007281A8 /* NHLStandingsView.swift in Sources */,
 				8A788E4C2B72BEE500CACF3F /* SATitleDetailsView.swift in Sources */,
+				8AB6EF002B89076C00AFFFF7 /* CocktailListRow.swift in Sources */,
 				8A80D87C2B6054B2007281A8 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

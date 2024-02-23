@@ -8,6 +8,7 @@
 import Foundation
 
 class CocktailsViewModel: ObservableObject {
+    @Published var cocktailRecipes: CocktailRecipes?
     @Published var cocktailRecipe: CocktailRecipe?
     
     func saveRecipe(recipe: CocktailRecipe) {
@@ -26,5 +27,19 @@ class CocktailsViewModel: ObservableObject {
         } catch {
             print("Error saving cocktail recipe: \(error)")
         }
+    }
+
+    func getRecipies() {
+        if let url = Bundle.main.url(forResource: "cocktailrecipies", withExtension: "json") {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let recipes = try JSONDecoder().decode(CocktailRecipes.self, from: data)
+                    cocktailRecipes = recipes
+                } catch {
+                    print("Error loading recipes from JSON: \(error)")
+                }
+            } else {
+                print("JSON file not found in bundle.")
+            }
     }
 }
