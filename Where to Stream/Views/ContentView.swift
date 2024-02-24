@@ -17,13 +17,6 @@ struct ContentView: View {
                 Text("Sandbox App")
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                NavigationLink(destination: CocktailsMain()){
-                    Text("Cocktail Recipies")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
                 NavigationLink(destination: SASearchView()){
                     Text("Where can I watch a Show?")
                         .padding()

@@ -12,25 +12,36 @@ class CocktailsViewModel: ObservableObject {
     @Published var cocktailRecipe: CocktailRecipe?
     
     func saveRecipe(recipe: CocktailRecipe) {
-        do {
-            let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(recipe)
-            if let jsonString = String(data: jsonData, encoding: .utf8) {
-                if let fileURL = Bundle.main.url(forResource: "CocktailRecipes", withExtension: "json") {
-                    try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
-                    print("Cocktail recipe saved to: \(fileURL)")
-                    
-                } else {
-                    print("Error: CocktailRecipies.json file not found in main bundle")
+        let fileManager = FileManager.default
+        
+        guard let fileURL = Bundle.main.url(forResource: "CocktailRecipes", withExtension: "json") else {
+            print("Error: CocktailRecipies.json file not found in main bundle")
+            return
+        }
+        
+        if fileManager.fileExists(atPath: fileURL.path) {
+            do {
+                let jsonEncoder = JSONEncoder()
+                let jsonData = try jsonEncoder.encode(recipe)
+
+                guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+                    print("Error: Unable to convert JSON data to string")
+                    return
                 }
+
+                try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
+                print("Cocktail recipe saved to: \(fileURL)")
+            } catch {
+                print("Error saving cocktail recipe: \(error)")
             }
-        } catch {
-            print("Error saving cocktail recipe: \(error)")
+        } else {
+            print("Error: CocktailRecipies.json file does not exist")
         }
     }
 
+
     func getRecipies() {
-        if let url = Bundle.main.url(forResource: "cocktailrecipies", withExtension: "json") {
+        if let url = Bundle.main.url(forResource: "CocktailRecipes", withExtension: "json") {
                 do {
                     let data = try Data(contentsOf: url)
                     let recipes = try JSONDecoder().decode(CocktailRecipes.self, from: data)
